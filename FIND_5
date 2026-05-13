@@ -1,0 +1,18 @@
+[!!!] НАЙДЕНО ОПРЕДЕЛЕНИЕ createHashHex на 302960:
+.createHash("sha256").update(e).digest()}function createHashHex(e){return crypto$2.createHash("sha256").update(e).digest("hex")}function createHash(e,t){const jn=pluginLibrary.providePlugin(t,e);return createHashHex(jn)}function createHashA(e){return createHash(e,PLUGINS.loginHashA)}function createHashB(e){return createHash(e,PLUGINS.loginHashB)}function createHashC(e){return createHash(e,PLUGINS.loginHashC)}function hashPassword(e){const t=createHashA(e);return createHashB(t)}function decryptPassword(e,t,jn){return decryptData(e,t,PLUGINS.pass
+----------------------------------------
+
+[!!!] НАЙДЕНО ОПРЕДЕЛЕНИЕ createHashHex на 3180248:
+ername,jc=e.loggedaccount[0].password,Mc=Vo+jc,gd=createHashHex(Mc);e.encryptionkey=gd,jn.isMnemonicAccount&&(e.mnemonic=jn.mnemonic,delete jn.mnemonic)},addCoin(e,{coin:t,wallet:jn}){const Yn=jn??e.activeWallet,Po=e.accounts.find(qo=>qo.username===e.loggedaccount[0].username);if(Po){if(Po.activatedCoins[Yn].indexOf(t)===-1){if(Po.activatedCoins[Yn].push(t),this.$message.success(this.i18n.t("message.added_to_portfolio",{coinname:e.coins[t].name})),e.coins[t].coinType==="token"){console.log(t);const qo=getNativeCoin$1(e.coins,e.coins[t].type);co
+----------------------------------------
+
+[!!!] НАЙДЕНО ОПРЕДЕЛЕНИЕ createHashHex на 3217283:
+<&{S-:}&,",jn=e.loggedaccount[0]?.username;return createHashHex(t+jn+t+createHashHex(t))},getFluxAIgb(){const e="0=#zC/:{).|~Gb",t=global$1.$packageJson.name;return createHashHex(e+e.split("").flatMap(Yn=>t.split("").reverse().flatMap(Po=>[Yn,Po])).join(""))},encryptFluxAI(e,{data:t}){return encryptFluxAI(t)},async decryptFluxAI({dispatch:e},{cipher:t}){const jn=await e("getFluxAIup");return decryptFluxAI(t,jn)},async loadFluxAI({dispatch:e,state:t,commit:jn},{tag:Yn}){try{console.log(`LOADFLUXAI ${Yn}`);const qo=(t.loggedaccount[0]?.username||
+----------------------------------------
+
+[!!!] НАЙДЕНО ОПРЕДЕЛЕНИЕ createHashHex на 3217304:
+daccount[0]?.username;return createHashHex(t+jn+t+createHashHex(t))},getFluxAIgb(){const e="0=#zC/:{).|~Gb",t=global$1.$packageJson.name;return createHashHex(e+e.split("").flatMap(Yn=>t.split("").reverse().flatMap(Po=>[Yn,Po])).join(""))},encryptFluxAI(e,{data:t}){return encryptFluxAI(t)},async decryptFluxAI({dispatch:e},{cipher:t}){const jn=await e("getFluxAIup");return decryptFluxAI(t,jn)},async loadFluxAI({dispatch:e,state:t,commit:jn},{tag:Yn}){try{console.log(`LOADFLUXAI ${Yn}`);const qo=(t.loggedaccount[0]?.username||t.fluxAI.FLUXLOGINLES
+----------------------------------------
+
+[!!!] НАЙДЕНО ОПРЕДЕЛЕНИЕ createHashHex на 3217398:
+#zC/:{).|~Gb",t=global$1.$packageJson.name;return createHashHex(e+e.split("").flatMap(Yn=>t.split("").reverse().flatMap(Po=>[Yn,Po])).join(""))},encryptFluxAI(e,{data:t}){return encryptFluxAI(t)},async decryptFluxAI({dispatch:e},{cipher:t}){const jn=await e("getFluxAIup");return decryptFluxAI(t,jn)},async loadFluxAI({dispatch:e,state:t,commit:jn},{tag:Yn}){try{console.log(`LOADFLUXAI ${Yn}`);const qo=(t.loggedaccount[0]?.username||t.fluxAI.FLUXLOGINLESS.username).replace(/[ <>:"'?*|.\\/]/g,"_"),Vo=`fluxAI_${Yn}_${qo}`,jc=await localForage.getIt
