@@ -1,0 +1,78 @@
+import hashlib
+from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+import binascii
+
+# ТВОИ ДАННЫЕ
+U = "buginot"
+P = "ScvDbn70@"
+TARGET_JSON_HASH = "e4c3ea79682cc507ebc53a76e01916564cd859e9f7f128749288534ce3c725e0"
+
+def get_c2f0_result():
+    print(f"--- Анализ для пользователя: {U} ---")
+    
+    u_clean = U.lower().strip()
+    
+    # 1. SHA256 от склейки логина и пароля
+    combined_input = (u_clean + P).encode("utf-8")
+    first_hash = hashlib.sha256(combined_input).digest()
+    
+    # 2. Соль = SHA256 от чистого логина
+    salt = hashlib.sha256(u_clean.encode("utf-8")).digest()
+
+    # 3. Вычисление Scrypt (p=1, dkLen=64)
+    # Это те самые параметры из твоего первого скрипта
+    kdf = Scrypt(
+        salt=salt,
+        length=64,
+        n=16384,
+        r=8,
+        p=1,
+    )
+
+    print("Вычисляю Scrypt...")
+    master_seed = kdf.derive(first_hash)
+    
+    master_seed_hex = master_seed.hex()
+    print(f"\n[+] РЕЗУЛЬТАТ (Master Seed):")
+    print(master_seed_hex)
+    
+    # ПРОВЕРКА №1: Совпадение с твоим первым скриптом
+    if master_seed_hex.startswith("c2f06740ff"):
+        print("\n[OK] Это тот самый результат: c2f06740ff...")
+    
+    # ПРОВЕРКА №2: Совпадение с accounts.json
+    # В Zelcore Legacy хеш в JSON - это SHA256 от первой половины сида
+    device_priv_key = master_seed[:32]
+    json_check = hashlib.sha256(device_priv_key).hexdigest()
+    
+    print(f"\nПроверка хеша для accounts.json:")
+    print(f"Вычислено: {json_check}")
+    print(f"В файле:   {TARGET_JSON_HASH}")
+    
+    if json_check == TARGET_JSON_HASH:
+        print("[!!!] ПОЛНОЕ СОВПАДЕНИЕ! Мы нашли Private Key устройства.")
+        print(f"Твой Private Key (HEX): {device_priv_key.hex()}")
+    else:
+        print("[-] Хеш не совпал. Значит Private Key - это вторая половина или сам сид.")
+
+if __name__ == "__main__":
+    get_c2f0_result()
+
+
+
+Ответ:
+E:\E-MAIL SOFTWARE V1.1.5\zelcore>python zel_gemeni_2.py
+--- Анализ для пользователя: buginot ---
+Вычисляю Scrypt...
+
+[+] РЕЗУЛЬТАТ (Master Seed):
+c2f06740ff65184680c09346f01ad33a3c53352270c92d1ce1a753eb7b969b41f7b33413ca8f9fe1e135269d80d9a015dec901b8203df9aefd13506684d95e3d
+
+[OK] Это тот самый результат: c2f06740ff...
+
+Проверка хеша для accounts.json:
+Вычислено: 70326fbe134a2c34a7f7facdb9f2ca54503d45c97cb120d73369ae14c164b3c2
+В файле:   e4c3ea79682cc507ebc53a76e01916564cd859e9f7f128749288534ce3c725e0
+[-] Хеш не совпал. Значит Private Key - это вторая половина или сам сид.
+
+E:\E-MAIL SOFTWARE V1.1.5\zelcore>
