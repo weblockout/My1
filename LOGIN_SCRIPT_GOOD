@@ -1,0 +1,83 @@
+import hashlib
+import base64
+import ecdsa
+import struct
+import requests
+import time
+
+PRIVATE_KEY_HEX = "d8c286459e9ed882a868c195672c2bce117bf0455dd9765c6d05a54272b4b420"
+ZELID = "1QJcn3ZA3zHcJ6oy3PLZVaiKCneD6JBQbT"
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept": "application/json",
+}
+
+def varint_encode(n):
+    if n < 0xfd: return struct.pack('<B', n)
+    elif n <= 0xffff: return b'\xfd' + struct.pack('<H', n)
+    return b'\xfe' + struct.pack('<I', n)
+
+def sign_msg(message, prefix, rec_id):
+    priv_key_bytes = bytes.fromhex(PRIVATE_KEY_HEX)
+    sk = ecdsa.SigningKey.from_string(priv_key_bytes, curve=ecdsa.SECP256k1)
+    p_bytes = prefix.encode('utf-8')
+    m_bytes = message.encode('utf-8')
+    full_msg = varint_encode(len(p_bytes)) + p_bytes + varint_encode(len(m_bytes)) + m_bytes
+    msg_hash = hashlib.sha256(hashlib.sha256(full_msg).digest()).digest()
+    sig = sk.sign_digest_deterministic(msg_hash, hashfunc=hashlib.sha256, sigencode=ecdsa.util.sigencode_string_canonize)
+    header = struct.pack('<B', 31 + rec_id)
+    return base64.b64encode(header + sig).decode('utf-8')
+
+def run_brute():
+    print("[*] Получаю свежую фразу...")
+    try:
+        phrase = requests.get("https://api.runonflux.io/id/loginphrase", timeout=10).json()['data']
+        print(f"[+] Фраза: {phrase}")
+    except: return
+
+    # Варианты префиксов
+    prefixes = [
+        "Bitcoin Signed Message:\n",
+        " Bitcoin Signed Message:\n", # С пробелом
+        "Zelcash Signed Message:\n",
+        "ZelCash Signed Message:\n"
+    ]
+
+    # Варианты сообщений
+    messages = [
+        phrase,
+        f"ZelProof{phrase}",
+        f"{ZELID}{phrase}"
+    ]
+
+    for msg in messages:
+        for pref in prefixes:
+            for rid in [0, 1]: # Пробуем оба recovery ID (H... и I...)
+                desc = f"Msg: {msg[:15]}... | Pref: [{pref.strip()}] | i={rid}"
+                signature = sign_msg(msg, pref, rid)
+                
+                payload = {"zelid": ZELID, "signature": signature, "loginPhrase": phrase}
+                try:
+                    res = requests.post("https://api.runonflux.io/id/verifylogin", data=payload, headers=HEADERS, timeout=10)
+                    if '"success"' in res.text.lower():
+                        print(f"\n[!!!] УСПЕХ: {desc}")
+                        print(f"ОТВЕТ: {res.text}")
+                        return
+                    else:
+                        print(f"[-] Отказ: {desc}")
+                except: pass
+                time.sleep(0.5)
+
+if __name__ == "__main__":
+    run_brute()
+
+
+
+E:\E-MAIL SOFTWARE V1.1.5\zelcore>python zel_gemeni_1.py
+[*] Получаю свежую фразу...
+[+] Фраза: 1778735632223um82w58la5plr2l2bnffjen39wb439wc2uiamajvry6
+
+[!!!] УСПЕХ: Msg: 1778735632223um... | Pref: [Bitcoin Signed Message:] | i=0
+ОТВЕТ: {"status":"success","data":{"message":"Successfully logged in","zelid":"1QJcn3ZA3zHcJ6oy3PLZVaiKCneD6JBQbT","loginPhrase":"1778735632223um82w58la5plr2l2bnffjen39wb439wc2uiamajvry6","signature":"H2ySJrwL1t4DEOPH+gNij5cgUF/JpjC0zOW9bR4SAuMgIIimjQPP18a2tXer+11vhlZVh5AlNUQyWzvOBo/uI8o=","privilage":"user","createdAt":"2026-05-14T05:13:52.223Z","expireAt":"2026-05-28T05:13:52.223Z"}}
