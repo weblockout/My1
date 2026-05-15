@@ -1,0 +1,718 @@
+FILE: b-coininfo-D1MWRrP6.js
+KEYWORD: scrypt
+CONTEXT:
+ solving the problem ensures that authenticating forged transactions is very difficult unless the attacker owns an impractically large chunk of the network’s total hashing power. AUR is one of the only cryptocurrencies to use a combination of five different hashing algorithms, namely Grøstl, Qubit, scrypt, SHA-256, and Skein.\r
+\r
+While initially very popular, Auroracoin has seen little to no activity for a while, with poor marketing, and frequent dev team changes. Reasons for little growth have been various, from slow adoption in Iceland, to developers leaving and joining the project midway. However, it is expected to not go lower than the recent low, and might see a rise as AUR plans to launch a more aggressive marketing campaign in Iceland to promote the coin among the masses. Unlike most oth
+--------------------------------------------------
+FILE: b-rvnassets-CrrPiHVF.js
+KEYWORD: scrypt
+CONTEXT:
+:"RAVENIST#BRAYVE_MossyTree","units":0},{"name":"RAVENIST#BRIKbc_Buffering","units":0},{"name":"RAVENIST#BRIKvc_CoastSun4","units":0},{"name":"RAVENIST#Brayve_Sympsins2","units":0},{"name":"RAVENIST#Brayve_Sympsins3","units":0},{"name":"RAVENIST#Brayve_Sympsins4","units":0},{"name":"RAVENIST#CLAY_Inscryption","units":0},{"name":"RAVENIST#DEEM_CloudRavens","units":0},{"name":"RAVENIST#DEFI_DebbieBrain","units":0},{"name":"RAVENIST#DGTL1_RadSkaterz","units":0},{"name":"RAVENIST#DICC_BWhiteCube2","units":0},{"name":"RAVENIST#DICC_ExoticCube2","units":0},{"name":"RAVENIST#DICC_LBBlueCube2","units":0},{"name":"RAVENIST#DICC_OrangeBuggy","units":0},{"name":"RAVENIST#DICC_OrangeCube2","units":0},{"name":"RAVENIST#DICC_PurpleCube2","units":0},{"name":"RAVENIST#DICC_YellowCube2","units":0},{"name":"RAVEN
+--------------------------------------------------
+FILE: FluxDrive-BocJp1TT.js
+KEYWORD: #<&{S-:}&,
+CONTEXT:
+s=!1}=n,a=this.parseError(t,r);if(console.error("[FluxDrive Error]",{message:a.message,type:a.type,details:a.details,context:r}),s)throw a;return a}}const{prepareKey:ju,isKeyAvailable:Zu,encryptBinary:Xu,decryptBinary:Ku,isEncryptedBuffer:Qu}=Li();function Ii(e){Et(e,"password derivation");const t="#<&{S-:}&,";return Fn(t+e+t+Fn(t))}function Ju(e){if(!Zu()){const t=Ii(e);ju(t)}}function ef(e,t){return Ju(t),Xu(e)}function tf(e,t){const r=Ii(t);return Ku(e,r)}function rf(e){return Qu(e)}const wi=async({privateKey:e,file:t})=>{Et(e,"file encryption");try{const r=Ve.from(await t.arrayBuffer()),n=ef(r,e);if(X.$isMobile){const a=new Blob([n],{type:"application/octet-stream"});return a.name=t.name,a}return new File([n],t.name,{type:"application/octet-stream"})}catch(r){throw r instanceof mt?r:(console.err
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: createHashHex
+CONTEXT:
+HMS.CTR,qo);let Mc=jc.update(Vo,"hex","utf8");return Mc+=jc.final("utf8"),Mc}catch(Po){return Yn?(log$1.error("Error decrypting data in browser environment"),log$1.error(Po),""):decryptDataBrowser(e,t,jn,!0)}}function createHashRaw(e){return crypto$2.createHash("sha256").update(e).digest()}function createHashHex(e){return crypto$2.createHash("sha256").update(e).digest("hex")}function createHash(e,t){const jn=pluginLibrary.providePlugin(t,e);return createHashHex(jn)}function createHashA(e){return createHash(e,PLUGINS.loginHashA)}function createHashB(e){return createHash(e,PLUGINS.loginHashB)}function createHashC(e){return createHash(e,PLUGINS.loginHashC)}function hashPassword(e){const t=createHashA(e);return createHashB(t)}function decryptPassword(e,t,jn){return decryptData(e,t,PLUGINS.passwordKey).spli
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: createHashHex
+CONTEXT:
+ent"),log$1.error(Po),""):decryptDataBrowser(e,t,jn,!0)}}function createHashRaw(e){return crypto$2.createHash("sha256").update(e).digest()}function createHashHex(e){return crypto$2.createHash("sha256").update(e).digest("hex")}function createHash(e,t){const jn=pluginLibrary.providePlugin(t,e);return createHashHex(jn)}function createHashA(e){return createHash(e,PLUGINS.loginHashA)}function createHashB(e){return createHash(e,PLUGINS.loginHashB)}function createHashC(e){return createHash(e,PLUGINS.loginHashC)}function hashPassword(e){const t=createHashA(e);return createHashB(t)}function decryptPassword(e,t,jn){return decryptData(e,t,PLUGINS.passwordKey).split(pluginLibrary.providePlugin(PLUGINS.passwordDecrypt,jn))[0]}function decryptQuestions(e,t,jn){return decryptData(e,t,PLUGINS.questionKey).split(plugin
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: createHashHex
+CONTEXT:
+)},()=>Bd(!1),"zelcore_secure_storage")})},jc=async(Ad,yd)=>{try{if(Ad===!1||!yd||!global$1?.$cordova?.SecureStorage)return Ad;const Bd=await Vo(yd.normalize("NFD").replace(/[\u0300-\u036f]/g,""));if(Bd===!1)return Ad;const Cd=/^[0-9a-fA-F]+$/;return typeof Ad=="string"&&Ad.length===64&&Cd.test(Ad)?createHashHex(`${Ad}:${Bd}`):typeof Ad=="string"?Ad:Ad===void 0?Bd:Ad}catch(Bd){return console.error("Error enhancing biometric key:",Bd),Ad}};return{hasBiometrics:e,getBiometricsAuth:Po,getOrSetBiometric:qo,generateSecureDeviceKey:Vo,getEnhancedBiometricAuth:async(Ad,yd="zelcore",Bd="BiometricSignature")=>{const Cd=await Po(yd,Bd);return jc(Cd,Ad)},getOrSetEnhancedBiometric:async(Ad,yd="zelcore",Bd="BiometricSignature",Cd="zelcore")=>{const vd=await qo(yd,Bd,Cd);return jc(vd,Ad)}}}function validateCssUnitPr
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: createHashHex
+CONTEXT:
+atch(e){}const{encryptAddresses,decryptAddresses}=addressesEncryptionHelper();class AddressesCache{coinIds=[];constructor(t,jn,Yn,Po){this.privateKeysWIF=jn,this.bip44Pks=Yn,this.GEN_ADDRESSES=Po,this.coinsByFamily={},this.groupCoins(t.coins),this.setP()}setP(){const t=this.privateKeysWIF[5];this.p=createHashHex(t)}async generateOrGetFromCache(){try{const t=await this.getFromCache();this.checkRegenerateCondition(t),console.log("[ADDRESSES CACHE]: Attaching addresses"),this.attach(t.coins)}catch(t){console.log(t),console.log("[ADDRESSES CACHE]: Generating addresses"),this.generate(),console.log("[ADDRESSES CACHE]: Storing to cache"),await this.storeToCache()}}checkRegenerateCondition(t){if(t.zelcoreVersion!==global$1.$packageJson.version)throw new Error("[ADDRESSES CACHE]: Version mismatch");const jn=Ob
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: createHashHex
+CONTEXT:
+ted=jn.backendSettingsReseted,qo.isMnemonicAccount=jn.isMnemonicAccount,delete qo.transactions,delete qo.balances):(console.log("error finding account"),this.$log.error("error finding account")),e.loggedaccount.push(jn);const Vo=e.loggedaccount[0].username,jc=e.loggedaccount[0].password,Mc=Vo+jc,gd=createHashHex(Mc);e.encryptionkey=gd,jn.isMnemonicAccount&&(e.mnemonic=jn.mnemonic,delete jn.mnemonic)},addCoin(e,{coin:t,wallet:jn}){const Yn=jn??e.activeWallet,Po=e.accounts.find(qo=>qo.username===e.loggedaccount[0].username);if(Po){if(Po.activatedCoins[Yn].indexOf(t)===-1){if(Po.activatedCoins[Yn].push(t),this.$message.success(this.i18n.t("message.added_to_portfolio",{coinname:e.coins[t].name})),e.coins[t].coinType==="token"){console.log(t);const qo=getNativeCoin$1(e.coins,e.coins[t].type);console.log(qo)
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: createHashHex
+CONTEXT:
+tKey();return{derivedKey:Buffer.from(e).toString("hex"),salt:t.toString("hex")}},setFluxAIkey(e,t){const{derivedKey:jn,salt:Yn}=t;setKey({derivedKey:new Uint8Array(Buffer.from(jn,"hex")),salt:Buffer.from(Yn,"hex")})},getFluxAIup({state:e}){const t="#<&{S-:}&,",jn=e.loggedaccount[0]?.username;return createHashHex(t+jn+t+createHashHex(t))},getFluxAIgb(){const e="0=#zC/:{).|~Gb",t=global$1.$packageJson.name;return createHashHex(e+e.split("").flatMap(Yn=>t.split("").reverse().flatMap(Po=>[Yn,Po])).join(""))},encryptFluxAI(e,{data:t}){return encryptFluxAI(t)},async decryptFluxAI({dispatch:e},{cipher:t}){const jn=await e("getFluxAIup");return decryptFluxAI(t,jn)},async loadFluxAI({dispatch:e,state:t,commit:jn},{tag:Yn}){try{console.log(`LOADFLUXAI ${Yn}`);const qo=(t.loggedaccount[0]?.username||t.fluxAI.FLUX
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: createHashHex
+CONTEXT:
+Key:Buffer.from(e).toString("hex"),salt:t.toString("hex")}},setFluxAIkey(e,t){const{derivedKey:jn,salt:Yn}=t;setKey({derivedKey:new Uint8Array(Buffer.from(jn,"hex")),salt:Buffer.from(Yn,"hex")})},getFluxAIup({state:e}){const t="#<&{S-:}&,",jn=e.loggedaccount[0]?.username;return createHashHex(t+jn+t+createHashHex(t))},getFluxAIgb(){const e="0=#zC/:{).|~Gb",t=global$1.$packageJson.name;return createHashHex(e+e.split("").flatMap(Yn=>t.split("").reverse().flatMap(Po=>[Yn,Po])).join(""))},encryptFluxAI(e,{data:t}){return encryptFluxAI(t)},async decryptFluxAI({dispatch:e},{cipher:t}){const jn=await e("getFluxAIup");return decryptFluxAI(t,jn)},async loadFluxAI({dispatch:e,state:t,commit:jn},{tag:Yn}){try{console.log(`LOADFLUXAI ${Yn}`);const qo=(t.loggedaccount[0]?.username||t.fluxAI.FLUXLOGINLESS.username).r
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: createHashHex
+CONTEXT:
+:jn,salt:Yn}=t;setKey({derivedKey:new Uint8Array(Buffer.from(jn,"hex")),salt:Buffer.from(Yn,"hex")})},getFluxAIup({state:e}){const t="#<&{S-:}&,",jn=e.loggedaccount[0]?.username;return createHashHex(t+jn+t+createHashHex(t))},getFluxAIgb(){const e="0=#zC/:{).|~Gb",t=global$1.$packageJson.name;return createHashHex(e+e.split("").flatMap(Yn=>t.split("").reverse().flatMap(Po=>[Yn,Po])).join(""))},encryptFluxAI(e,{data:t}){return encryptFluxAI(t)},async decryptFluxAI({dispatch:e},{cipher:t}){const jn=await e("getFluxAIup");return decryptFluxAI(t,jn)},async loadFluxAI({dispatch:e,state:t,commit:jn},{tag:Yn}){try{console.log(`LOADFLUXAI ${Yn}`);const qo=(t.loggedaccount[0]?.username||t.fluxAI.FLUXLOGINLESS.username).replace(/[ <>:"'?*|.\\/]/g,"_"),Vo=`fluxAI_${Yn}_${qo}`,jc=await localForage.getItem(Vo);if(jc)
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: createHashHex
+CONTEXT:
+dSettingsReseted||(this.$store.commit("resetBackendSettings"),this.$store.commit("changeBackendSettingsReseted",!0)),e.$store.dispatch("loadFluxNodes"),this.loggedaccount[0]&&this.loggedaccount[0].isMnemonicAccount===!1){const{username:gd}=this.loggedaccount[0],yd=`legacyLoginDeprecationLastShown_${createHashHex(gd).substring(0,10)}`,Bd=this.$localstore.get(yd),Cd=7*24*60*60*1e3,vd=Date.now();(!Bd||vd-Bd>=Cd)&&(this.openDialog("legacyDeprecation"),this.$localstore.set(yd,vd))}e.$router.currentRoute.value.path==="/welcome"&&(e.$message.success(e.$t("message.retrieving")),e.$router.push({name:"Portfolio"}));const Mc=e.d2fa.message.split("&d2fa=");Mc[1]!==void 0?Number(Mc[1])===2||Number(Mc[1])===3?[e.mypin]=Mc:e.mypin="":e.d2fa.message===""?e.mypin="":(e.$message.error(e.$t("message.error_d2fa_cert")),th
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: createHashHex
+CONTEXT:
+UPPORTED_CHAINS as S,TOKEN_RESERVE_KAS as T,useClipboard as U,EthLikeSending as V,secp256k1$4 as W,__CJS__import__4__ as X,sha3$3 as Y,ZelAlert as Z,_export_sfc as _,__vitePreload as a,CHAINS_CONFIG as a$,createHashRaw as a0,ABE_API_URL as a1,getSymbolFromCurrency as a2,axios as a3,KdaSending as a4,createHashHex as a5,PasswordStrengthInput as a6,useRoute as a7,createHashA as a8,createHashB as a9,registerStakingAdapter as aA,ZELCORE_TOS_URL as aB,getStrengthStatusKey as aC,decryptPassword as aD,decryptQuestions as aE,getRegisteredChains as aF,getImage as aG,ReOwnConsts as aH,ReOwn as aI,isOnline as aJ,REOWN_CHAINS as aK,signEth as aL,signSol as aM,signKda as aN,signSui as aO,signCosmos as aP,signCardano as aQ,_sfc_main$u as aR,fetchAndBuildTokenData$1 as aS,generateImportedTokenData$2 as aT,AvalancheWal
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: #<&{S-:}&,
+CONTEXT:
+Key()},getFluxAIkey(){const{derivedKey:e,salt:t}=getKey();return{derivedKey:Buffer.from(e).toString("hex"),salt:t.toString("hex")}},setFluxAIkey(e,t){const{derivedKey:jn,salt:Yn}=t;setKey({derivedKey:new Uint8Array(Buffer.from(jn,"hex")),salt:Buffer.from(Yn,"hex")})},getFluxAIup({state:e}){const t="#<&{S-:}&,",jn=e.loggedaccount[0]?.username;return createHashHex(t+jn+t+createHashHex(t))},getFluxAIgb(){const e="0=#zC/:{).|~Gb",t=global$1.$packageJson.name;return createHashHex(e+e.split("").flatMap(Yn=>t.split("").reverse().flatMap(Po=>[Yn,Po])).join(""))},encryptFluxAI(e,{data:t}){return encryptFluxAI(t)},async decryptFluxAI({dispatch:e},{cipher:t}){const jn=await e("getFluxAIup");return decryptFluxAI(t,jn)},async loadFluxAI({dispatch:e,state:t,commit:jn},{tag:Yn}){try{console.log(`LOADFLUXAI ${Yn}`)
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: scrypt
+CONTEXT:
+M_FUNC_HASH_LENGTH)))throw new Error("This state was written by an incompatible hash implementation");const Dd=bd.subarray(WASM_FUNC_HASH_LENGTH);new Uint8Array(Od,Ed,xd).set(Dd),Po=!0},Nd=bd=>typeof bd=="string"?bd.length<MAX_HEAP/4:bd.byteLength<MAX_HEAP;let wd=Nd;switch(e.name){case"argon2":case"scrypt":wd=()=>!0;break;case"blake2b":case"blake2s":wd=(bd,Ed)=>Ed<=512&&Nd(bd);break;case"blake3":wd=(bd,Ed)=>Ed===0&&Nd(bd);break;case"xxhash64":case"xxhash3":case"xxhash128":case"crc64":wd=()=>!1;break}const Td=(bd,Ed=null,xd=null)=>{if(!wd(bd,Ed))return Bd(Ed),vd(bd),_d("hex",xd);const Md=getUInt8Buffer(bd);return Yn.set(Md),jn.exports.Hash_Calculate(Md.length,Ed,xd),getDigestHex(kd,Yn,t)};return yield yd(),{getMemory:Vo,writeMemory:qo,getExports:jc,setMemorySize:Mc,init:Bd,update:vd,digest:_d,sav
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: scrypt
+CONTEXT:
+pported output type ${e.outputType}. Valid values: ['hex', 'binary']`)};function pbkdf2$1(e){return __awaiter(this,void 0,void 0,function*(){validateOptions$2(e);const t=yield createHMAC(e.hashFunction,e.password);return calculatePBKDF2(t,e.salt,e.iterations,e.hashLength,e.outputType)})}var name$3="scrypt",data$3="AGFzbQEAAAABGwVgAX8Bf2AAAX9gBH9/f38AYAF/AGADf39/AAMGBQABAgMEBQYBAQKAgAIGCAF/AUGQiAQLBzkEBm1lbW9yeQIAEkhhc2hfU2V0TWVtb3J5U2l6ZQAADkhhc2hfR2V0QnVmZmVyAAEGc2NyeXB0AAQK7iYFWAECf0EAIQECQCAAQQAoAogIIgJGDQACQCAAIAJrIgBBEHYgAEGAgHxxIABJaiIAQABBf0cNAEH/AcAPC0EAIQFBAEEAKQOICCAAQRB0rXw3A4gICyABwAtwAQJ/AkBBACgCgAgiAA0AQQA/AEEQdCIANgKACEEAKAKICCIBQYCAIEYNAAJAQYCAICABayIAQRB2IABBgIB8cSAASWoiAEAAQX9HDQBBAA8LQQBBACkDiAggAEEQdK18NwOICEEAKAKACCEACyAAC6QFAQN/IAIgA0EHdCAAakFAaiIEKQMANwMAIAIgBCkDCDcDCCACIA
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: scrypt
+CONTEXT:
+BBACEiAkAgHQ0AICAgHmohI0EAIQtBACEiA0AgIyALaiIEIAcgC2oiJCgCADYCACAEQQRqICRBBGooAgA2AgAgBEEIaiAkQQhqKAIANgIAIARBDGogJEEMaigCADYCACALQRBqIQsgDiAiQQRqIiJHDQALCyAPRQ0AICEgIkECdCILaiAHIAtqKAIANgIACyAeIANqIR4gH0EBaiIfIAJHDQALCws=",hash$3="b32721f8",wasmJson$3={name:name$3,data:data$3,hash:hash$3};function scryptInternal(e){return __awaiter(this,void 0,void 0,function*(){const{costFactor:t,blockSize:jn,parallelism:Yn,hashLength:Po}=e,qo=createSHA256(),Vo=yield pbkdf2$1({password:e.password,salt:e.salt,iterations:1,hashLength:128*jn*Yn,hashFunction:qo,outputType:"binary"}),jc=yield WASMInterface(wasmJson$3,0),Mc=128*jn*t,gd=256*jn;jc.setMemorySize(Vo.length+Mc+gd),jc.writeMemory(Vo,0),jc.getExports().scrypt(jn,t,Yn);const Ad=jc.getMemory().subarray(0,128*jn*Yn),yd=yield pbkdf2$1({password:e.password,salt
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: scrypt
+CONTEXT:
+allelism:Yn,hashLength:Po}=e,qo=createSHA256(),Vo=yield pbkdf2$1({password:e.password,salt:e.salt,iterations:1,hashLength:128*jn*Yn,hashFunction:qo,outputType:"binary"}),jc=yield WASMInterface(wasmJson$3,0),Mc=128*jn*t,gd=256*jn;jc.setMemorySize(Vo.length+Mc+gd),jc.writeMemory(Vo,0),jc.getExports().scrypt(jn,t,Yn);const Ad=jc.getMemory().subarray(0,128*jn*Yn),yd=yield pbkdf2$1({password:e.password,salt:Ad,iterations:1,hashLength:Po,hashFunction:qo,outputType:"binary"});if(e.outputType==="hex"){const Bd=new Uint8Array(Po*2);return getDigestHex(Bd,yd,Po)}return yd})}const isPowerOfTwo=e=>e&&!(e&e-1),validateOptions$1=e=>{if(!e||typeof e!="object")throw new Error("Invalid options parameter. It requires an object.");if(!Number.isInteger(e.blockSize)||e.blockSize<1)throw new Error("Block size should 
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: scrypt
+CONTEXT:
+f(!Number.isInteger(e.hashLength)||e.hashLength<1)throw new Error("Hash length should be a positive number.");if(e.outputType===void 0&&(e.outputType="hex"),!["hex","binary"].includes(e.outputType))throw new Error(`Insupported output type ${e.outputType}. Valid values: ['hex', 'binary']`)};function scrypt(e){return __awaiter(this,void 0,void 0,function*(){return validateOptions$1(e),scryptInternal(e)})}var name$2="bcrypt",data$2="AGFzbQEAAAABFwRgAAF/YAR/f39/AGADf39/AGABfwF/AwUEAAECAwUEAQECAgYIAX8BQZCrBQsHNAQGbWVtb3J5AgAOSGFzaF9HZXRCdWZmZXIAAAZiY3J5cHQAAg1iY3J5cHRfdmVyaWZ5AAMK9WAEBQBBgCsL21kEFH8Bfgh/AX4jAEHwAGshBCACQQA6AAIgAkGq4AA7AAACQCABLQAAQSpHDQAgAS0AAUEwRw0AIAJBMToAAQsCQCABLAAFIAEsAARBCmxqQfB7aiIFQQRJDQAgAS0AB0FgaiIGQd8ASw0AIAZBkAlqLQAAIgZBP0sNACABLQAIQWBqIgdB3wBLDQAgB0GQCWotAAAiB0E/Sw0AIAQg
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: scrypt
+CONTEXT:
+be a positive number.");if(e.outputType===void 0&&(e.outputType="hex"),!["hex","binary"].includes(e.outputType))throw new Error(`Insupported output type ${e.outputType}. Valid values: ['hex', 'binary']`)};function scrypt(e){return __awaiter(this,void 0,void 0,function*(){return validateOptions$1(e),scryptInternal(e)})}var name$2="bcrypt",data$2="AGFzbQEAAAABFwRgAAF/YAR/f39/AGADf39/AGABfwF/AwUEAAECAwUEAQECAgYIAX8BQZCrBQsHNAQGbWVtb3J5AgAOSGFzaF9HZXRCdWZmZXIAAAZiY3J5cHQAAg1iY3J5cHRfdmVyaWZ5AAMK9WAEBQBBgCsL21kEFH8Bfgh/AX4jAEHwAGshBCACQQA6AAIgAkGq4AA7AAACQCABLQAAQSpHDQAgAS0AAUEwRw0AIAJBMToAAQsCQCABLAAFIAEsAARBCmxqQfB7aiIFQQRJDQAgAS0AB0FgaiIGQd8ASw0AIAZBkAlqLQAAIgZBP0sNACABLQAIQWBqIgdB3wBLDQAgB0GQCWotAAAiB0E/Sw0AIAQgB0EEdiAGQQJ0cjoACCABLQAJQWBqIgZB3wBLDQAgBkGQCWotAAAiBkE/Sw0AIAQgBkECdiAHQQR0cjoACSABLQ
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: scrypt
+CONTEXT:
+CRC32,createCRC64,createHMAC,createKeccak,createMD4,createMD5,createRIPEMD160,createSHA1,createSHA224,createSHA256,createSHA3,createSHA384,createSHA512,createSM3,createWhirlpool,createXXHash128,createXXHash3,createXXHash32,createXXHash64,keccak:keccak$2,md4,md5,pbkdf2:pbkdf2$1,ripemd160:ripemd160$2,scrypt,sha1,sha224,sha256:sha256$2,sha3:sha3$1,sha384,sha512:sha512$1,sm3,whirlpool,xxhash128,xxhash3,xxhash32,xxhash64},Symbol.toStringTag,{value:"Module"})),require$$3=getAugmentedNamespace(index_esm);var hasRequiredLibsodium$2;function requireLibsodium$2(){if(hasRequiredLibsodium$2)return libsodium$2;hasRequiredLibsodium$2=1,Object.defineProperty(libsodium$2,"__esModule",{value:!0}),libsodium$2.Xchacha20poly1305Ietf=libsodium$2.xchacha20NonceLength=libsodium$2.Ed25519=libsodium$2.Ed25519Keypair=lib
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+(e)}function hash256Double(e){return sha256(sha256(e))}function hash512_256(e){return sha512_256(e)}function hash160(e){return ripemd160(e)}function hash256Ripemd160(e){return ripemd160(sha256(e))}function keccak256(e){return keccak_256(e)}function derivePbkdf2(e,t,jn,Yn){if(cryptoBrowserifyExports.pbkdf2Sync){const qo=cryptoBrowserifyExports.pbkdf2Sync(t,jn,Yn.c,Yn.dkLen,e);return new Uint8Array(qo)}return pbkdf2(sha512,t,jn,Yn)}const ED25519_DER_PREFIX=Buffer.from("302e020100300506032b657004220420","hex");function getEd25519PublicKey(e){if(e.length!==32)throw new Error("Ed25519 private key must be 32 bytes");if(cryptoBrowserifyExports.createPublicKey)try{const t=cryptoBrowserifyExports.createPrivateKey({key:Buffer.concat([ED25519_DER_PREFIX,Buffer.from(e)]),format:"der",type:"pkcs8"}),Yn=cryptoBro
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+ha256(e))}function hash512_256(e){return sha512_256(e)}function hash160(e){return ripemd160(e)}function hash256Ripemd160(e){return ripemd160(sha256(e))}function keccak256(e){return keccak_256(e)}function derivePbkdf2(e,t,jn,Yn){if(cryptoBrowserifyExports.pbkdf2Sync){const qo=cryptoBrowserifyExports.pbkdf2Sync(t,jn,Yn.c,Yn.dkLen,e);return new Uint8Array(qo)}return pbkdf2(sha512,t,jn,Yn)}const ED25519_DER_PREFIX=Buffer.from("302e020100300506032b657004220420","hex");function getEd25519PublicKey(e){if(e.length!==32)throw new Error("Ed25519 private key must be 32 bytes");if(cryptoBrowserifyExports.createPublicKey)try{const t=cryptoBrowserifyExports.createPrivateKey({key:Buffer.concat([ED25519_DER_PREFIX,Buffer.from(e)]),format:"der",type:"pkcs8"}),Yn=cryptoBrowserifyExports.createPublicKey(t).export({typ
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: HDKey
+CONTEXT:
+2 as requireUtils$7,a3 as require_md,a4 as require$$0$1,a5 as requireSha2,a6 as requireEnglish$1,a7 as requireBip39$4,a8 as require_u64$1,a9 as requireUtils$8,aa as require_md$1,ab as require$$0$2,ac as requireSha2$1,ad as base58$2,ae as bytesToString,af as bech32$5,ag as mnemonicToSeedSync$1,ah as HDKey}from"./vendor-@scure-D0VPkbU0.js";import{K as Keypair$1,V as VersionedTransaction,T as Transaction$1,P as PublicKey$3,C as Connection,_ as _BN,B as BigNumber$o,e as ed25519$1,a as __CJS__import__0__$5,b as base58$3,c as __CJS__import__0__$9,g as getAssociatedTokenAddressSync,d as createTransferCheckedInstruction,f as __CJS__import__2__$3}from"./vendor-@solana-MM4zIww1.js";import{n as nacl$1,a as algosdk$1,_ as __CJS__import__9__,b as __CJS__import__1__$6}from"./vendor-algosdk-E6K_YXTa.js";impor
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: HDKey
+CONTEXT:
+eutered key");return Buffer.from(Po.privateKey).toString("hex")}function mnemonicToSeed(e,t=""){try{return mnemonicToSeedSync$1(e,t)}catch(jn){const Yn=jn instanceof Error?jn.message:"Unknown error";throw new Error(`Failed to convert mnemonic to seed: ${Yn}`)}}function seedToMasterKey(e){try{return HDKey.fromMasterSeed(e)}catch(t){const jn=t instanceof Error?t.message:"Unknown error";throw new Error(`Failed to create master key from seed: ${jn}`)}}function createCachedDeriver(e){const t=new Map;return{getParentNode(jn,Yn,Po=Bip44PathType.Standard,qo="0",Vo="0"){const jc=`${jn}-${Yn}-${Po}-${qo}-${Vo}`;if(!t.has(jc)){const Mc=getParentPath(jn,Yn,qo,Vo,Po);t.set(jc,e.derive(Mc))}return t.get(jc)},derive(jn,Yn,Po,qo=Bip44PathType.Standard,Vo="0",jc="0"){if(jn==null)throw new Error("derive: purpose
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: HDKey
+CONTEXT:
+ype||0);for(let Od=0;Od<10;Od+=1){Yn.push(xd.derive(Md.bip44purpose||44,Md.slip,Od,0));for(const Dd of Ed)Po[Dd.coin]||(Po[Dd.coin]=[]),Po[Dd.coin].push(xd.derive(Dd.bip44purpose||44,Dd.slip,Od,Dd.bip44HPathType||0))}xd.clear()}else{t=e.encryptionkey.toString("hex");const bd=Buffer.from(t,"hex"),Ed=HDKey.fromMasterSeed(bd),xd=[];for(let Md=0;Md<10;Md+=1)xd.push(Ed.deriveChild(Md));Yn=xd.map(Md=>{const Od=Buffer.from(Md.privateKey),Dd=srcExports.ECPair.fromPrivateKey(Od);return zelcorejs$1.address.WIFToPrivKey(Dd.toWIF())})}await new AddressesCache(e,Yn,Po,GEN_ADDRESSES).generateOrGetFromCache();const Vo=Yn[3],jc=zelcorejs$1.address.privKeyToWIF(Vo,!0,e.coins.bitcoin.wif),Mc=zelcorejs$1.address.privKeyToPubKey(Vo,!0),gd=zelcorejs$1.address.pubKeyToAddr(Mc,e.coins.bitcoin.pubKeyHash),Ad=zelcorejs
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: encryptionkey
+CONTEXT:
+unonflux.io/"},zelpro:{price:5,active:!1,validTill:0},zelProTxid:"",txZelProExplorer:"",selectedpk:"",safetoquit:!0,userquit:!1,contacts:{},loggedaccount:[],activecoin:"",activeRavenAsset:"Ravencoin",activeKadenaAccount:0,activeEosAccount:0,activeWallet:0,activeExchangeWallet:0,activeRewardWallet:0,encryptionkey:"",mnemonic:"",zelid:{bitcoin:"",privkey:"",privKeyWIF:"",zelcash:""},groupedDestinationAddresses:[],coins:{},newsSources:{},coinInfo:{},storageDataLoaded:!1,lightSentTxid:"",exchangeTxid:"",exchangeExplorer:"",txexplorer:"",coinrequesturl:"",d2fa:{address:"",privKey:"",privKeyWIF:"",message:""},encryptionAddress:"",availableSellAssets:[],availableBuyAssets:[],availablePurchaseSellAssets:[],availablePurchaseBuyAssets:[],availableOfframpSellAssets:[],availableOfframpBuyAssets:[],exchangeSellAsse
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: encryptionkey
+CONTEXT:
+gsReseted,qo.isMnemonicAccount=jn.isMnemonicAccount,delete qo.transactions,delete qo.balances):(console.log("error finding account"),this.$log.error("error finding account")),e.loggedaccount.push(jn);const Vo=e.loggedaccount[0].username,jc=e.loggedaccount[0].password,Mc=Vo+jc,gd=createHashHex(Mc);e.encryptionkey=gd,jn.isMnemonicAccount&&(e.mnemonic=jn.mnemonic,delete jn.mnemonic)},addCoin(e,{coin:t,wallet:jn}){const Yn=jn??e.activeWallet,Po=e.accounts.find(qo=>qo.username===e.loggedaccount[0].username);if(Po){if(Po.activatedCoins[Yn].indexOf(t)===-1){if(Po.activatedCoins[Yn].push(t),this.$message.success(this.i18n.t("message.added_to_portfolio",{coinname:e.coins[t].name})),e.coins[t].coinType==="token"){console.log(t);const qo=getNativeCoin$1(e.coins,e.coins[t].type);console.log(qo),Po.activatedCoins[Y
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: encryptionkey
+CONTEXT:
+ Ed)xd.getParentNode(Od.bip44purpose||44,Od.slip,Od.bip44HPathType||0);for(let Od=0;Od<10;Od+=1){Yn.push(xd.derive(Md.bip44purpose||44,Md.slip,Od,0));for(const Dd of Ed)Po[Dd.coin]||(Po[Dd.coin]=[]),Po[Dd.coin].push(xd.derive(Dd.bip44purpose||44,Dd.slip,Od,Dd.bip44HPathType||0))}xd.clear()}else{t=e.encryptionkey.toString("hex");const bd=Buffer.from(t,"hex"),Ed=HDKey.fromMasterSeed(bd),xd=[];for(let Md=0;Md<10;Md+=1)xd.push(Ed.deriveChild(Md));Yn=xd.map(Md=>{const Od=Buffer.from(Md.privateKey),Dd=srcExports.ECPair.fromPrivateKey(Od);return zelcorejs$1.address.WIFToPrivKey(Dd.toWIF())})}await new AddressesCache(e,Yn,Po,GEN_ADDRESSES).generateOrGetFromCache();const Vo=Yn[3],jc=zelcorejs$1.address.privKeyToWIF(Vo,!0,e.coins.bitcoin.wif),Mc=zelcorejs$1.address.privKeyToPubKey(Vo,!0),gd=zelcorejs$1.address.p
+--------------------------------------------------
+FILE: index-817yN7Xf.js
+KEYWORD: encryptionkey
+CONTEXT:
+:"",selectedpk:"",obtainedChangesStore:{},safetoquit:!0,userquit:!1,contacts:{},accounts:[],accountsLoaded:!1,loggedaccount:[],activecoin:"",activeRavenAsset:"Ravencoin",activeKadenaAccount:0,activeEosAccount:0,activeWallet:0,activeExchangeWallet:0,activeRewardWallet:0,isPortfolioOverviewEnabled:!0,encryptionkey:"",mnemonic:"",zelid:{bitcoin:"",privkey:"",privKeyWIF:"",zelcash:""},groupedDestinationAddresses:[],coins:{},newsSources:{},coinInfo:{},rvnassets:[],storageDataLoaded:!1,storageCoins:[],lightSentTxid:"",exchangeTxid:"",exchangeExplorer:"",txexplorer:"",coinrequesturl:"",d2fa:{address:"",privKey:"",privKeyWIF:"",message:""},hardWorking:!1,fiatRates:[],markets:{},isPaused:!1,encryptionAddress:"",storedNews:{general:[],assets:{}},geckoCoins:[],geckoExchanges:[],disabledKadenaAccounts:[],uimode:"n
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+)},4062:(te,v,T)=>{v.randomBytes=v.rng=v.pseudoRandomBytes=v.prng=T(2869),v.createHash=v.Hash=T(8955),v.createHmac=v.Hmac=T(3053);var I=T(8950),B=Object.keys(I),w=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(B);v.getHashes=function(){return w};var t=T(3166);v.pbkdf2=t.pbkdf2,v.pbkdf2Sync=t.pbkdf2Sync;var i=T(8350);v.Cipher=i.Cipher,v.createCipher=i.createCipher,v.Cipheriv=i.Cipheriv,v.createCipheriv=i.createCipheriv,v.Decipher=i.Decipher,v.createDecipher=i.createDecipher,v.Decipheriv=i.Decipheriv,v.createDecipheriv=i.createDecipheriv,v.getCiphers=i.getCiphers,v.listCiphers=i.listCiphers;var f=T(8216);v.DiffieHellmanGroup=f.DiffieHellmanGroup,v.createDiffieHellmanGroup=f.createDiffieHellmanGroup,v.getDiffieHellman=f.getDiffieHellman,v.createDiffieHellman=f.createDiffieHellman,v.
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+,T)=>{v.randomBytes=v.rng=v.pseudoRandomBytes=v.prng=T(2869),v.createHash=v.Hash=T(8955),v.createHmac=v.Hmac=T(3053);var I=T(8950),B=Object.keys(I),w=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(B);v.getHashes=function(){return w};var t=T(3166);v.pbkdf2=t.pbkdf2,v.pbkdf2Sync=t.pbkdf2Sync;var i=T(8350);v.Cipher=i.Cipher,v.createCipher=i.createCipher,v.Cipheriv=i.Cipheriv,v.createCipheriv=i.createCipheriv,v.Decipher=i.Decipher,v.createDecipher=i.createDecipher,v.Decipheriv=i.Decipheriv,v.createDecipheriv=i.createDecipheriv,v.getCiphers=i.getCiphers,v.listCiphers=i.listCiphers;var f=T(8216);v.DiffieHellmanGroup=f.DiffieHellmanGroup,v.createDiffieHellmanGroup=f.createDiffieHellmanGroup,v.getDiffieHellman=f.getDiffieHellman,v.createDiffieHellman=f.createDiffieHellman,v.DiffieHellman
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+d "+e)}case"ENCRYPTED PRIVATE KEY":c=function(d,u){var p=d.algorithm.decrypt.kde.kdeparams.salt,y=parseInt(d.algorithm.decrypt.kde.kdeparams.iters.toString(),10),_=B[d.algorithm.decrypt.cipher.algo.join(".")],C=d.algorithm.decrypt.cipher.iv,E=d.subjectPrivateKey,P=parseInt(_.split("-")[1],10)/8,j=i.pbkdf2Sync(u,p,y,P,"sha1"),G=t.createDecipheriv(_,j,C),M=[];return M.push(G.update(E)),M.push(G.final()),f.concat(M)}(c=I.EncryptedPrivateKey.decode(c,"der"),r);case"PRIVATE KEY":switch(e=(n=I.PrivateKey.decode(c,"der")).algorithm.algorithm.join(".")){case"1.2.840.113549.1.1.1":return I.RSAPrivateKey.decode(n.subjectPrivateKey,"der");case"1.2.840.10045.2.1":return{curve:n.algorithm.curve,privateKey:I.ECPrivateKey.decode(n.subjectPrivateKey,"der").privateKey};case"1.2.840.10040.4.1":return n.algorithm.para
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+VATE KEY":return{type:"dsa",params:I.DSAPrivateKey.decode(c,"der")};case"EC PRIVATE KEY":return{curve:(c=I.ECPrivateKey.decode(c,"der")).parameters.value,privateKey:c.privateKey};default:throw new Error("unknown key type "+s)}}te.exports=h,h.signature=I.signature},3166:(te,v,T)=>{v.pbkdf2=T(7638),v.pbkdf2Sync=T(8674)},7638:(te,v,T)=>{var I,B,w=T(6608).Buffer,t=T(362),i=T(9749),f=T(8674),h=T(4300),a=T.g.crypto&&T.g.crypto.subtle,r={sha:"SHA-1","sha-1":"SHA-1",sha1:"SHA-1",sha256:"SHA-256","sha-256":"SHA-256",sha384:"SHA-384","sha-384":"SHA-384","sha-512":"SHA-512",sha512:"SHA-512"},e=[];function n(){return B||(B=T.g.process&&T.g.process.nextTick?T.g.process.nextTick:T.g.queueMicrotask?T.g.queueMicrotask:T.g.setImmediate?T.g.setImmediate:T.g.setTimeout)}function o(s,c,d,u,p){return a.importKey("raw",s
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+>32)throw new TypeError(h);if(y.length%4!=0)throw new TypeError(h);const C=(o(Array.from(y))+s(y)).match(/(.{1,11})/g).map(E=>{const P=n(E);return _[P]});return _[0]==="あいこくしん"?C.join("　"):C.join(" ")}v.mnemonicToSeedSync=function(y,_){const C=Fe.from(r(y),"utf8"),E=Fe.from(c(r(_)),"utf8");return B.pbkdf2Sync(C,E,2048,64,"sha512")},v.mnemonicToSeed=function(y,_){return Promise.resolve().then(()=>function(C,E){return Promise.resolve().then(()=>new Promise((P,j)=>{B.pbkdf2(C,E,2048,64,"sha512",(G,M)=>G?j(G):P(M))}))}(Fe.from(r(y),"utf8"),Fe.from(c(r(_)),"utf8")))},v.mnemonicToEntropy=d,v.entropyToMnemonic=u,v.generateMnemonic=function(y,_,C){if((y=y||128)%32!=0)throw new TypeError(h);return u((_=_||w)(y/8),C)},v.validateMnemonic=function(y,_){try{d(y,_)}catch{return!1}return!0},v.setDefaultWordlist=fu
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+f},4062:(te,v,T)=>{v.randomBytes=v.rng=v.pseudoRandomBytes=v.prng=T(2869),v.createHash=v.Hash=T(8955),v.createHmac=v.Hmac=T(3053);var I=T(8950),B=Object.keys(I),w=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(B);v.getHashes=function(){return w};var t=T(3166);v.pbkdf2=t.pbkdf2,v.pbkdf2Sync=t.pbkdf2Sync;var i=T(8350);v.Cipher=i.Cipher,v.createCipher=i.createCipher,v.Cipheriv=i.Cipheriv,v.createCipheriv=i.createCipheriv,v.Decipher=i.Decipher,v.createDecipher=i.createDecipher,v.Decipheriv=i.Decipheriv,v.createDecipheriv=i.createDecipheriv,v.getCiphers=i.getCiphers,v.listCiphers=i.listCiphers;var f=T(8216);v.DiffieHellmanGroup=f.DiffieHellmanGroup,v.createDiffieHellmanGroup=f.createDiffieHellmanGroup,v.getDiffieHellman=f.getDiffieHellman,v.createDiffieHellman=f.createDiffieHellman,v.
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+,T)=>{v.randomBytes=v.rng=v.pseudoRandomBytes=v.prng=T(2869),v.createHash=v.Hash=T(8955),v.createHmac=v.Hmac=T(3053);var I=T(8950),B=Object.keys(I),w=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(B);v.getHashes=function(){return w};var t=T(3166);v.pbkdf2=t.pbkdf2,v.pbkdf2Sync=t.pbkdf2Sync;var i=T(8350);v.Cipher=i.Cipher,v.createCipher=i.createCipher,v.Cipheriv=i.Cipheriv,v.createCipheriv=i.createCipheriv,v.Decipher=i.Decipher,v.createDecipher=i.createDecipher,v.Decipheriv=i.Decipheriv,v.createDecipheriv=i.createDecipheriv,v.getCiphers=i.getCiphers,v.listCiphers=i.listCiphers;var f=T(8216);v.DiffieHellmanGroup=f.DiffieHellmanGroup,v.createDiffieHellmanGroup=f.createDiffieHellmanGroup,v.getDiffieHellman=f.getDiffieHellman,v.createDiffieHellman=f.createDiffieHellman,v.DiffieHellman
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+d "+e)}case"ENCRYPTED PRIVATE KEY":c=function(d,u){var p=d.algorithm.decrypt.kde.kdeparams.salt,y=parseInt(d.algorithm.decrypt.kde.kdeparams.iters.toString(),10),_=B[d.algorithm.decrypt.cipher.algo.join(".")],C=d.algorithm.decrypt.cipher.iv,E=d.subjectPrivateKey,P=parseInt(_.split("-")[1],10)/8,j=i.pbkdf2Sync(u,p,y,P,"sha1"),G=t.createDecipheriv(_,j,C),M=[];return M.push(G.update(E)),M.push(G.final()),f.concat(M)}(c=I.EncryptedPrivateKey.decode(c,"der"),r);case"PRIVATE KEY":switch(e=(n=I.PrivateKey.decode(c,"der")).algorithm.algorithm.join(".")){case"1.2.840.113549.1.1.1":return I.RSAPrivateKey.decode(n.subjectPrivateKey,"der");case"1.2.840.10045.2.1":return{curve:n.algorithm.curve,privateKey:I.ECPrivateKey.decode(n.subjectPrivateKey,"der").privateKey};case"1.2.840.10040.4.1":return n.algorithm.para
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+VATE KEY":return{type:"dsa",params:I.DSAPrivateKey.decode(c,"der")};case"EC PRIVATE KEY":return{curve:(c=I.ECPrivateKey.decode(c,"der")).parameters.value,privateKey:c.privateKey};default:throw new Error("unknown key type "+s)}}te.exports=h,h.signature=I.signature},3166:(te,v,T)=>{v.pbkdf2=T(7638),v.pbkdf2Sync=T(8674)},7638:(te,v,T)=>{var I,B,w=T(6608).Buffer,t=T(362),i=T(9749),f=T(8674),h=T(4300),a=T.g.crypto&&T.g.crypto.subtle,r={sha:"SHA-1","sha-1":"SHA-1",sha1:"SHA-1",sha256:"SHA-256","sha-256":"SHA-256",sha384:"SHA-384","sha-384":"SHA-384","sha-512":"SHA-512",sha512:"SHA-512"},e=[];function n(){return B||(B=T.g.process&&T.g.process.nextTick?T.g.process.nextTick:T.g.queueMicrotask?T.g.queueMicrotask:T.g.setImmediate?T.g.setImmediate:T.g.setTimeout)}function o(s,c,d,u,p){return a.importKey("raw",s
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+),s=i(f,e),c=t(s,n),d=o.slice(0,o.length-16),u=o.slice(o.length-16,o.length);c.setAuthTag(u);const p=(0,I.concatBytes)([c.update(d),c.final()]);return new TextDecoder().decode(p)};const w=(f,h)=>(0,B.createCipheriv)("aes-256-gcm",f,h),t=(f,h)=>(0,B.createDecipheriv)("aes-256-gcm",f,h),i=(f,h)=>(0,B.pbkdf2Sync)(f,h,1e4,32,"sha256")},9850:(te,v,T)=>{Object.defineProperty(v,"__esModule",{value:!0}),v.PrivateKeyWallet=void 0;const I=T(3071),B=T(4610),w=T(4610),t=T(3616),i=new I.ec("secp256k1");class f extends B.SignerProviderSimple{get nodeProvider(){return this._nodeProvider??B.web3.getCurrentNodeProvider()}get explorerProvider(){return this._explorerProvider??B.web3.getCurrentExplorerProvider()}unsafeGetSelectedAccount(){return Promise.resolve(this.account)}getPublicKey(a){if(a!==this.address)throw Er
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+s)},4062:(w,t,i)=>{t.randomBytes=t.rng=t.pseudoRandomBytes=t.prng=i(2869),t.createHash=t.Hash=i(8955),t.createHmac=t.Hmac=i(3053);var f=i(8950),h=Object.keys(f),a=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(h);t.getHashes=function(){return a};var r=i(3166);t.pbkdf2=r.pbkdf2,t.pbkdf2Sync=r.pbkdf2Sync;var e=i(8350);t.Cipher=e.Cipher,t.createCipher=e.createCipher,t.Cipheriv=e.Cipheriv,t.createCipheriv=e.createCipheriv,t.Decipher=e.Decipher,t.createDecipher=e.createDecipher,t.Decipheriv=e.Decipheriv,t.createDecipheriv=e.createDecipheriv,t.getCiphers=e.getCiphers,t.listCiphers=e.listCiphers;var n=i(8216);t.DiffieHellmanGroup=n.DiffieHellmanGroup,t.createDiffieHellmanGroup=n.createDiffieHellmanGroup,t.getDiffieHellman=n.getDiffieHellman,t.createDiffieHellman=n.createDiffieHellman,t.
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+,i)=>{t.randomBytes=t.rng=t.pseudoRandomBytes=t.prng=i(2869),t.createHash=t.Hash=i(8955),t.createHmac=t.Hmac=i(3053);var f=i(8950),h=Object.keys(f),a=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(h);t.getHashes=function(){return a};var r=i(3166);t.pbkdf2=r.pbkdf2,t.pbkdf2Sync=r.pbkdf2Sync;var e=i(8350);t.Cipher=e.Cipher,t.createCipher=e.createCipher,t.Cipheriv=e.Cipheriv,t.createCipheriv=e.createCipheriv,t.Decipher=e.Decipher,t.createDecipher=e.createDecipher,t.Decipheriv=e.Decipheriv,t.createDecipheriv=e.createDecipheriv,t.getCiphers=e.getCiphers,t.listCiphers=e.listCiphers;var n=i(8216);t.DiffieHellmanGroup=n.DiffieHellmanGroup,t.createDiffieHellmanGroup=n.createDiffieHellmanGroup,t.getDiffieHellman=n.getDiffieHellman,t.createDiffieHellman=n.createDiffieHellman,t.DiffieHellman
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+d "+d)}case"ENCRYPTED PRIVATE KEY":_=function(C,E){var P=C.algorithm.decrypt.kde.kdeparams.salt,j=parseInt(C.algorithm.decrypt.kde.kdeparams.iters.toString(),10),G=h[C.algorithm.decrypt.cipher.algo.join(".")],M=C.algorithm.decrypt.cipher.iv,U=C.subjectPrivateKey,b=parseInt(G.split("-")[1],10)/8,m=e.pbkdf2Sync(E,P,j,b,"sha1"),g=r.createDecipheriv(G,m,M),l=[];return l.push(g.update(U)),l.push(g.final()),n.concat(l)}(_=f.EncryptedPrivateKey.decode(_,"der"),c);case"PRIVATE KEY":switch(d=(u=f.PrivateKey.decode(_,"der")).algorithm.algorithm.join(".")){case"1.2.840.113549.1.1.1":return f.RSAPrivateKey.decode(u.subjectPrivateKey,"der");case"1.2.840.10045.2.1":return{curve:u.algorithm.curve,privateKey:f.ECPrivateKey.decode(u.subjectPrivateKey,"der").privateKey};case"1.2.840.10040.4.1":return u.algorithm.para
+--------------------------------------------------
+FILE: vendor-@alephium-BTeTqpI0.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+RIVATE KEY":return{type:"dsa",params:f.DSAPrivateKey.decode(_,"der")};case"EC PRIVATE KEY":return{curve:(_=f.ECPrivateKey.decode(_,"der")).parameters.value,privateKey:_.privateKey};default:throw new Error("unknown key type "+y)}}w.exports=o,o.signature=f.signature},3166:(w,t,i)=>{t.pbkdf2=i(7638),t.pbkdf2Sync=i(8674)},7638:(w,t,i)=>{var f,h,a=i(6608).Buffer,r=i(362),e=i(9749),n=i(8674),o=i(4300),s=i.g.crypto&&i.g.crypto.subtle,c={sha:"SHA-1","sha-1":"SHA-1",sha1:"SHA-1",sha256:"SHA-256","sha-256":"SHA-256",sha384:"SHA-384","sha-384":"SHA-384","sha-512":"SHA-512",sha512:"SHA-512"},d=[];function u(){return h||(h=i.g.process&&i.g.process.nextTick?i.g.process.nextTick:i.g.queueMicrotask?i.g.queueMicrotask:i.g.setImmediate?i.g.setImmediate:i.g.setTimeout)}function p(y,_,C,E,P){return s.importKey("raw",y,
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
+ed11.ngd.network:20331"},x.DEFAULT_REQ={jsonrpc:"2.0",method:"getblockcount",params:[],id:1234},x.DEFAULT_SCRYPT={n:16384,r:8,p:8,size:64},x.DEFAULT_SYSFEE={enrollmentTransaction:1e3,issueTransaction:500,publishTransaction:500,registerTransaction:1e4},x.DEFAULT_WALLET={name:"myWallet",version:"1.0",scrypt:x.DEFAULT_SCRYPT,extra:null},x.DEFAULT_ACCOUNT_CONTRACT={script:"",parameters:[{name:"signature",type:"Signature"}],deployed:!1},x.NEO_NETWORK={MAIN:"MainNet",TEST:"TestNet"},x.NEP_HEADER="0142",x.NEP_FLAG="e0",x.RPC_VERSION="2.3.2",x.TX_VERSION={CLAIM:0,CONTRACT:0,INVOCATION:1,ISSUE:0,STATE:0,MINER:0,ENROLLMENT:0,PUBLISH:0,REGISTER:0}},function(j,x){var b,y,p=j.exports={};function _(){throw new Error("setTimeout has not been defined")}function n(){throw new Error("clearTimeout has not been def
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
+Latin1:i.default,Hex:t.default},T={mode:o.default,padding:r.default},P=v.default("wallet");x.encrypt=function(O,C,H=m.DEFAULT_SCRYPT){return p(this,void 0,void 0,function*(){const{n:F,r:q,p:R}=H,M=new E.default(O),g=s.default(k.Latin1.parse(M.address)),a=s.default(g).toString().slice(0,8),h=yield l.scrypt(y.from(C.normalize("NFC"),"utf8"),y.from(a,"hex"),F,q,R,64,()=>{}),u=y.from(h).toString("hex"),c=u.slice(0,64),w=u.slice(64),A=S.hexXor(M.privateKey,c),B=d.default.encrypt(k.Hex.parse(A),k.Hex.parse(w),T),z=m.NEP_HEADER+m.NEP_FLAG+a+B.ciphertext.toString(),L=n.default.encode(y.from(z,"hex"));return P.info("Successfully encrypted key to "+L),L})},x.decrypt=function(O,C,H=m.DEFAULT_SCRYPT){return p(this,void 0,void 0,function*(){const{n:F,r:q,p:R}=H,M=S.ab2hexstring(n.default.decode(O)),g=M.subst
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
++B.ciphertext.toString(),L=n.default.encode(y.from(z,"hex"));return P.info("Successfully encrypted key to "+L),L})},x.decrypt=function(O,C,H=m.DEFAULT_SCRYPT){return p(this,void 0,void 0,function*(){const{n:F,r:q,p:R}=H,M=S.ab2hexstring(n.default.decode(O)),g=M.substr(6,8),a=M.substr(-64),h=yield l.scrypt(y.from(C.normalize("NFC"),"utf8"),y.from(g,"hex"),F,q,R,64,()=>{}),u=y.from(h).toString("hex"),c=u.slice(0,64),w=u.slice(64),A=f.lib.CipherParams.create({ciphertext:k.Hex.parse(a)}),B=d.default.decrypt(A,k.Hex.parse(w),T),z=S.hexXor(B.toString(),c),L=new E.default(z);if(g!==s.default(s.default(k.Latin1.parse(L.address))).toString().slice(0,8))throw new Error("Wrong password or scrypt parameters!");return P.info("Successfully decrypted "+O),L.WIF})}}).call(this,b(4).Buffer)},function(j,x,b){var 
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
+oString("hex"),c=u.slice(0,64),w=u.slice(64),A=f.lib.CipherParams.create({ciphertext:k.Hex.parse(a)}),B=d.default.decrypt(A,k.Hex.parse(w),T),z=S.hexXor(B.toString(),c),L=new E.default(z);if(g!==s.default(s.default(k.Latin1.parse(L.address))).toString().slice(0,8))throw new Error("Wrong password or scrypt parameters!");return P.info("Successfully decrypted "+O),L.WIF})}}).call(this,b(4).Buffer)},function(j,x,b){var y;j.exports=(y=b(2),b(34),b(35),b(23),b(8),function(){var p=y,_=p.lib.BlockCipher,n=p.algo,d=[],t=[],i=[],o=[],r=[],s=[],f=[],l=[],m=[],v=[];(function(){for(var k=[],T=0;T<256;T++)k[T]=T<128?T<<1:T<<1^283;var P=0,O=0;for(T=0;T<256;T++){var C=O^O<<1^O<<2^O<<3^O<<4;C=C>>>8^255&C^99,d[P]=C,t[C]=P;var H=k[P],F=k[H],q=k[F],R=257*k[C]^16843008*C;i[P]=R<<24|R>>>8,o[P]=R<<16|R>>>16,r[P]=R<<8|
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
+f(A=O(null,c/a),A)break;w=D}}if(h<E)break;if(r(F,0,H,u,R),z++,z<T){B=0;break}C=[];for(let D=0;D<H.length;D++)C.push(H[D]>>0&255),C.push(H[D]>>8&255),C.push(H[D]>>16&255),C.push(H[D]>>24&255);const U=n(v,C,P);return O&&O(null,1,U),U}O&&W(Y)};if(!O)for(;;){const $=Y();if($!=null)return $}Y()}const m={scrypt:function(v,S,E,k,T,P,O){return new Promise(function(C,H){let F=0;O&&O(0),l(v,S,E,k,T,P,function(q,R,M){if(q)H(q);else if(M)O&&F!==1&&O(1),C(new Uint8Array(M));else if(O&&R!==F)return F=R,O(R)})})},syncScrypt:function(v,S,E,k,T,P){return new Uint8Array(l(v,S,E,k,T,P))}};j.exports=m})()}).call(this,b(108).setImmediate)},function(j,x,b){var y=this&&this.__awaiter||function(m,v,S,E){return new(S||(S=Promise))(function(k,T){function P(H){try{C(E.next(H))}catch(F){T(F)}}function O(H){try{C(E.throw(H)
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
+ult||function(o){return o&&o.__esModule?o:{default:o}};Object.defineProperty(x,"__esModule",{value:!0}),x.Wallet=void 0;const _=b(5),n=p(b(19)),d=b(75),t=n.default("wallet");class i{constructor(r=_.DEFAULT_WALLET){if(this.name=r.name||"myWallet",this.version=r.version||_.DEFAULT_WALLET.version,this.scrypt=Object.assign({},_.DEFAULT_SCRYPT,r.scrypt),this.accounts=[],r.accounts)for(const s of r.accounts)this.addAccount(s);this.extra=r.extra||{},t.info("New Wallet created: "+this.name)}get[Symbol.toStringTag](){return"Wallet"}get defaultAccount(){if(this.accounts.length===0)throw new Error("No accounts available in this Wallet!");for(const r of this.accounts)if(r.isDefault)return r;for(const r of this.accounts)if(r.tryGet("privateKey")||r.tryGet("WIF"))return r;for(const r of this.accounts)if(r.enc
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
+default:o}};Object.defineProperty(x,"__esModule",{value:!0}),x.Wallet=void 0;const _=b(5),n=p(b(19)),d=b(75),t=n.default("wallet");class i{constructor(r=_.DEFAULT_WALLET){if(this.name=r.name||"myWallet",this.version=r.version||_.DEFAULT_WALLET.version,this.scrypt=Object.assign({},_.DEFAULT_SCRYPT,r.scrypt),this.accounts=[],r.accounts)for(const s of r.accounts)this.addAccount(s);this.extra=r.extra||{},t.info("New Wallet created: "+this.name)}get[Symbol.toStringTag](){return"Wallet"}get defaultAccount(){if(this.accounts.length===0)throw new Error("No accounts available in this Wallet!");for(const r of this.accounts)if(r.isDefault)return r;for(const r of this.accounts)if(r.tryGet("privateKey")||r.tryGet("WIF"))return r;for(const r of this.accounts)if(r.encrypted)return r;return this.accounts[0]}add
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
+ without first decrypting this account`)}return s}decrypt(r,s){return y(this,void 0,void 0,function*(){return r<0?Promise.reject("Index cannot be negative! index: "+r):r>=this.accounts.length?Promise.reject("Index cannot larger than Accounts array! index: "+r):(yield this.accounts[r].decrypt(s,this.scrypt),!0)})}decryptAll(r){return Promise.all(this.accounts.map((s,f)=>this.decrypt(f,r)))}encrypt(r,s){return y(this,void 0,void 0,function*(){if(r<0)throw new Error("Index cannot be negative!");if(r>=this.accounts.length)throw new Error("Index cannot larger than Accounts array!");return yield this.accounts[r].encrypt(s,this.scrypt),!0})}encryptAll(r){return Promise.all(this.accounts.map((s,f)=>this.encrypt(f,r)))}export(){return{name:this.name,version:this.version,scrypt:this.scrypt,accounts:this.a
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
+eturn Promise.all(this.accounts.map((s,f)=>this.decrypt(f,r)))}encrypt(r,s){return y(this,void 0,void 0,function*(){if(r<0)throw new Error("Index cannot be negative!");if(r>=this.accounts.length)throw new Error("Index cannot larger than Accounts array!");return yield this.accounts[r].encrypt(s,this.scrypt),!0})}encryptAll(r){return Promise.all(this.accounts.map((s,f)=>this.encrypt(f,r)))}export(){return{name:this.name,version:this.version,scrypt:this.scrypt,accounts:this.accounts.map(r=>r.export()),extra:this.extra}}setDefault(r){for(let s=0;s<this.accounts.length;s++)this.accounts[s].isDefault=s===r;return t.info(`Set Account: ${this.accounts[r]} as default for Wallet ${this.name}`),this}}x.Wallet=i,x.default=i},function(j,x,b){Object.defineProperty(x,"__esModule",{value:!0}),x.Witness=void 0;c
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
+ex cannot be negative!");if(r>=this.accounts.length)throw new Error("Index cannot larger than Accounts array!");return yield this.accounts[r].encrypt(s,this.scrypt),!0})}encryptAll(r){return Promise.all(this.accounts.map((s,f)=>this.encrypt(f,r)))}export(){return{name:this.name,version:this.version,scrypt:this.scrypt,accounts:this.accounts.map(r=>r.export()),extra:this.extra}}setDefault(r){for(let s=0;s<this.accounts.length;s++)this.accounts[s].isDefault=s===r;return t.info(`Set Account: ${this.accounts[r]} as default for Wallet ${this.name}`),this}}x.Wallet=i,x.default=i},function(j,x,b){Object.defineProperty(x,"__esModule",{value:!0}),x.Witness=void 0;const y=b(3),p=b(18);class _{constructor(d){if(this._scriptHash="",!d||d.invocationScript===void 0||d.verificationScript===void 0)throw new Erro
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: scrypt
+CONTEXT:
+ negative!");if(r>=this.accounts.length)throw new Error("Index cannot larger than Accounts array!");return yield this.accounts[r].encrypt(s,this.scrypt),!0})}encryptAll(r){return Promise.all(this.accounts.map((s,f)=>this.encrypt(f,r)))}export(){return{name:this.name,version:this.version,scrypt:this.scrypt,accounts:this.accounts.map(r=>r.export()),extra:this.extra}}setDefault(r){for(let s=0;s<this.accounts.length;s++)this.accounts[s].isDefault=s===r;return t.info(`Set Account: ${this.accounts[r]} as default for Wallet ${this.name}`),this}}x.Wallet=i,x.default=i},function(j,x,b){Object.defineProperty(x,"__esModule",{value:!0}),x.Witness=void 0;const y=b(3),p=b(18);class _{constructor(d){if(this._scriptHash="",!d||d.invocationScript===void 0||d.verificationScript===void 0)throw new Error("Witness r
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+d "+s)}case"ENCRYPTED PRIVATE KEY":v=function(S,E){var k=S.algorithm.decrypt.kde.kdeparams.salt,T=parseInt(S.algorithm.decrypt.kde.kdeparams.iters.toString(),10),P=p[S.algorithm.decrypt.cipher.algo.join(".")],O=S.algorithm.decrypt.cipher.iv,C=S.subjectPrivateKey,H=parseInt(P.split("-")[1],10)/8,F=d.pbkdf2Sync(E,k,T,H,"sha1"),q=n.createDecipheriv(P,F,O),R=[];return R.push(q.update(C)),R.push(q.final()),t.concat(R)}(v=y.EncryptedPrivateKey.decode(v,"der"),r);case"PRIVATE KEY":switch(s=(f=y.PrivateKey.decode(v,"der")).algorithm.algorithm.join(".")){case"1.2.840.113549.1.1.1":return y.RSAPrivateKey.decode(f.subjectPrivateKey,"der");case"1.2.840.10045.2.1":return{curve:f.algorithm.curve,privateKey:y.ECPrivateKey.decode(f.subjectPrivateKey,"der").privateKey};case"1.2.840.10040.4.1":return f.algorithm.para
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+"RSA-RIPEMD160":{"sign":"rsa","hash":"rmd160","id":"3021300906052b2403020105000414"},"md5WithRSAEncryption":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"},"RSA-MD5":{"sign":"rsa","hash":"md5","id":"3020300c06082a864886f70d020505000410"}}')},function(j,x,b){x.pbkdf2=b(228),x.pbkdf2Sync=b(116)},function(j,x,b){(function(y){var p=Math.pow(2,30)-1;function _(n,d){if(typeof n!="string"&&!y.isBuffer(n))throw new TypeError(d+" must be a buffer or string")}j.exports=function(n,d,t,i){if(_(n,"Password"),_(d,"Salt"),typeof t!="number")throw new TypeError("Iterations not a number");if(t<0)throw new TypeError("Bad iterations");if(typeof i!="number")throw new TypeError("Key length not a number");if(i<0||i>p||i!=i)throw new TypeError("Bad key length")}}).call(this,b(4).Buffer)},function(j
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+rn t(r)}},function(j,x,b){x.randomBytes=x.rng=x.pseudoRandomBytes=x.prng=b(26),x.createHash=x.Hash=b(27),x.createHmac=x.Hmac=b(110);var y=b(227),p=Object.keys(y),_=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(p);x.getHashes=function(){return _};var n=b(113);x.pbkdf2=n.pbkdf2,x.pbkdf2Sync=n.pbkdf2Sync;var d=b(229);x.Cipher=d.Cipher,x.createCipher=d.createCipher,x.Cipheriv=d.Cipheriv,x.createCipheriv=d.createCipheriv,x.Decipher=d.Decipher,x.createDecipher=d.createDecipher,x.Decipheriv=d.Decipheriv,x.createDecipheriv=d.createDecipheriv,x.getCiphers=d.getCiphers,x.listCiphers=d.listCiphers;var t=b(244);x.DiffieHellmanGroup=t.DiffieHellmanGroup,x.createDiffieHellmanGroup=t.createDiffieHellmanGroup,x.getDiffieHellman=t.getDiffieHellman,x.createDiffieHellman=t.createDiffieHellman,x.Di
+--------------------------------------------------
+FILE: vendor-@cityofzion-C8IPuBdn.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+ction(j,x,b){x.randomBytes=x.rng=x.pseudoRandomBytes=x.prng=b(26),x.createHash=x.Hash=b(27),x.createHmac=x.Hmac=b(110);var y=b(227),p=Object.keys(y),_=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(p);x.getHashes=function(){return _};var n=b(113);x.pbkdf2=n.pbkdf2,x.pbkdf2Sync=n.pbkdf2Sync;var d=b(229);x.Cipher=d.Cipher,x.createCipher=d.createCipher,x.Cipheriv=d.Cipheriv,x.createCipheriv=d.createCipheriv,x.Decipher=d.Decipher,x.createDecipher=d.createDecipher,x.Decipheriv=d.Decipheriv,x.createDecipheriv=d.createDecipheriv,x.getCiphers=d.getCiphers,x.listCiphers=d.listCiphers;var t=b(244);x.DiffieHellmanGroup=t.DiffieHellmanGroup,x.createDiffieHellmanGroup=t.createDiffieHellmanGroup,x.getDiffieHellman=t.getDiffieHellman,x.createDiffieHellman=t.createDiffieHellman,x.DiffieHellman=t
+--------------------------------------------------
+FILE: vendor-@polkadot-TbfYz-6j.js
+KEYWORD: scrypt
+CONTEXT:
+a512(8,...C.allocU8a(e),...C.allocU8a(t)),C.resultU8a())),X_=Q((n,e)=>(n.ext_keccak256(8,...C.allocU8a(e)),C.resultU8a())),j_=Q((n,e)=>(n.ext_keccak512(8,...C.allocU8a(e)),C.resultU8a())),G_=Q((n,e,t,a)=>(n.ext_pbkdf2(8,...C.allocU8a(e),...C.allocU8a(t),a),C.resultU8a())),K_=Q((n,e,t,a,r,i)=>(n.ext_scrypt(8,...C.allocU8a(e),...C.allocU8a(t),a,r,i),C.resultU8a())),J_=Q((n,e)=>(n.ext_sha256(8,...C.allocU8a(e)),C.resultU8a())),Z_=Q((n,e)=>(n.ext_sha512(8,...C.allocU8a(e)),C.resultU8a())),Y_=Q((n,e,t)=>(n.ext_twox(8,...C.allocU8a(e),t),C.resultU8a()));function _e(){return!!C.wasm}async function Q_(){try{return!!await g_()}catch{return!1}}const $_=_e;function V1(){return Q_().then(()=>{if(!_e())throw new Error("Unable to initialize @polkadot/util-crypto");return!0}).catch(()=>!1)}function Lu({coder:n
+--------------------------------------------------
+FILE: vendor-@polkadot-TbfYz-6j.js
+KEYWORD: scrypt
+CONTEXT:
+gth}`);const e=n.subarray(0,32),t=ce(n.subarray(32,36),ca).toNumber(),a=ce(n.subarray(36,40),ca).toNumber(),r=ce(n.subarray(40,44),ca).toNumber();if(t>1<<20||a>4||r>16)throw new Error("Scrypt parameters exceed safe limits");if(!hS.some(s=>s.N===t&&s.p===a&&s.r===r))throw new Error("Invalid injected scrypt params found");return{params:{N:t,p:a,r},salt:e}}function xl(n,{N:e,p:t,r:a}){return W(n,se(e,as),se(t,as),se(a,as))}const Hm=["scrypt","xsalsa20-poly1305"],xS=["none"],yS="3",Z0=24,gS=32+3*4;function yl(n,e,t=Hm){if(n){if(t.includes("xsalsa20-poly1305")&&!e)throw new Error("Password required to decode encrypted data")}else throw new Error("No encrypted data available to decode");let a=n;if(e){let r;if(t.includes("scrypt")){const{params:i,salt:s}=Rm(n);r=xo(e,s,i).password,n=n.subarray(gS)}else
+--------------------------------------------------
+FILE: vendor-@polkadot-TbfYz-6j.js
+KEYWORD: scrypt
+CONTEXT:
+toNumber();if(t>1<<20||a>4||r>16)throw new Error("Scrypt parameters exceed safe limits");if(!hS.some(s=>s.N===t&&s.p===a&&s.r===r))throw new Error("Invalid injected scrypt params found");return{params:{N:t,p:a,r},salt:e}}function xl(n,{N:e,p:t,r:a}){return W(n,se(e,as),se(t,as),se(a,as))}const Hm=["scrypt","xsalsa20-poly1305"],xS=["none"],yS="3",Z0=24,gS=32+3*4;function yl(n,e,t=Hm){if(n){if(t.includes("xsalsa20-poly1305")&&!e)throw new Error("Password required to decode encrypted data")}else throw new Error("No encrypted data available to decode");let a=n;if(e){let r;if(t.includes("scrypt")){const{params:i,salt:s}=Rm(n);r=xo(e,s,i).password,n=n.subarray(gS)}else r=ee(e);a=Om(n.subarray(Z0),n.subarray(0,Z0),$2(r,256,!0))}if(!a)throw new Error("Unable to decode using the supplied passphrase");ret
+--------------------------------------------------
+FILE: vendor-@polkadot-TbfYz-6j.js
+KEYWORD: scrypt
+CONTEXT:
+onst Hm=["scrypt","xsalsa20-poly1305"],xS=["none"],yS="3",Z0=24,gS=32+3*4;function yl(n,e,t=Hm){if(n){if(t.includes("xsalsa20-poly1305")&&!e)throw new Error("Password required to decode encrypted data")}else throw new Error("No encrypted data available to decode");let a=n;if(e){let r;if(t.includes("scrypt")){const{params:i,salt:s}=Rm(n);r=xo(e,s,i).password,n=n.subarray(gS)}else r=ee(e);a=Om(n.subarray(Z0),n.subarray(0,Z0),$2(r,256,!0))}if(!a)throw new Error("Unable to decode using the supplied passphrase");return a}function _S({encoded:n,encoding:e},t){if(!n)throw new Error("No encrypted data available to decode");return yl(R(n)?ae(n):sl(n),t,Array.isArray(e.type)?e.type:[e.type])}function gl(n,e,t){return{encoded:cm(n),encoding:{content:e,type:t?Hm:xS,version:yS}}}function VS(n,e,t){let a=!1,r
+--------------------------------------------------
+FILE: vendor-@polkadot-TbfYz-6j.js
+KEYWORD: scrypt
+CONTEXT:
+ExtractSuri:R1,keyFromPath:$u,keyHdkdEcdsa:rd,keyHdkdEd25519:F1,keyHdkdSr25519:j1,mnemonicGenerate:Qw,mnemonicToEntropy:Am,mnemonicToLegacySeed:Im,mnemonicToMiniSecret:Em,mnemonicValidate:mo,naclDecrypt:Om,naclEncrypt:ml,packageInfo:Bu,pbkdf2Encode:bl,randomAsHex:L1,randomAsNumber:XV,randomAsU8a:ga,scryptEncode:xo,scryptFromU8a:Rm,scryptToU8a:xl,secp256k1Compress:ol,secp256k1Expand:ho,secp256k1PairFromSeed:xa,secp256k1PrivateKeyTweakAdd:lm,secp256k1Recover:dm,secp256k1Sign:sd,secp256k1Verify:fm,selectableNetworks:Yu,setSS58Format:om,sha256AsU8a:Vm,sha512AsU8a:Gw,shaAsU8a:hl,signatureVerify:hd,sortAddresses:ww,sr25519Agreement:QV,sr25519DeriveHard:q1,sr25519DerivePublic:G1,sr25519DeriveSoft:X1,sr25519PairFromSeed:el,sr25519Sign:K1,sr25519Verify:J1,sr25519VrfSign:Z1,sr25519VrfVerify:Y1,validateAdd
+--------------------------------------------------
+FILE: vendor-@polkadot-TbfYz-6j.js
+KEYWORD: scrypt
+CONTEXT:
+eyFromPath:$u,keyHdkdEcdsa:rd,keyHdkdEd25519:F1,keyHdkdSr25519:j1,mnemonicGenerate:Qw,mnemonicToEntropy:Am,mnemonicToLegacySeed:Im,mnemonicToMiniSecret:Em,mnemonicValidate:mo,naclDecrypt:Om,naclEncrypt:ml,packageInfo:Bu,pbkdf2Encode:bl,randomAsHex:L1,randomAsNumber:XV,randomAsU8a:ga,scryptEncode:xo,scryptFromU8a:Rm,scryptToU8a:xl,secp256k1Compress:ol,secp256k1Expand:ho,secp256k1PairFromSeed:xa,secp256k1PrivateKeyTweakAdd:lm,secp256k1Recover:dm,secp256k1Sign:sd,secp256k1Verify:fm,selectableNetworks:Yu,setSS58Format:om,sha256AsU8a:Vm,sha512AsU8a:Gw,shaAsU8a:hl,signatureVerify:hd,sortAddresses:ww,sr25519Agreement:QV,sr25519DeriveHard:q1,sr25519DerivePublic:G1,sr25519DeriveSoft:X1,sr25519PairFromSeed:el,sr25519Sign:K1,sr25519Verify:J1,sr25519VrfSign:Z1,sr25519VrfVerify:Y1,validateAddress:sm,xxhashAs
+--------------------------------------------------
+FILE: vendor-@polkadot-TbfYz-6j.js
+KEYWORD: scrypt
+CONTEXT:
+HdkdEcdsa:rd,keyHdkdEd25519:F1,keyHdkdSr25519:j1,mnemonicGenerate:Qw,mnemonicToEntropy:Am,mnemonicToLegacySeed:Im,mnemonicToMiniSecret:Em,mnemonicValidate:mo,naclDecrypt:Om,naclEncrypt:ml,packageInfo:Bu,pbkdf2Encode:bl,randomAsHex:L1,randomAsNumber:XV,randomAsU8a:ga,scryptEncode:xo,scryptFromU8a:Rm,scryptToU8a:xl,secp256k1Compress:ol,secp256k1Expand:ho,secp256k1PairFromSeed:xa,secp256k1PrivateKeyTweakAdd:lm,secp256k1Recover:dm,secp256k1Sign:sd,secp256k1Verify:fm,selectableNetworks:Yu,setSS58Format:om,sha256AsU8a:Vm,sha512AsU8a:Gw,shaAsU8a:hl,signatureVerify:hd,sortAddresses:ww,sr25519Agreement:QV,sr25519DeriveHard:q1,sr25519DerivePublic:G1,sr25519DeriveSoft:X1,sr25519PairFromSeed:el,sr25519Sign:K1,sr25519Verify:J1,sr25519VrfSign:Z1,sr25519VrfVerify:Y1,validateAddress:sm,xxhashAsHex:BS,xxhashAsU8
+--------------------------------------------------
+FILE: vendor-@scure-D0VPkbU0.js
+KEYWORD: HDKey
+CONTEXT:
+.encode(this.serialize(this.versions.private,Vt(new Uint8Array([0]),t)))}get publicExtendedKey(){if(!this.pubKey)throw new Error("No public key");return an.encode(this.serialize(this.versions.public,this.pubKey))}static fromMasterSeed(t,r=cn){if(Se(t),8*t.length<128||8*t.length>512)throw new Error("HDKey: seed length must be between 128 and 512 bits; 256 bits is advised, got "+t.length);const n=Rr(zo,Zd,t);return new bt({versions:r,chainCode:n.slice(32),privateKey:n.slice(0,32)})}static fromExtendedKey(t,r=cn){const n=an.decode(t),i=gt(n),o=i.getUint32(0,!1),s={versions:r,depth:n[4],parentFingerprint:i.getUint32(5,!1),index:i.getUint32(9,!1),chainCode:n.slice(13,45)},a=n.slice(45),l=a[0]===0;if(o!==r[l?"private":"public"])throw new Error("Version mismatch");return l?new bt({...s,privateKey:a.sl
+--------------------------------------------------
+FILE: vendor-@scure-D0VPkbU0.js
+KEYWORD: HDKey
+CONTEXT:
+ublic"])throw new Error("Version mismatch");return l?new bt({...s,privateKey:a.slice(1)}):new bt({...s,publicKey:a})}static fromJSON(t){return bt.fromExtendedKey(t.xpriv)}constructor(t){if(this.depth=0,this.index=0,this.chainCode=null,this.parentFingerprint=0,!t||typeof t!="object")throw new Error("HDKey.constructor must not be called directly");if(this.versions=t.versions||cn,this.depth=t.depth||0,this.chainCode=t.chainCode||null,this.index=t.index||0,this.parentFingerprint=t.parentFingerprint||0,!this.depth&&(this.parentFingerprint||this.index))throw new Error("HDKey: zero depth with non-zero index/parent fingerprint");if(t.publicKey&&t.privateKey)throw new Error("HDKey: publicKey and privateKey at same time.");if(t.privateKey){if(!Ce.utils.isValidPrivateKey(t.privateKey))throw new Error("Inv
+--------------------------------------------------
+FILE: vendor-@scure-D0VPkbU0.js
+KEYWORD: HDKey
+CONTEXT:
+ t!="object")throw new Error("HDKey.constructor must not be called directly");if(this.versions=t.versions||cn,this.depth=t.depth||0,this.chainCode=t.chainCode||null,this.index=t.index||0,this.parentFingerprint=t.parentFingerprint||0,!this.depth&&(this.parentFingerprint||this.index))throw new Error("HDKey: zero depth with non-zero index/parent fingerprint");if(t.publicKey&&t.privateKey)throw new Error("HDKey: publicKey and privateKey at same time.");if(t.privateKey){if(!Ce.utils.isValidPrivateKey(t.privateKey))throw new Error("Invalid private key");this.privKey=typeof t.privateKey=="bigint"?t.privateKey:Xo(t.privateKey),this.privKeyBytes=Wd(this.privKey),this.pubKey=Ce.getPublicKey(t.privateKey,!0)}else if(t.publicKey)this.pubKey=dr.fromHex(t.publicKey).toRawBytes(!0);else throw new Error("HDKey
+--------------------------------------------------
+FILE: vendor-@scure-D0VPkbU0.js
+KEYWORD: HDKey
+CONTEXT:
+||cn,this.depth=t.depth||0,this.chainCode=t.chainCode||null,this.index=t.index||0,this.parentFingerprint=t.parentFingerprint||0,!this.depth&&(this.parentFingerprint||this.index))throw new Error("HDKey: zero depth with non-zero index/parent fingerprint");if(t.publicKey&&t.privateKey)throw new Error("HDKey: publicKey and privateKey at same time.");if(t.privateKey){if(!Ce.utils.isValidPrivateKey(t.privateKey))throw new Error("Invalid private key");this.privKey=typeof t.privateKey=="bigint"?t.privateKey:Xo(t.privateKey),this.privKeyBytes=Wd(this.privKey),this.pubKey=Ce.getPublicKey(t.privateKey,!0)}else if(t.publicKey)this.pubKey=dr.fromHex(t.publicKey).toRawBytes(!0);else throw new Error("HDKey: no public or private key provided");this.pubHash=Yd(this.pubKey)}derive(t){if(!/^[mM]'?/.test(t))throw 
+--------------------------------------------------
+FILE: vendor-@scure-D0VPkbU0.js
+KEYWORD: HDKey
+CONTEXT:
+(t.privateKey))throw new Error("Invalid private key");this.privKey=typeof t.privateKey=="bigint"?t.privateKey:Xo(t.privateKey),this.privKeyBytes=Wd(this.privKey),this.pubKey=Ce.getPublicKey(t.privateKey,!0)}else if(t.publicKey)this.pubKey=dr.fromHex(t.publicKey).toRawBytes(!0);else throw new Error("HDKey: no public or private key provided");this.pubHash=Yd(this.pubKey)}derive(t){if(!/^[mM]'?/.test(t))throw new Error('Path must start with "m" or "M"');if(/^[mM]'?$/.test(t))return this;const r=t.replace(/^[mM]'?\//,"").split("/");let n=this;for(const i of r){const o=/^(\d+)('?)$/.exec(i),s=o&&o[1];if(!o||o.length!==3||typeof s!="string")throw new Error("invalid child index: "+i);let a=+s;if(!Number.isSafeInteger(a)||a>=ln)throw new Error("Invalid index");o[2]==="'"&&(a+=ln),n=n.deriveChild(a)}ret
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+return c.join("")},parse:function(a){var u=a.length,f=r.charAt(64);if(f){var c=a.indexOf(f);c!==-1&&(u=c)}for(var g=[],y=0,k=0;k<u;k++)if(k%4){var P=e[a.charCodeAt(k-1)]<<k%4*2|e[a.charCodeAt(k)]>>>6-k%4*2;g[y>>>2]|=P<<24-y%4*8,y++}return new n(g,y)}};return S}()})}(Base64$1)),Base64$1.exports}var jscrypto$1={exports:{}},jscrypto=jscrypto$1.exports,hasRequiredJscrypto;function requireJscrypto(){return hasRequiredJscrypto||(hasRequiredJscrypto=1,function(d,N){(function(O,S){d.exports=S()})(jscrypto,function(){return function(){var O={9691:function(l,s,i){i.d(s,{AES:function(){return T}});var n,r=i(9456),e=i(787),t=i(5693),o=i(9109),a=(n=function(b,D){return(n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(H,Y){H.__proto__=Y}||function(H,Y){for(var q in Y)Object.prototype.hasOwnPr
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+:function(a){var u=a.length,f=r.charAt(64);if(f){var c=a.indexOf(f);c!==-1&&(u=c)}for(var g=[],y=0,k=0;k<u;k++)if(k%4){var P=e[a.charCodeAt(k-1)]<<k%4*2|e[a.charCodeAt(k)]>>>6-k%4*2;g[y>>>2]|=P<<24-y%4*8,y++}return new n(g,y)}};return S}()})}(Base64$1)),Base64$1.exports}var jscrypto$1={exports:{}},jscrypto=jscrypto$1.exports,hasRequiredJscrypto;function requireJscrypto(){return hasRequiredJscrypto||(hasRequiredJscrypto=1,function(d,N){(function(O,S){d.exports=S()})(jscrypto,function(){return function(){var O={9691:function(l,s,i){i.d(s,{AES:function(){return T}});var n,r=i(9456),e=i(787),t=i(5693),o=i(9109),a=(n=function(b,D){return(n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(H,Y){H.__proto__=Y}||function(H,Y){for(var q in Y)Object.prototype.hasOwnProperty.call(Y,q)&&(H[q]=
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+(a){var u=a.length,f=r.charAt(64);if(f){var c=a.indexOf(f);c!==-1&&(u=c)}for(var g=[],y=0,k=0;k<u;k++)if(k%4){var P=e[a.charCodeAt(k-1)]<<k%4*2|e[a.charCodeAt(k)]>>>6-k%4*2;g[y>>>2]|=P<<24-y%4*8,y++}return new n(g,y)}};return S}()})}(Base64$1)),Base64$1.exports}var jscrypto$1={exports:{}},jscrypto=jscrypto$1.exports,hasRequiredJscrypto;function requireJscrypto(){return hasRequiredJscrypto||(hasRequiredJscrypto=1,function(d,N){(function(O,S){d.exports=S()})(jscrypto,function(){return function(){var O={9691:function(l,s,i){i.d(s,{AES:function(){return T}});var n,r=i(9456),e=i(787),t=i(5693),o=i(9109),a=(n=function(b,D){return(n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(H,Y){H.__proto__=Y}||function(H,Y){for(var q in Y)Object.prototype.hasOwnProperty.call(Y,q)&&(H[q]=Y[q])})(b
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+64);if(f){var c=a.indexOf(f);c!==-1&&(u=c)}for(var g=[],y=0,k=0;k<u;k++)if(k%4){var P=e[a.charCodeAt(k-1)]<<k%4*2|e[a.charCodeAt(k)]>>>6-k%4*2;g[y>>>2]|=P<<24-y%4*8,y++}return new n(g,y)}};return S}()})}(Base64$1)),Base64$1.exports}var jscrypto$1={exports:{}},jscrypto=jscrypto$1.exports,hasRequiredJscrypto;function requireJscrypto(){return hasRequiredJscrypto||(hasRequiredJscrypto=1,function(d,N){(function(O,S){d.exports=S()})(jscrypto,function(){return function(){var O={9691:function(l,s,i){i.d(s,{AES:function(){return T}});var n,r=i(9456),e=i(787),t=i(5693),o=i(9109),a=(n=function(b,D){return(n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(H,Y){H.__proto__=Y}||function(H,Y){for(var q in Y)Object.prototype.hasOwnProperty.call(Y,q)&&(H[q]=Y[q])})(b,D)},function(b,D){function H(
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+(f);c!==-1&&(u=c)}for(var g=[],y=0,k=0;k<u;k++)if(k%4){var P=e[a.charCodeAt(k-1)]<<k%4*2|e[a.charCodeAt(k)]>>>6-k%4*2;g[y>>>2]|=P<<24-y%4*8,y++}return new n(g,y)}};return S}()})}(Base64$1)),Base64$1.exports}var jscrypto$1={exports:{}},jscrypto=jscrypto$1.exports,hasRequiredJscrypto;function requireJscrypto(){return hasRequiredJscrypto||(hasRequiredJscrypto=1,function(d,N){(function(O,S){d.exports=S()})(jscrypto,function(){return function(){var O={9691:function(l,s,i){i.d(s,{AES:function(){return T}});var n,r=i(9456),e=i(787),t=i(5693),o=i(9109),a=(n=function(b,D){return(n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(H,Y){H.__proto__=Y}||function(H,Y){for(var q in Y)Object.prototype.hasOwnProperty.call(Y,q)&&(H[q]=Y[q])})(b,D)},function(b,D){function H(){this.constructor=b}n(b,
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+],y=0,k=0;k<u;k++)if(k%4){var P=e[a.charCodeAt(k-1)]<<k%4*2|e[a.charCodeAt(k)]>>>6-k%4*2;g[y>>>2]|=P<<24-y%4*8,y++}return new n(g,y)}};return S}()})}(Base64$1)),Base64$1.exports}var jscrypto$1={exports:{}},jscrypto=jscrypto$1.exports,hasRequiredJscrypto;function requireJscrypto(){return hasRequiredJscrypto||(hasRequiredJscrypto=1,function(d,N){(function(O,S){d.exports=S()})(jscrypto,function(){return function(){var O={9691:function(l,s,i){i.d(s,{AES:function(){return T}});var n,r=i(9456),e=i(787),t=i(5693),o=i(9109),a=(n=function(b,D){return(n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(H,Y){H.__proto__=Y}||function(H,Y){for(var q in Y)Object.prototype.hasOwnProperty.call(Y,q)&&(H[q]=Y[q])})(b,D)},function(b,D){function H(){this.constructor=b}n(b,D),b.prototype=D===null?Objec
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+%4){var P=e[a.charCodeAt(k-1)]<<k%4*2|e[a.charCodeAt(k)]>>>6-k%4*2;g[y>>>2]|=P<<24-y%4*8,y++}return new n(g,y)}};return S}()})}(Base64$1)),Base64$1.exports}var jscrypto$1={exports:{}},jscrypto=jscrypto$1.exports,hasRequiredJscrypto;function requireJscrypto(){return hasRequiredJscrypto||(hasRequiredJscrypto=1,function(d,N){(function(O,S){d.exports=S()})(jscrypto,function(){return function(){var O={9691:function(l,s,i){i.d(s,{AES:function(){return T}});var n,r=i(9456),e=i(787),t=i(5693),o=i(9109),a=(n=function(b,D){return(n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(H,Y){H.__proto__=Y}||function(H,Y){for(var q in Y)Object.prototype.hasOwnProperty.call(Y,q)&&(H[q]=Y[q])})(b,D)},function(b,D){function H(){this.constructor=b}n(b,D),b.prototype=D===null?Object.create(D):(H.prototy
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+>>>6-k%4*2;g[y>>>2]|=P<<24-y%4*8,y++}return new n(g,y)}};return S}()})}(Base64$1)),Base64$1.exports}var jscrypto$1={exports:{}},jscrypto=jscrypto$1.exports,hasRequiredJscrypto;function requireJscrypto(){return hasRequiredJscrypto||(hasRequiredJscrypto=1,function(d,N){(function(O,S){d.exports=S()})(jscrypto,function(){return function(){var O={9691:function(l,s,i){i.d(s,{AES:function(){return T}});var n,r=i(9456),e=i(787),t=i(5693),o=i(9109),a=(n=function(b,D){return(n=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(H,Y){H.__proto__=Y}||function(H,Y){for(var q in Y)Object.prototype.hasOwnProperty.call(Y,q)&&(H[q]=Y[q])})(b,D)},function(b,D){function H(){this.constructor=b}n(b,D),b.prototype=D===null?Object.create(D):(H.prototype=D.prototype,new H)}),u=function(){return(u=Object.ass
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+pad(ve,me)},unpad:function(ve){fe.unpad(ve),ve.nSigBytes-=1}},Ce=h(7919),Se={pad:function(ve,me){},unpad:function(ve){}},Pe=h(1232),Ee={CBC:U.n,CFB:I,CTR:B,ECB:te,OFB:X,GCM:re.V,CCM:se.K},Ue={AnsiX923:ue,ISO10126:ee,ISO97971:_e,Pkcs7:Ce.l,NoPadding:Se,Zero:fe},Je={OpenSSLFormatter:Pe.w}}(),p}()})}(jscrypto$1)),jscrypto$1.exports}var hasRequiredHash;function requireHash(){if(hasRequiredHash)return hash;hasRequiredHash=1,Object.defineProperty(hash,"__esModule",{value:!0}),hash.ripemd160=hash.sha256=hash.hashToHex=void 0;var d=requireSHA256(),N=requireRIPEMD160(),O=requireBase64(),S=requireJscrypto();function h(s){return d.SHA256.hash(O.Base64.parse(s)).toString().toUpperCase()}hash.hashToHex=h;function p(s){return d.SHA256.hash(new S.Word32Array(s)).toUint8Array()}hash.sha256=p;function l(s){retur
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+npad:function(ve){fe.unpad(ve),ve.nSigBytes-=1}},Ce=h(7919),Se={pad:function(ve,me){},unpad:function(ve){}},Pe=h(1232),Ee={CBC:U.n,CFB:I,CTR:B,ECB:te,OFB:X,GCM:re.V,CCM:se.K},Ue={AnsiX923:ue,ISO10126:ee,ISO97971:_e,Pkcs7:Ce.l,NoPadding:Se,Zero:fe},Je={OpenSSLFormatter:Pe.w}}(),p}()})}(jscrypto$1)),jscrypto$1.exports}var hasRequiredHash;function requireHash(){if(hasRequiredHash)return hash;hasRequiredHash=1,Object.defineProperty(hash,"__esModule",{value:!0}),hash.ripemd160=hash.sha256=hash.hashToHex=void 0;var d=requireSHA256(),N=requireRIPEMD160(),O=requireBase64(),S=requireJscrypto();function h(s){return d.SHA256.hash(O.Base64.parse(s)).toString().toUpperCase()}hash.hashToHex=h;function p(s){return d.SHA256.hash(new S.Word32Array(s)).toUint8Array()}hash.sha256=p;function l(s){return N.RIPEMD160
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+})}(jscrypto$1)),jscrypto$1.exports}var hasRequiredHash;function requireHash(){if(hasRequiredHash)return hash;hasRequiredHash=1,Object.defineProperty(hash,"__esModule",{value:!0}),hash.ripemd160=hash.sha256=hash.hashToHex=void 0;var d=requireSHA256(),N=requireRIPEMD160(),O=requireBase64(),S=requireJscrypto();function h(s){return d.SHA256.hash(O.Base64.parse(s)).toString().toUpperCase()}hash.hashToHex=h;function p(s){return d.SHA256.hash(new S.Word32Array(s)).toUint8Array()}hash.sha256=p;function l(s){return N.RIPEMD160.hash(new S.Word32Array(s)).toUint8Array()}return hash.ripemd160=l,hash}var keys$2={},hasRequiredKeys$2;function requireKeys$2(){if(hasRequiredKeys$2)return keys$2;hasRequiredKeys$2=1;var d=keys$2&&keys$2.__importDefault||function(p){return p&&p.__esModule?p:{default:p}};Object.def
+--------------------------------------------------
+FILE: vendor-@terra-money-BXHL1AxB.js
+KEYWORD: scrypt
+CONTEXT:
+;break}if(f&&o.label<f[2]){o.label=f[2],o.ops.push(k);break}f[2]&&o.ops.pop(),o.trys.pop();continue}k=t.call(e,o)}catch(P){k=[6,P],u=0}finally{a=f=0}if(k[0]&5)throw k[1];return{value:k[0]?k[1]:void 0,done:!0}}};Object.defineProperty(RawKey,"__esModule",{value:!0}),RawKey.RawKey=void 0;var l=requireJscrypto(),s=S(requireElliptic()),i=requireKey$1(),n=requirePublicKey(),r=function(e){d(t,e);function t(o){var a=this,u=s.publicKeyCreate(new Uint8Array(o),!0);return a=e.call(this,new n.SimplePublicKey(Buffer.from(u).toString("base64")))||this,a.privateKey=o,a}return t.prototype.ecdsaSign=function(o){var a=Buffer.from(l.SHA256.hash(new l.Word32Array(o)).toString(),"hex");return s.ecdsaSign(Uint8Array.from(a),Uint8Array.from(this.privateKey))},t.prototype.sign=function(o){return h(this,void 0,void 0,fu
+--------------------------------------------------
+FILE: vendor-binance-sdk-CUanTgXb.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+ovided");var B=(0,_.sha256)(r),H=de.from(B,"hex");return q.default.verify(H,D,de.from(o,"hex"))};Ve.verifySignature=e;var t=function(o,r){var n=h.default.randomBytes(32),D=h.default.randomBytes(16),B="aes-256-ctr",H="pbkdf2",G={dklen:32,salt:n.toString("hex"),c:262144,prf:"hmac-sha256"},X=h.default.pbkdf2Sync(de.from(r),n,G.c,G.dklen,"sha256"),Y=h.default.createCipheriv(B,X.slice(0,32),D);if(!Y)throw new Error("Unsupported cipher");var ee=de.concat([Y.update(de.from(o,"hex")),Y.final()]),re=de.concat([X.slice(16,32),de.from(ee,"hex")]);return{version:1,id:b.default.v4({random:h.default.randomBytes(16)}),crypto:{ciphertext:ee.toString("hex"),cipherparams:{iv:D.toString("hex")},cipher:B,kdf:H,kdfparams:G,mac:(0,_.sha256)(re.toString("hex"))}}};Ve.generateKeyStore=t;var a=function(o,r){if(!O.default.st
+--------------------------------------------------
+FILE: vendor-binance-sdk-CUanTgXb.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+mac:(0,_.sha256)(re.toString("hex"))}}};Ve.generateKeyStore=t;var a=function(o,r){if(!O.default.string(r))throw new Error("No password given.");var n=O.default.object(o)?o:JSON.parse(o),D=n.crypto.kdfparams;if(D.prf!=="hmac-sha256")throw new Error("Unsupported parameters to PBKDF2");var B=h.default.pbkdf2Sync(de.from(r),de.from(D.salt,"hex"),D.c,D.dklen,"sha256"),H=de.from(n.crypto.ciphertext,"hex"),G=de.concat([B.slice(16,32),H]),X=(0,_.sha256)(G.toString("hex"));if(X!==n.crypto.mac)throw new Error("Key derivation failed - possibly wrong password");var Y=h.default.createDecipheriv(n.crypto.cipher,B.slice(0,32),de.from(n.crypto.cipherparams.iv,"hex")),ee=de.concat([Y.update(H),Y.final()]).toString("hex");return ee};Ve.getPrivateKeyFromKeyStore=a;var i=function(){return R.generateMnemonic(Z)};Ve.gene
+--------------------------------------------------
+FILE: vendor-bitcoinjs-lib-CTXrgAPX.js
+KEYWORD: HDKey
+CONTEXT:
+uts,p),P=Wt(p,E,this.__CACHE),A=Je(P,p,"input",E.redeemScript||wn(E.finalScriptSig),E.witnessScript||mn(E.finalScriptWitness)),C=A.type==="raw"?"":A.type+"-",R=Dt(A.meaningfulScript);return C+R}inputHasPubkey(p,E){const P=(0,a.checkForInput)(this.data.inputs,p);return yn(E,P,p,this.__CACHE)}inputHasHDKey(p,E){const P=(0,a.checkForInput)(this.data.inputs,p),A=H(E);return!!P.bip32Derivation&&P.bip32Derivation.some(A)}outputHasPubkey(p,E){const P=(0,a.checkForOutput)(this.data.outputs,p);return gn(E,P,p,this.__CACHE)}outputHasHDKey(p,E){const P=(0,a.checkForOutput)(this.data.outputs,p),A=H(E);return!!P.bip32Derivation&&P.bip32Derivation.some(A)}validateSignaturesOfAllInputs(p){return(0,a.checkForInput)(this.data.inputs,0),Re(this.data.inputs.length).map(P=>this.validateSignaturesOfInput(P,p)).redu
+--------------------------------------------------
+FILE: vendor-bitcoinjs-lib-CTXrgAPX.js
+KEYWORD: HDKey
+CONTEXT:
+eckForInput)(this.data.inputs,p);return yn(E,P,p,this.__CACHE)}inputHasHDKey(p,E){const P=(0,a.checkForInput)(this.data.inputs,p),A=H(E);return!!P.bip32Derivation&&P.bip32Derivation.some(A)}outputHasPubkey(p,E){const P=(0,a.checkForOutput)(this.data.outputs,p);return gn(E,P,p,this.__CACHE)}outputHasHDKey(p,E){const P=(0,a.checkForOutput)(this.data.outputs,p),A=H(E);return!!P.bip32Derivation&&P.bip32Derivation.some(A)}validateSignaturesOfAllInputs(p){return(0,a.checkForInput)(this.data.inputs,0),Re(this.data.inputs.length).map(P=>this.validateSignaturesOfInput(P,p)).reduce((P,A)=>A===!0&&P,!0)}validateSignaturesOfInput(p,E,P){const A=this.data.inputs[p],C=(A||{}).partialSig;if(!A||!C||C.length<1)throw new Error("No signatures to validate");if(typeof E!="function")throw new Error("Need validator 
+--------------------------------------------------
+FILE: vendor-bitgo-utxo-lib-D4frDuy9.js
+KEYWORD: HDKey
+CONTEXT:
+=Qe(M,G,this.__CACHE),ee=kt(z,M,"input",G.redeemScript||Un(G.finalScriptSig),G.witnessScript||Nn(G.finalScriptWitness)),ie=ee.type==="raw"?"":ee.type+"-",oe=gn(ee.meaningfulScript);return ie+oe}inputHasPubkey(M,G){const z=(0,a.checkForInput)(this.data.inputs,M);return Vt(G,z,M,this.__CACHE)}inputHasHDKey(M,G){const z=(0,a.checkForInput)(this.data.inputs,M),ee=I(G);return!!z.bip32Derivation&&z.bip32Derivation.some(ee)}outputHasPubkey(M,G){const z=(0,a.checkForOutput)(this.data.outputs,M);return ln(G,z,M,this.__CACHE)}outputHasHDKey(M,G){const z=(0,a.checkForOutput)(this.data.outputs,M),ee=I(G);return!!z.bip32Derivation&&z.bip32Derivation.some(ee)}validateSignaturesOfAllInputs(M){return(0,a.checkForInput)(this.data.inputs,0),Ot(this.data.inputs.length).map(z=>this.validateSignaturesOfInput(z,M)).
+--------------------------------------------------
+FILE: vendor-bitgo-utxo-lib-D4frDuy9.js
+KEYWORD: HDKey
+CONTEXT:
+kForInput)(this.data.inputs,M);return Vt(G,z,M,this.__CACHE)}inputHasHDKey(M,G){const z=(0,a.checkForInput)(this.data.inputs,M),ee=I(G);return!!z.bip32Derivation&&z.bip32Derivation.some(ee)}outputHasPubkey(M,G){const z=(0,a.checkForOutput)(this.data.outputs,M);return ln(G,z,M,this.__CACHE)}outputHasHDKey(M,G){const z=(0,a.checkForOutput)(this.data.outputs,M),ee=I(G);return!!z.bip32Derivation&&z.bip32Derivation.some(ee)}validateSignaturesOfAllInputs(M){return(0,a.checkForInput)(this.data.inputs,0),Ot(this.data.inputs.length).map(z=>this.validateSignaturesOfInput(z,M)).reduce((z,ee)=>ee===!0&&z,!0)}validateSignaturesOfInput(M,G,z){const ee=this.data.inputs[M];return(0,p.isTaprootInput)(ee)?this.validateSignaturesOfTaprootInput(M,G,z):this._validateSignaturesOfInput(M,G,z)}_validateSignaturesOfInp
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+{N:t,r:n,p:s,dkLen:i,onProgress:a})},jo=function(r,e,t,n,s,i){return _f(r,e,{N:t,r:n,p:s,dkLen:i})};let Zo=_o,Wo=jo;async function Cn(r,e,t,n,s,i,a){const o=C(r,"passwd"),c=C(e,"salt");return w(await Zo(o,c,t,n,s,i,a))}Cn._=_o;Cn.lock=function(){Jo=!0};Cn.register=function(r){if(Jo)throw new Error("scrypt is locked");Zo=r};Object.freeze(Cn);function Rn(r,e,t,n,s,i){const a=C(r,"passwd"),o=C(e,"salt");return w(Wo(a,o,t,n,s,i))}Rn._=jo;Rn.lock=function(){zo=!0};Rn.register=function(r){if(zo)throw new Error("scryptSync is locked");Wo=r};Object.freeze(Rn);const Yo=function(r){return Pf("sha256").update(r).digest()};let Xo=Yo,$o=!1;function He(r){const e=C(r,"data");return w(Xo(e))}He._=Yo;He.lock=function(){$o=!0};He.register=function(r){if($o)throw new Error("sha256 is locked");Xo=r};Object.freeze(
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+s,i,a))}Cn._=_o;Cn.lock=function(){Jo=!0};Cn.register=function(r){if(Jo)throw new Error("scrypt is locked");Zo=r};Object.freeze(Cn);function Rn(r,e,t,n,s,i){const a=C(r,"passwd"),o=C(e,"salt");return w(Wo(a,o,t,n,s,i))}Rn._=jo;Rn.lock=function(){zo=!0};Rn.register=function(r){if(zo)throw new Error("scryptSync is locked");Wo=r};Object.freeze(Rn);const Yo=function(r){return Pf("sha256").update(r).digest()};let Xo=Yo,$o=!1;function He(r){const e=C(r,"data");return w(Xo(e))}He._=Yo;He.lock=function(){$o=!0};He.register=function(r){if($o)throw new Error("sha256 is locked");Xo=r};Object.freeze(He);Object.freeze(He);/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */BigInt(0);const Zf=BigInt(1),Wf=BigInt(2),_r=r=>r instanceof Uint8Array,Yf=Array.from({length:256},(r,e)=>e.toString(16
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+phertext:data!"),u=ce(r,"x-ethers.mnemonicCounter:data!"),d=new En(f,u);o.mnemonic={path:ce(r,"x-ethers.path:string")||c0,locale:ce(r,"x-ethers.locale:string")||"en",entropy:w(C(d.decrypt(l)))}}return o}function f0(r){const e=ce(r,"crypto.kdf:string");if(e&&typeof e=="string"){if(e.toLowerCase()==="scrypt"){const t=ce(r,"crypto.kdfparams.salt:data!"),n=ce(r,"crypto.kdfparams.n:int!"),s=ce(r,"crypto.kdfparams.r:int!"),i=ce(r,"crypto.kdfparams.p:int!");h(n>0&&(n&n-1)===0,"invalid kdf.N","kdf.N",n),h(s>0&&i>0,"invalid kdf","kdf",e);const a=ce(r,"crypto.kdfparams.dklen:int!");return h(a===32,"invalid kdf.dklen","kdf.dflen",a),{name:"scrypt",salt:t,N:n,r:s,p:i,dkLen:64}}else if(e.toLowerCase()==="pbkdf2"){const t=ce(r,"crypto.kdfparams.salt:data!"),n=ce(r,"crypto.kdfparams.prf:string!"),s=n.split("-"
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+ms.salt:data!"),n=ce(r,"crypto.kdfparams.n:int!"),s=ce(r,"crypto.kdfparams.r:int!"),i=ce(r,"crypto.kdfparams.p:int!");h(n>0&&(n&n-1)===0,"invalid kdf.N","kdf.N",n),h(s>0&&i>0,"invalid kdf","kdf",e);const a=ce(r,"crypto.kdfparams.dklen:int!");return h(a===32,"invalid kdf.dklen","kdf.dflen",a),{name:"scrypt",salt:t,N:n,r:s,p:i,dkLen:64}}else if(e.toLowerCase()==="pbkdf2"){const t=ce(r,"crypto.kdfparams.salt:data!"),n=ce(r,"crypto.kdfparams.prf:string!"),s=n.split("-").pop();h(s==="sha256"||s==="sha512","invalid kdf.pdf","kdf.pdf",n);const i=ce(r,"crypto.kdfparams.c:int!"),a=ce(r,"crypto.kdfparams.dklen:int!");return h(a===32,"invalid kdf.dklen","kdf.dklen",a),{name:"pbkdf2",salt:t,count:i,dkLen:a,algorithm:s}}}h(!1,"unsupported key-derivation function","kdf",e)}function Fh(r,e){const t=JSON.parse(
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+valid kdf.dklen","kdf.dklen",a),{name:"pbkdf2",salt:t,count:i,dkLen:a,algorithm:s}}}h(!1,"unsupported key-derivation function","kdf",e)}function Fh(r,e){const t=JSON.parse(r),n=or(e),s=f0(t);if(s.name==="pbkdf2"){const{salt:u,count:d,dkLen:b,algorithm:p}=s,x=Ct(n,u,d,b,p);return Gr(t,x)}y(s.name==="scrypt","cannot be reached","UNKNOWN_ERROR",{params:s});const{salt:i,N:a,r:o,p:c,dkLen:f}=s,l=Rn(n,i,a,o,c,f);return Gr(t,l)}function za(r){return new Promise(e=>{setTimeout(()=>{e()},r)})}async function Dh(r,e,t){const n=JSON.parse(r),s=or(e),i=f0(n);if(i.name==="pbkdf2"){t&&(t(0),await za(0));const{salt:d,count:b,dkLen:p,algorithm:x}=i,g=Ct(s,d,b,p,x);return t&&(t(1),await za(0)),Gr(n,g)}y(i.name==="scrypt","cannot be reached","UNKNOWN_ERROR",{params:i});const{salt:a,N:o,r:c,p:f,dkLen:l}=i,u=await C
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+c,f);return Gr(t,l)}function za(r){return new Promise(e=>{setTimeout(()=>{e()},r)})}async function Dh(r,e,t){const n=JSON.parse(r),s=or(e),i=f0(n);if(i.name==="pbkdf2"){t&&(t(0),await za(0));const{salt:d,count:b,dkLen:p,algorithm:x}=i,g=Ct(s,d,b,p,x);return t&&(t(1),await za(0)),Gr(n,g)}y(i.name==="scrypt","cannot be reached","UNKNOWN_ERROR",{params:i});const{salt:a,N:o,r:c,p:f,dkLen:l}=i,u=await Cn(s,a,o,c,f,l,t);return Gr(n,u)}function l0(r){const e=r.salt!=null?C(r.salt,"options.salt"):at(32);let t=1<<17,n=8,s=1;return r.scrypt&&(r.scrypt.N&&(t=r.scrypt.N),r.scrypt.r&&(n=r.scrypt.r),r.scrypt.p&&(s=r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"i
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+x}=i,g=Ct(s,d,b,p,x);return t&&(t(1),await za(0)),Gr(n,g)}y(i.name==="scrypt","cannot be reached","UNKNOWN_ERROR",{params:i});const{salt:a,N:o,r:c,p:f,dkLen:l}=i,u=await Cn(s,a,o,c,f,l,t);return Gr(n,u)}function l0(r){const e=r.salt!=null?C(r.salt,"options.salt"):at(32);let t=1<<17,n=8,s=1;return r.scrypt&&(r.scrypt.N&&(t=r.scrypt.N),r.scrypt.r&&(n=r.scrypt.r),r.scrypt.p&&(s=r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"priv
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+,d,b,p,x);return t&&(t(1),await za(0)),Gr(n,g)}y(i.name==="scrypt","cannot be reached","UNKNOWN_ERROR",{params:i});const{salt:a,N:o,r:c,p:f,dkLen:l}=i,u=await Cn(s,a,o,c,f,l,t);return Gr(n,u)}function l0(r){const e=r.salt!=null?C(r.salt,"options.salt"):at(32);let t=1<<17,n=8,s=1;return r.scrypt&&(r.scrypt.N&&(t=r.scrypt.N),r.scrypt.r&&(n=r.scrypt.r),r.scrypt.p&&(s=r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"privateKey"),i=
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+n t&&(t(1),await za(0)),Gr(n,g)}y(i.name==="scrypt","cannot be reached","UNKNOWN_ERROR",{params:i});const{salt:a,N:o,r:c,p:f,dkLen:l}=i,u=await Cn(s,a,o,c,f,l,t);return Gr(n,u)}function l0(r){const e=r.salt!=null?C(r.salt,"options.salt"):at(32);let t=1<<17,n=8,s=1;return r.scrypt&&(r.scrypt.N&&(t=r.scrypt.N),r.scrypt.r&&(n=r.scrypt.r),r.scrypt.p&&(s=r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"privateKey"),i=n.iv!=null?C(n.
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+wait za(0)),Gr(n,g)}y(i.name==="scrypt","cannot be reached","UNKNOWN_ERROR",{params:i});const{salt:a,N:o,r:c,p:f,dkLen:l}=i,u=await Cn(s,a,o,c,f,l,t);return Gr(n,u)}function l0(r){const e=r.salt!=null?C(r.salt,"options.salt"):at(32);let t=1<<17,n=8,s=1;return r.scrypt&&(r.scrypt.N&&(t=r.scrypt.N),r.scrypt.r&&(n=r.scrypt.r),r.scrypt.p&&(s=r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"privateKey"),i=n.iv!=null?C(n.iv,"options.
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+n,g)}y(i.name==="scrypt","cannot be reached","UNKNOWN_ERROR",{params:i});const{salt:a,N:o,r:c,p:f,dkLen:l}=i,u=await Cn(s,a,o,c,f,l,t);return Gr(n,u)}function l0(r){const e=r.salt!=null?C(r.salt,"options.salt"):at(32);let t=1<<17,n=8,s=1;return r.scrypt&&(r.scrypt.N&&(t=r.scrypt.N),r.scrypt.r&&(n=r.scrypt.r),r.scrypt.p&&(s=r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"privateKey"),i=n.iv!=null?C(n.iv,"options.iv"):at(16);h(i
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+e==="scrypt","cannot be reached","UNKNOWN_ERROR",{params:i});const{salt:a,N:o,r:c,p:f,dkLen:l}=i,u=await Cn(s,a,o,c,f,l,t);return Gr(n,u)}function l0(r){const e=r.salt!=null?C(r.salt,"options.salt"):at(32);let t=1<<17,n=8,s=1;return r.scrypt&&(r.scrypt.N&&(t=r.scrypt.N),r.scrypt.r&&(n=r.scrypt.r),r.scrypt.p&&(s=r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"privateKey"),i=n.iv!=null?C(n.iv,"options.iv"):at(16);h(i.length===16
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+annot be reached","UNKNOWN_ERROR",{params:i});const{salt:a,N:o,r:c,p:f,dkLen:l}=i,u=await Cn(s,a,o,c,f,l,t);return Gr(n,u)}function l0(r){const e=r.salt!=null?C(r.salt,"options.salt"):at(32);let t=1<<17,n=8,s=1;return r.scrypt&&(r.scrypt.N&&(t=r.scrypt.N),r.scrypt.r&&(n=r.scrypt.r),r.scrypt.p&&(s=r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"privateKey"),i=n.iv!=null?C(n.iv,"options.iv"):at(16);h(i.length===16,"invalid optio
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+return Gr(n,u)}function l0(r){const e=r.salt!=null?C(r.salt,"options.salt"):at(32);let t=1<<17,n=8,s=1;return r.scrypt&&(r.scrypt.N&&(t=r.scrypt.N),r.scrypt.r&&(n=r.scrypt.r),r.scrypt.p&&(s=r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"privateKey"),i=n.iv!=null?C(n.iv,"options.iv"):at(16);h(i.length===16,"invalid options.iv length","options.iv",n.iv);const a=n.uuid!=null?C(n.uuid,"options.uuid"):at(16);h(a.length===16,"inval
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+n=8,s=1;return r.scrypt&&(r.scrypt.N&&(t=r.scrypt.N),r.scrypt.r&&(n=r.scrypt.r),r.scrypt.p&&(s=r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"privateKey"),i=n.iv!=null?C(n.iv,"options.iv"):at(16);h(i.length===16,"invalid options.iv length","options.iv",n.iv);const a=n.uuid!=null?C(n.uuid,"options.uuid"):at(16);h(a.length===16,"invalid options.uuid length","options.uuid",n.iv);const o=r.slice(0,16),c=r.slice(16,32),f=new En(o,
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+r.scrypt.p)),h(typeof t=="number"&&t>0&&Number.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"privateKey"),i=n.iv!=null?C(n.iv,"options.iv"):at(16);h(i.length===16,"invalid options.iv length","options.iv",n.iv);const a=n.uuid!=null?C(n.uuid,"options.uuid"):at(16);h(a.length===16,"invalid options.uuid length","options.uuid",n.iv);const o=r.slice(0,16),c=r.slice(16,32),f=new En(o,i),l=C(f.encrypt(s)),u=te(j([c,l])),d={address:t.address.substring(2).toLowerCase(),id:Q0(a),ve
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+mber.isSafeInteger(t)&&(BigInt(t)&BigInt(t-1))===BigInt(0),"invalid scrypt N parameter","options.N",t),h(typeof n=="number"&&n>0&&Number.isSafeInteger(n),"invalid scrypt r parameter","options.r",n),h(typeof s=="number"&&s>0&&Number.isSafeInteger(s),"invalid scrypt p parameter","options.p",s),{name:"scrypt",dkLen:32,salt:e,N:t,r:n,p:s}}function u0(r,e,t,n){const s=C(t.privateKey,"privateKey"),i=n.iv!=null?C(n.iv,"options.iv"):at(16);h(i.length===16,"invalid options.iv length","options.iv",n.iv);const a=n.uuid!=null?C(n.uuid,"options.uuid"):at(16);h(a.length===16,"invalid options.uuid length","options.uuid",n.iv);const o=r.slice(0,16),c=r.slice(16,32),f=new En(o,i),l=C(f.encrypt(s)),u=te(j([c,l])),d={address:t.address.substring(2).toLowerCase(),id:Q0(a),version:3,Crypto:{cipher:"aes-128-ctr",ciphe
+--------------------------------------------------
+FILE: vendor-ethers-7LJA_9p-.js
+KEYWORD: scrypt
+CONTEXT:
+valid options.uuid length","options.uuid",n.iv);const o=r.slice(0,16),c=r.slice(16,32),f=new En(o,i),l=C(f.encrypt(s)),u=te(j([c,l])),d={address:t.address.substring(2).toLowerCase(),id:Q0(a),version:3,Crypto:{cipher:"aes-128-ctr",cipherparams:{iv:w(i).substring(2)},ciphertext:w(l).substring(2),kdf:"scrypt",kdfparams:{salt:w(e.salt).substring(2),n:e.N,dklen:32,p:e.p,r:e.r},mac:u.substring(2)}};if(t.mnemonic){const b=n.client!=null?n.client:`ethers/${Za}`,p=t.mnemonic.path||c0,x=t.mnemonic.locale||"en",g=r.slice(32,64),m=C(t.mnemonic.entropy,"account.mnemonic.entropy"),E=at(16),A=new En(g,E),S=C(A.encrypt(m)),P=new Date,v="UTC--"+(P.getUTCFullYear()+"-"+Sn(P.getUTCMonth()+1,2)+"-"+Sn(P.getUTCDate(),2)+"T"+Sn(P.getUTCHours(),2)+"-"+Sn(P.getUTCMinutes(),2)+"-"+Sn(P.getUTCSeconds(),2)+".0Z")+"--"+d.a
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+r,r:i,p:o,dkLen:t,onProgress:n})},Kg=function(s,e,r,i,o,t){return oA(s,e,{N:r,r:i,p:o,dkLen:t})};let Zg=jg,Jg=Kg;async function Ho(s,e,r,i,o,t,n){const a=pe(s,"passwd"),c=pe(e,"salt");return ie(await Zg(a,c,r,i,o,t,n))}Ho._=jg;Ho.lock=function(){qg=!0};Ho.register=function(s){if(qg)throw new Error("scrypt is locked");Zg=s};Object.freeze(Ho);function qo(s,e,r,i,o,t){const n=pe(s,"passwd"),a=pe(e,"salt");return ie(Jg(n,a,r,i,o,t))}qo._=Kg;qo.lock=function(){Hg=!0};qo.register=function(s){if(Hg)throw new Error("scryptSync is locked");Jg=s};Object.freeze(qo);const Yg=function(s){return NT("sha256").update(s).digest()};let Xg=Yg,Qg=!1;function mt(s){const e=pe(s,"data");return ie(Xg(e))}mt._=Yg;mt.lock=function(){Qg=!0};mt.register=function(s){if(Qg)throw new Error("sha256 is locked");Xg=s};Object.fr
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+,n))}Ho._=jg;Ho.lock=function(){qg=!0};Ho.register=function(s){if(qg)throw new Error("scrypt is locked");Zg=s};Object.freeze(Ho);function qo(s,e,r,i,o,t){const n=pe(s,"passwd"),a=pe(e,"salt");return ie(Jg(n,a,r,i,o,t))}qo._=Kg;qo.lock=function(){Hg=!0};qo.register=function(s){if(Hg)throw new Error("scryptSync is locked");Jg=s};Object.freeze(qo);const Yg=function(s){return NT("sha256").update(s).digest()};let Xg=Yg,Qg=!1;function mt(s){const e=pe(s,"data");return ie(Xg(e))}mt._=Yg;mt.lock=function(){Qg=!0};mt.register=function(s){if(Qg)throw new Error("sha256 is locked");Xg=s};Object.freeze(mt);Object.freeze(mt);/*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */BigInt(0);const aA=BigInt(1),iA=BigInt(2),Fi=s=>s instanceof Uint8Array,cA=Array.from({length:256},(s,e)=>e.toString(
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+pt(e)}}_o=new WeakMap,An=new WeakMap,rr=new WeakMap;function So(s,e){for(s=String(s);s.length<e;)s="0"+s;return s}function vy(s){return typeof s=="string"?Dt(s,"NFKC"):Tt(s)}const n2="m/44'/60'/0'/0/0";function wy(s){const e=s.salt!=null?pe(s.salt,"options.salt"):$r(32);let r=1<<17,i=8,o=1;return s.scrypt&&(s.scrypt.N&&(r=s.scrypt.N),s.scrypt.r&&(i=s.scrypt.r),s.scrypt.p&&(o=s.scrypt.p)),G(typeof r=="number"&&r>0&&Number.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"pri
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+ew WeakMap,An=new WeakMap,rr=new WeakMap;function So(s,e){for(s=String(s);s.length<e;)s="0"+s;return s}function vy(s){return typeof s=="string"?Dt(s,"NFKC"):Tt(s)}const n2="m/44'/60'/0'/0/0";function wy(s){const e=s.salt!=null?pe(s.salt,"options.salt"):$r(32);let r=1<<17,i=8,o=1;return s.scrypt&&(s.scrypt.N&&(r=s.scrypt.N),s.scrypt.r&&(i=s.scrypt.r),s.scrypt.p&&(o=s.scrypt.p)),G(typeof r=="number"&&r>0&&Number.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"privateKey"),t
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+ew WeakMap,rr=new WeakMap;function So(s,e){for(s=String(s);s.length<e;)s="0"+s;return s}function vy(s){return typeof s=="string"?Dt(s,"NFKC"):Tt(s)}const n2="m/44'/60'/0'/0/0";function wy(s){const e=s.salt!=null?pe(s.salt,"options.salt"):$r(32);let r=1<<17,i=8,o=1;return s.scrypt&&(s.scrypt.N&&(r=s.scrypt.N),s.scrypt.r&&(i=s.scrypt.r),s.scrypt.p&&(o=s.scrypt.p)),G(typeof r=="number"&&r>0&&Number.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"privateKey"),t=i.iv!=null?pe(
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+r=new WeakMap;function So(s,e){for(s=String(s);s.length<e;)s="0"+s;return s}function vy(s){return typeof s=="string"?Dt(s,"NFKC"):Tt(s)}const n2="m/44'/60'/0'/0/0";function wy(s){const e=s.salt!=null?pe(s.salt,"options.salt"):$r(32);let r=1<<17,i=8,o=1;return s.scrypt&&(s.scrypt.N&&(r=s.scrypt.N),s.scrypt.r&&(i=s.scrypt.r),s.scrypt.p&&(o=s.scrypt.p)),G(typeof r=="number"&&r>0&&Number.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"privateKey"),t=i.iv!=null?pe(i.iv,"option
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+unction So(s,e){for(s=String(s);s.length<e;)s="0"+s;return s}function vy(s){return typeof s=="string"?Dt(s,"NFKC"):Tt(s)}const n2="m/44'/60'/0'/0/0";function wy(s){const e=s.salt!=null?pe(s.salt,"options.salt"):$r(32);let r=1<<17,i=8,o=1;return s.scrypt&&(s.scrypt.N&&(r=s.scrypt.N),s.scrypt.r&&(i=s.scrypt.r),s.scrypt.p&&(o=s.scrypt.p)),G(typeof r=="number"&&r>0&&Number.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"privateKey"),t=i.iv!=null?pe(i.iv,"options.iv"):$r(16);G
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+,e){for(s=String(s);s.length<e;)s="0"+s;return s}function vy(s){return typeof s=="string"?Dt(s,"NFKC"):Tt(s)}const n2="m/44'/60'/0'/0/0";function wy(s){const e=s.salt!=null?pe(s.salt,"options.salt"):$r(32);let r=1<<17,i=8,o=1;return s.scrypt&&(s.scrypt.N&&(r=s.scrypt.N),s.scrypt.r&&(i=s.scrypt.r),s.scrypt.p&&(o=s.scrypt.p)),G(typeof r=="number"&&r>0&&Number.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"privateKey"),t=i.iv!=null?pe(i.iv,"options.iv"):$r(16);G(t.length===
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+g(s);s.length<e;)s="0"+s;return s}function vy(s){return typeof s=="string"?Dt(s,"NFKC"):Tt(s)}const n2="m/44'/60'/0'/0/0";function wy(s){const e=s.salt!=null?pe(s.salt,"options.salt"):$r(32);let r=1<<17,i=8,o=1;return s.scrypt&&(s.scrypt.N&&(r=s.scrypt.N),s.scrypt.r&&(i=s.scrypt.r),s.scrypt.p&&(o=s.scrypt.p)),G(typeof r=="number"&&r>0&&Number.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"privateKey"),t=i.iv!=null?pe(i.iv,"options.iv"):$r(16);G(t.length===16,"invalid opt
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+'/60'/0'/0/0";function wy(s){const e=s.salt!=null?pe(s.salt,"options.salt"):$r(32);let r=1<<17,i=8,o=1;return s.scrypt&&(s.scrypt.N&&(r=s.scrypt.N),s.scrypt.r&&(i=s.scrypt.r),s.scrypt.p&&(o=s.scrypt.p)),G(typeof r=="number"&&r>0&&Number.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"privateKey"),t=i.iv!=null?pe(i.iv,"options.iv"):$r(16);G(t.length===16,"invalid options.iv length","options.iv",i.iv);const n=i.uuid!=null?pe(i.uuid,"options.uuid"):$r(16);G(n.length===16,"in
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+i=8,o=1;return s.scrypt&&(s.scrypt.N&&(r=s.scrypt.N),s.scrypt.r&&(i=s.scrypt.r),s.scrypt.p&&(o=s.scrypt.p)),G(typeof r=="number"&&r>0&&Number.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"privateKey"),t=i.iv!=null?pe(i.iv,"options.iv"):$r(16);G(t.length===16,"invalid options.iv length","options.iv",i.iv);const n=i.uuid!=null?pe(i.uuid,"options.uuid"):$r(16);G(n.length===16,"invalid options.uuid length","options.uuid",i.iv);const a=s.slice(0,16),c=s.slice(16,32),f=new Ai
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+s.scrypt.p)),G(typeof r=="number"&&r>0&&Number.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"privateKey"),t=i.iv!=null?pe(i.iv,"options.iv"):$r(16);G(t.length===16,"invalid options.iv length","options.iv",i.iv);const n=i.uuid!=null?pe(i.uuid,"options.uuid"):$r(16);G(n.length===16,"invalid options.uuid length","options.uuid",i.iv);const a=s.slice(0,16),c=s.slice(16,32),f=new Ai(a,t),d=pe(f.encrypt(o)),p=Ne(qe([c,d])),g={address:r.address.substring(2).toLowerCase(),id:tT(
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+mber.isSafeInteger(r)&&(BigInt(r)&BigInt(r-1))===BigInt(0),"invalid scrypt N parameter","options.N",r),G(typeof i=="number"&&i>0&&Number.isSafeInteger(i),"invalid scrypt r parameter","options.r",i),G(typeof o=="number"&&o>0&&Number.isSafeInteger(o),"invalid scrypt p parameter","options.p",o),{name:"scrypt",dkLen:32,salt:e,N:r,r:i,p:o}}function Wy(s,e,r,i){const o=pe(r.privateKey,"privateKey"),t=i.iv!=null?pe(i.iv,"options.iv"):$r(16);G(t.length===16,"invalid options.iv length","options.iv",i.iv);const n=i.uuid!=null?pe(i.uuid,"options.uuid"):$r(16);G(n.length===16,"invalid options.uuid length","options.uuid",i.iv);const a=s.slice(0,16),c=s.slice(16,32),f=new Ai(a,t),d=pe(f.encrypt(o)),p=Ne(qe([c,d])),g={address:r.address.substring(2).toLowerCase(),id:tT(n),version:3,Crypto:{cipher:"aes-128-ctr",
+--------------------------------------------------
+FILE: vendor-tronweb-DfMKc94q.js
+KEYWORD: scrypt
+CONTEXT:
+d options.uuid length","options.uuid",i.iv);const a=s.slice(0,16),c=s.slice(16,32),f=new Ai(a,t),d=pe(f.encrypt(o)),p=Ne(qe([c,d])),g={address:r.address.substring(2).toLowerCase(),id:tT(n),version:3,Crypto:{cipher:"aes-128-ctr",cipherparams:{iv:ie(t).substring(2)},ciphertext:ie(d).substring(2),kdf:"scrypt",kdfparams:{salt:ie(e.salt).substring(2),n:e.N,dklen:32,p:e.p,r:e.r},mac:p.substring(2)}};if(r.mnemonic){const T=i.client!=null?i.client:`ethers/${tg}`,m=r.mnemonic.path||n2,y=r.mnemonic.locale||"en",x=s.slice(32,64),W=pe(r.mnemonic.entropy,"account.mnemonic.entropy"),v=$r(16),E=new Ai(x,v),z=pe(E.encrypt(W)),V=new Date,R="UTC--"+(V.getUTCFullYear()+"-"+So(V.getUTCMonth()+1,2)+"-"+So(V.getUTCDate(),2)+"T"+So(V.getUTCHours(),2)+"-"+So(V.getUTCMinutes(),2)+"-"+So(V.getUTCSeconds(),2)+".0Z")+"--"+
+--------------------------------------------------
+FILE: vendor-web3-Dhs9aKKR.js
+KEYWORD: scrypt
+CONTEXT:
+f(q!==B){if(R=v(null,A/I))break;B=q}}if(E<u)break;if(f(C,0,S,F,M),++Z<m){V=0;break}g=[];for(var Y=0;Y<S.length;Y++)g.push(S[Y]>>0&255),g.push(S[Y]>>8&255),g.push(S[Y]>>16&255),g.push(S[Y]>>24&255);var Q=w(e,g,k);return v&&v(null,1,Q),Q}v&&T(z)};if(!v)for(;;){var K=D();if(K!=null)return K}D()}var i={scrypt:function(e,a,u,h,m,k,v){return new Promise(function(g,S){var x=0;v&&v(0),n(e,a,u,h,m,k,function(P,E,F){if(P)S(P);else if(F)v&&x!==1&&v(1),g(new Uint8Array(F));else if(v&&E!==x)return x=E,v(E)})})},syncScrypt:function(e,a,u,h,m,k){return new Uint8Array(n(e,a,u,h,m,k))}};L.exports=i})()},57902:(L,c,l)=>{L.exports=l(36922)(l(38123))},38123:(L,c,l)=>{var b=new(l(36597)).ec("secp256k1"),w=b.curve,y=w.n.constructor;function d(s){var f=s[0];switch(f){case 2:case 3:return s.length!==33?null:function(r,
+--------------------------------------------------
+FILE: vendor-web3-Dhs9aKKR.js
+KEYWORD: scrypt
+CONTEXT:
+.encodeSignature(I.slice(1,4)),_)):e.recover(M,p))},F.prototype.decrypt=function(M,p,_){if(typeof p!="string")throw new Error("No password given.");var I,A,B=M&&(0,d.default)(M)==="object"?M:JSON.parse(_?M.toLowerCase():M);if(B.version!==3)throw new Error("Not a valid V3 wallet");if(B.crypto.kdf==="scrypt")A=B.crypto.kdfparams,I=u.syncScrypt(b.from(p),b.from(A.salt,"hex"),A.n,A.r,A.p,A.dklen);else{if(B.crypto.kdf!=="pbkdf2")throw new Error("Unsupported key derivation scheme");if((A=B.crypto.kdfparams).prf!=="hmac-sha256")throw new Error("Unsupported parameters to PBKDF2");I=a.pbkdf2Sync(b.from(p),b.from(A.salt,"hex"),A.c,A.dklen,"sha256")}var R=b.from(B.crypto.ciphertext,"hex");if(m.sha3(b.from([].concat((0,y.default)(I.slice(16,32)),(0,y.default)(R)))).replace("0x","")!==B.crypto.mac)throw new 
+--------------------------------------------------
+FILE: vendor-web3-Dhs9aKKR.js
+KEYWORD: scrypt
+CONTEXT:
+erparams.iv,"hex")),Z="0x"+b.from([].concat((0,y.default)(V.update(R)),(0,y.default)(V.final()))).toString("hex");return this.privateKeyToAccount(Z,!0)},F.prototype.encrypt=function(M,p,_){var I,A=this.privateKeyToAccount(M,!0),B=(_=_||{}).salt||a.randomBytes(32),R=_.iv||a.randomBytes(16),V=_.kdf||"scrypt",Z={dklen:_.dklen||32,salt:B.toString("hex")};if(V==="pbkdf2")Z.c=_.c||262144,Z.prf="hmac-sha256",I=a.pbkdf2Sync(b.from(p),b.from(Z.salt,"hex"),Z.c,Z.dklen,"sha256");else{if(V!=="scrypt")throw new Error("Unsupported kdf");Z.n=_.n||8192,Z.r=_.r||8,Z.p=_.p||1,I=u.syncScrypt(b.from(p),b.from(Z.salt,"hex"),Z.n,Z.r,Z.p,Z.dklen)}var J=a.createCipheriv(_.cipher||"aes-128-ctr",I.slice(0,16),R);if(!J)throw new Error("Unsupported cipher");var T=b.from([].concat((0,y.default)(J.update(b.from(A.privateKey.
+--------------------------------------------------
+FILE: vendor-web3-Dhs9aKKR.js
+KEYWORD: scrypt
+CONTEXT:
+_){var I,A=this.privateKeyToAccount(M,!0),B=(_=_||{}).salt||a.randomBytes(32),R=_.iv||a.randomBytes(16),V=_.kdf||"scrypt",Z={dklen:_.dklen||32,salt:B.toString("hex")};if(V==="pbkdf2")Z.c=_.c||262144,Z.prf="hmac-sha256",I=a.pbkdf2Sync(b.from(p),b.from(Z.salt,"hex"),Z.c,Z.dklen,"sha256");else{if(V!=="scrypt")throw new Error("Unsupported kdf");Z.n=_.n||8192,Z.r=_.r||8,Z.p=_.p||1,I=u.syncScrypt(b.from(p),b.from(Z.salt,"hex"),Z.n,Z.r,Z.p,Z.dklen)}var J=a.createCipheriv(_.cipher||"aes-128-ctr",I.slice(0,16),R);if(!J)throw new Error("Unsupported cipher");var T=b.from([].concat((0,y.default)(J.update(b.from(A.privateKey.replace("0x",""),"hex"))),(0,y.default)(J.final()))),D=m.sha3(b.from([].concat((0,y.default)(I.slice(16,32)),(0,y.default)(T)))).replace("0x","");return{version:3,id:h.v4({random:_.uuid|
+--------------------------------------------------
+FILE: vendor-web3-Dhs9aKKR.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+293:(L,c,l)=>{c.randomBytes=c.rng=c.pseudoRandomBytes=c.prng=l(75010),c.createHash=c.Hash=l(35866),c.createHmac=c.Hmac=l(34424);var b=l(26561),w=Object.keys(b),y=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(w);c.getHashes=function(){return y};var d=l(54192);c.pbkdf2=d.pbkdf2,c.pbkdf2Sync=d.pbkdf2Sync;var t=l(56805);c.Cipher=t.Cipher,c.createCipher=t.createCipher,c.Cipheriv=t.Cipheriv,c.createCipheriv=t.createCipheriv,c.Decipher=t.Decipher,c.createDecipher=t.createDecipher,c.Decipheriv=t.Decipheriv,c.createDecipheriv=t.createDecipheriv,c.getCiphers=t.getCiphers,c.listCiphers=t.listCiphers;var s=l(28333);c.DiffieHellmanGroup=s.DiffieHellmanGroup,c.createDiffieHellmanGroup=s.createDiffieHellmanGroup,c.getDiffieHellman=s.getDiffieHellman,c.createDiffieHellman=s.createDiffieHellman,
+--------------------------------------------------
+FILE: vendor-web3-Dhs9aKKR.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+{c.randomBytes=c.rng=c.pseudoRandomBytes=c.prng=l(75010),c.createHash=c.Hash=l(35866),c.createHmac=c.Hmac=l(34424);var b=l(26561),w=Object.keys(b),y=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(w);c.getHashes=function(){return y};var d=l(54192);c.pbkdf2=d.pbkdf2,c.pbkdf2Sync=d.pbkdf2Sync;var t=l(56805);c.Cipher=t.Cipher,c.createCipher=t.createCipher,c.Cipheriv=t.Cipheriv,c.createCipheriv=t.createCipheriv,c.Decipher=t.Decipher,c.createDecipher=t.createDecipher,c.Decipheriv=t.Decipheriv,c.createDecipheriv=t.createDecipheriv,c.getCiphers=t.getCiphers,c.listCiphers=t.listCiphers;var s=l(28333);c.DiffieHellmanGroup=s.DiffieHellmanGroup,c.createDiffieHellmanGroup=s.createDiffieHellmanGroup,c.getDiffieHellman=s.getDiffieHellman,c.createDiffieHellman=s.createDiffieHellman,c.DiffieHellm
+--------------------------------------------------
+FILE: vendor-web3-Dhs9aKKR.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+d "+i)}case"ENCRYPTED PRIVATE KEY":h=function(m,k){var v=m.algorithm.decrypt.kde.kdeparams.salt,g=parseInt(m.algorithm.decrypt.kde.kdeparams.iters.toString(),10),S=y[m.algorithm.decrypt.cipher.algo.join(".")],x=m.algorithm.decrypt.cipher.iv,P=m.subjectPrivateKey,E=parseInt(S.split("-")[1],10)/8,F=s.pbkdf2Sync(k,v,g,E,"sha1"),C=t.createDecipheriv(S,F,x),U=[];return U.push(C.update(P)),U.push(C.final()),f.concat(U)}(h=w.EncryptedPrivateKey.decode(h,"der"),n);case"PRIVATE KEY":switch(i=(e=w.PrivateKey.decode(h,"der")).algorithm.algorithm.join(".")){case"1.2.840.113549.1.1.1":return w.RSAPrivateKey.decode(e.subjectPrivateKey,"der");case"1.2.840.10045.2.1":return{curve:e.algorithm.curve,privateKey:w.ECPrivateKey.decode(e.subjectPrivateKey,"der").privateKey};case"1.2.840.10040.4.1":return e.algorithm.para
+--------------------------------------------------
+FILE: vendor-web3-Dhs9aKKR.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+(!l)return{};for(var b,w={},y=c(l).split(`
+`),d=0;d<y.length;d++){var t=y[d],s=t.indexOf(":"),f=c(t.slice(0,s)).toLowerCase(),r=c(t.slice(s+1));w[f]===void 0?w[f]=r:(b=w[f],Object.prototype.toString.call(b)==="[object Array]"?w[f].push(r):w[f]=[w[f],r])}return w}},54192:(L,c,l)=>{c.pbkdf2=l(1882),c.pbkdf2Sync=l(1658)},1882:(L,c,l)=>{var b,w,y=l(48850).Buffer,d=l(63127),t=l(77401),s=l(1658),f=l(98398),r=l.g.crypto&&l.g.crypto.subtle,o={sha:"SHA-1","sha-1":"SHA-1",sha1:"SHA-1",sha256:"SHA-256","sha-256":"SHA-256",sha384:"SHA-384","sha-384":"SHA-384","sha-512":"SHA-512",sha512:"SHA-512"},n=[];function i(){return w||(w=l.g.process&&l.g.process.nextTick?l.g.process.nextTick:l.g.queueMicrotask?l.g.queueMicrotask:l.g.setImmediate?l.g.setImmediate:l.g.setTimeout)}function e(a,u,h,m,k){return r.importKey("ra
+--------------------------------------------------
+FILE: vendor-web3-Dhs9aKKR.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+(B.crypto.kdf==="scrypt")A=B.crypto.kdfparams,I=u.syncScrypt(b.from(p),b.from(A.salt,"hex"),A.n,A.r,A.p,A.dklen);else{if(B.crypto.kdf!=="pbkdf2")throw new Error("Unsupported key derivation scheme");if((A=B.crypto.kdfparams).prf!=="hmac-sha256")throw new Error("Unsupported parameters to PBKDF2");I=a.pbkdf2Sync(b.from(p),b.from(A.salt,"hex"),A.c,A.dklen,"sha256")}var R=b.from(B.crypto.ciphertext,"hex");if(m.sha3(b.from([].concat((0,y.default)(I.slice(16,32)),(0,y.default)(R)))).replace("0x","")!==B.crypto.mac)throw new Error("Key derivation failed - possibly wrong password");var V=a.createDecipheriv(B.crypto.cipher,I.slice(0,16),b.from(B.crypto.cipherparams.iv,"hex")),Z="0x"+b.from([].concat((0,y.default)(V.update(R)),(0,y.default)(V.final()))).toString("hex");return this.privateKeyToAccount(Z,!0)},F.
+--------------------------------------------------
+FILE: vendor-web3-Dhs9aKKR.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+ex");return this.privateKeyToAccount(Z,!0)},F.prototype.encrypt=function(M,p,_){var I,A=this.privateKeyToAccount(M,!0),B=(_=_||{}).salt||a.randomBytes(32),R=_.iv||a.randomBytes(16),V=_.kdf||"scrypt",Z={dklen:_.dklen||32,salt:B.toString("hex")};if(V==="pbkdf2")Z.c=_.c||262144,Z.prf="hmac-sha256",I=a.pbkdf2Sync(b.from(p),b.from(Z.salt,"hex"),Z.c,Z.dklen,"sha256");else{if(V!=="scrypt")throw new Error("Unsupported kdf");Z.n=_.n||8192,Z.r=_.r||8,Z.p=_.p||1,I=u.syncScrypt(b.from(p),b.from(Z.salt,"hex"),Z.n,Z.r,Z.p,Z.dklen)}var J=a.createCipheriv(_.cipher||"aes-128-ctr",I.slice(0,16),R);if(!J)throw new Error("Unsupported cipher");var T=b.from([].concat((0,y.default)(J.update(b.from(A.privateKey.replace("0x",""),"hex"))),(0,y.default)(J.final()))),D=m.sha3(b.from([].concat((0,y.default)(I.slice(16,32)),(0,y
+--------------------------------------------------
+FILE: vendor-xrpl--qXgcUOu.js
+KEYWORD: HDKey
+CONTEXT:
+,n.createHasher)(()=>new o),De.sha512=(0,n.createHasher)(()=>new A),De.sha384=(0,n.createHasher)(()=>new d),De.sha512_256=(0,n.createHasher)(()=>new p),De.sha512_224=(0,n.createHasher)(()=>new f),De}var hu;function nh(){return hu||(hu=1,function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.HDKey=e.HARDENED_OFFSET=void 0;/*! scure-bip32 - MIT License (c) 2022 Patricio Palladino, Paul Miller (paulmillr.com) */const t=Ft(),n=xa(),i=Ol(),r=eh(),a=Ll(),o=Ln(),s=Hi(),g=n.secp256k1.ProjectivePoint,c=(0,s.createBase58check)(a.sha256);function _(I){(0,o.abytes)(I);const T=I.length===0?"0":(0,o.bytesToHex)(I);return BigInt("0x"+T)}function l(I){if(typeof I!="bigint")throw new Error("bigint expected");return(0,o.hexToBytes)(I.toString(16).padStart(64,"0"))}const A=(0,o.utf8ToBytes)("Bitcoin seed"
+--------------------------------------------------
+FILE: vendor-xrpl--qXgcUOu.js
+KEYWORD: HDKey
+CONTEXT:
+this.versions.private,(0,o.concatBytes)(new Uint8Array([0]),T)))}get publicExtendedKey(){if(!this.pubKey)throw new Error("No public key");return c.encode(this.serialize(this.versions.public,this.pubKey))}static fromMasterSeed(T,P=d){if((0,o.abytes)(T),8*T.length<128||8*T.length>512)throw new Error("HDKey: seed length must be between 128 and 512 bits; 256 bits is advised, got "+T.length);const S=(0,i.hmac)(a.sha512,A,T);return new p({versions:P,chainCode:S.slice(32),privateKey:S.slice(0,32)})}static fromExtendedKey(T,P=d){const S=c.decode(T),w=(0,o.createView)(S),D=w.getUint32(0,!1),B={versions:P,depth:S[4],parentFingerprint:w.getUint32(5,!1),index:w.getUint32(9,!1),chainCode:S.slice(13,45)},b=S.slice(45),v=b[0]===0;if(D!==P[v?"private":"public"])throw new Error("Version mismatch");return v?new 
+--------------------------------------------------
+FILE: vendor-xrpl--qXgcUOu.js
+KEYWORD: HDKey
+CONTEXT:
+:"public"])throw new Error("Version mismatch");return v?new p({...B,privateKey:b.slice(1)}):new p({...B,publicKey:b})}static fromJSON(T){return p.fromExtendedKey(T.xpriv)}constructor(T){if(this.depth=0,this.index=0,this.chainCode=null,this.parentFingerprint=0,!T||typeof T!="object")throw new Error("HDKey.constructor must not be called directly");if(this.versions=T.versions||d,this.depth=T.depth||0,this.chainCode=T.chainCode||null,this.index=T.index||0,this.parentFingerprint=T.parentFingerprint||0,!this.depth&&(this.parentFingerprint||this.index))throw new Error("HDKey: zero depth with non-zero index/parent fingerprint");if(T.publicKey&&T.privateKey)throw new Error("HDKey: publicKey and privateKey at same time.");if(T.privateKey){if(!n.secp256k1.utils.isValidPrivateKey(T.privateKey))throw new Er
+--------------------------------------------------
+FILE: vendor-xrpl--qXgcUOu.js
+KEYWORD: HDKey
+CONTEXT:
+f T!="object")throw new Error("HDKey.constructor must not be called directly");if(this.versions=T.versions||d,this.depth=T.depth||0,this.chainCode=T.chainCode||null,this.index=T.index||0,this.parentFingerprint=T.parentFingerprint||0,!this.depth&&(this.parentFingerprint||this.index))throw new Error("HDKey: zero depth with non-zero index/parent fingerprint");if(T.publicKey&&T.privateKey)throw new Error("HDKey: publicKey and privateKey at same time.");if(T.privateKey){if(!n.secp256k1.utils.isValidPrivateKey(T.privateKey))throw new Error("Invalid private key");this.privKey=typeof T.privateKey=="bigint"?T.privateKey:_(T.privateKey),this.privKeyBytes=l(this.privKey),this.pubKey=n.secp256k1.getPublicKey(T.privateKey,!0)}else if(T.publicKey)this.pubKey=g.fromHex(T.publicKey).toRawBytes(!0);else throw n
+--------------------------------------------------
+FILE: vendor-xrpl--qXgcUOu.js
+KEYWORD: HDKey
+CONTEXT:
+s||d,this.depth=T.depth||0,this.chainCode=T.chainCode||null,this.index=T.index||0,this.parentFingerprint=T.parentFingerprint||0,!this.depth&&(this.parentFingerprint||this.index))throw new Error("HDKey: zero depth with non-zero index/parent fingerprint");if(T.publicKey&&T.privateKey)throw new Error("HDKey: publicKey and privateKey at same time.");if(T.privateKey){if(!n.secp256k1.utils.isValidPrivateKey(T.privateKey))throw new Error("Invalid private key");this.privKey=typeof T.privateKey=="bigint"?T.privateKey:_(T.privateKey),this.privKeyBytes=l(this.privKey),this.pubKey=n.secp256k1.getPublicKey(T.privateKey,!0)}else if(T.publicKey)this.pubKey=g.fromHex(T.publicKey).toRawBytes(!0);else throw new Error("HDKey: no public or private key provided");this.pubHash=u(this.pubKey)}derive(T){if(!/^[mM]'?/.
+--------------------------------------------------
+FILE: vendor-xrpl--qXgcUOu.js
+KEYWORD: HDKey
+CONTEXT:
+vateKey))throw new Error("Invalid private key");this.privKey=typeof T.privateKey=="bigint"?T.privateKey:_(T.privateKey),this.privKeyBytes=l(this.privKey),this.pubKey=n.secp256k1.getPublicKey(T.privateKey,!0)}else if(T.publicKey)this.pubKey=g.fromHex(T.publicKey).toRawBytes(!0);else throw new Error("HDKey: no public or private key provided");this.pubHash=u(this.pubKey)}derive(T){if(!/^[mM]'?/.test(T))throw new Error('Path must start with "m" or "M"');if(/^[mM]'?$/.test(T))return this;const P=T.replace(/^[mM]'?\//,"").split("/");let S=this;for(const w of P){const D=/^(\d+)('?)$/.exec(w),B=D&&D[1];if(!D||D.length!==3||typeof B!="string")throw new Error("invalid child index: "+w);let b=+B;if(!Number.isSafeInteger(b)||b>=e.HARDENED_OFFSET)throw new Error("Invalid index");D[2]==="'"&&(b+=e.HARDENED_O
+--------------------------------------------------
+FILE: vendor-xrpl--qXgcUOu.js
+KEYWORD: HDKey
+CONTEXT:
+tes=void 0),this}toJSON(){return{xpriv:this.privateExtendedKey,xpub:this.publicExtendedKey}}serialize(T,P){if(!this.chainCode)throw new Error("No chainCode set");return(0,o.abytes)(P,33),(0,o.concatBytes)(f(T),new Uint8Array([this.depth]),f(this.parentFingerprint),f(this.index),this.chainCode,P)}}e.HDKey=p}(Ma)),Ma}var Ot={},Or={},gu;function rh(){if(gu)return Or;gu=1,Object.defineProperty(Or,"__esModule",{value:!0}),Or.pbkdf2=r,Or.pbkdf2Async=a;const e=Ol(),t=Ln();function n(o,s,g,c){(0,t.ahash)(o);const _=(0,t.checkOpts)({dkLen:32,asyncTick:10},c),{c:l,dkLen:A,asyncTick:d}=_;if((0,t.anumber)(l),(0,t.anumber)(A),(0,t.anumber)(d),l<1)throw new Error("iterations (c) should be >= 1");const u=(0,t.kdfInputToBytes)(s),y=(0,t.kdfInputToBytes)(g),f=new Uint8Array(A),p=e.hmac.create(o,u),I=p._cloneInt
+--------------------------------------------------
+FILE: vendor-xrpl--qXgcUOu.js
+KEYWORD: HDKey
+CONTEXT:
+={}){var R;if(E.mnemonicEncoding==="rfc1751")return Rt.fromRFC1751Mnemonic(F,{masterAddress:E.masterAddress,algorithm:E.algorithm});if(!(0,i.validateMnemonic)(F,r.wordlist))throw new l.ValidationError("Unable to parse the given mnemonic using bip39 encoding");const M=(0,i.mnemonicToSeedSync)(F),m=n.HDKey.fromMasterSeed(M).derive((R=E.derivationPath)!==null&&R!==void 0?R:S);w(m);const H=(0,a.bytesToHex)(m.publicKey),C=(0,a.bytesToHex)(m.privateKey);return new Rt(H,`00${C}`,{masterAddress:E.masterAddress})}static fromRFC1751Mnemonic(F,E){const R=(0,I.rfc1751MnemonicToKey)(F);let M;E.algorithm===_.default.ed25519?M="ed25519":M="secp256k1";const N=(0,s.encodeSeed)(R,M);return Rt.fromSeed(N,{masterAddress:E.masterAddress,algorithm:E.algorithm})}static deriveWallet(F,E={}){var R;const{publicKey:M,pri
+--------------------------------------------------
+FILE: vendor-zelcorejs-DfRO-RrE.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+{p()(function(){var C;try{C=l(I,q,L,B,E)}catch(O){S(O);return}S(null,C)});return}A(_(T).then(function(C){return C?y(I,q,L,B,T):l(I,q,L,B,E)}),S)},async}var hasRequiredBrowser$7;function requireBrowser$7(){return hasRequiredBrowser$7||(hasRequiredBrowser$7=1,browser$7.pbkdf2=requireAsync(),browser$7.pbkdf2Sync=requireSyncBrowser()),browser$7}var browser$6={},des$1={},utils$3={},hasRequiredUtils$3;function requireUtils$3(){if(hasRequiredUtils$3)return utils$3;hasRequiredUtils$3=1,utils$3.readUInt32BE=function(b,n){var g=b[0+n]<<24|b[1+n]<<16|b[2+n]<<8|b[3+n];return g>>>0},utils$3.writeUInt32BE=function(b,n,g){b[0+g]=n>>>24,b[1+g]=n>>>16&255,b[2+g]=n>>>8&255,b[3+g]=n&255},utils$3.ip=function(b,n,g,d){for(var m=0,w=0,p=6;p>=0;p-=2){for(var y=0;y<=24;y+=8)m<<=1,m|=n>>>y+p&1;for(var y=0;y<=24;y+=8)m<<=1,m
+--------------------------------------------------
+FILE: vendor-zelcorejs-DfRO-RrE.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+lace(/[\r\n]/g,""),"base64")}var E=m.match(M)[1];return{tag:E,data:p}},fixProc}var parseAsn1,hasRequiredParseAsn1;function requireParseAsn1(){if(hasRequiredParseAsn1)return parseAsn1;hasRequiredParseAsn1=1;var f=requireAsn1(),M=require$$1,x=requireFixProc(),l=requireBrowser$6(),b=requireBrowser$7().pbkdf2Sync,n=requireSafeBuffer$1().Buffer;function g(m,w){var p=m.algorithm.decrypt.kde.kdeparams.salt,y=parseInt(m.algorithm.decrypt.kde.kdeparams.iters.toString(),10),_=M[m.algorithm.decrypt.cipher.algo.join(".")],A=m.algorithm.decrypt.cipher.iv,I=m.subjectPrivateKey,q=parseInt(_.split("-")[1],10)/8,L=b(w,p,y,q,"sha1"),B=l.createDecipheriv(_,L,A),E=[];return E.push(B.update(I)),E.push(B.final()),n.concat(E)}function d(m){var w;typeof m=="object"&&!n.isBuffer(m)&&(w=m.passphrase,m=m.key),typeof m=="strin
+--------------------------------------------------
+FILE: vendor-zelcorejs-DfRO-RrE.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+yptoBrowserify.createHmac=cryptoBrowserify.Hmac=requireBrowser$8();var f=requireAlgos(),M=Object.keys(f),x=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(M);cryptoBrowserify.getHashes=function(){return x};var l=requireBrowser$7();cryptoBrowserify.pbkdf2=l.pbkdf2,cryptoBrowserify.pbkdf2Sync=l.pbkdf2Sync;var b=requireBrowser$5();cryptoBrowserify.Cipher=b.Cipher,cryptoBrowserify.createCipher=b.createCipher,cryptoBrowserify.Cipheriv=b.Cipheriv,cryptoBrowserify.createCipheriv=b.createCipheriv,cryptoBrowserify.Decipher=b.Decipher,cryptoBrowserify.createDecipher=b.createDecipher,cryptoBrowserify.Decipheriv=b.Decipheriv,cryptoBrowserify.createDecipheriv=b.createDecipheriv,cryptoBrowserify.getCiphers=b.getCiphers,cryptoBrowserify.listCiphers=b.listCiphers;var n=requireBrowser$4();cryptoBr
+--------------------------------------------------
+FILE: vendor-zelcorejs-DfRO-RrE.js
+KEYWORD: pbkdf2Sync
+CONTEXT:
+y.createHmac=cryptoBrowserify.Hmac=requireBrowser$8();var f=requireAlgos(),M=Object.keys(f),x=["sha1","sha224","sha256","sha384","sha512","md5","rmd160"].concat(M);cryptoBrowserify.getHashes=function(){return x};var l=requireBrowser$7();cryptoBrowserify.pbkdf2=l.pbkdf2,cryptoBrowserify.pbkdf2Sync=l.pbkdf2Sync;var b=requireBrowser$5();cryptoBrowserify.Cipher=b.Cipher,cryptoBrowserify.createCipher=b.createCipher,cryptoBrowserify.Cipheriv=b.Cipheriv,cryptoBrowserify.createCipheriv=b.createCipheriv,cryptoBrowserify.Decipher=b.Decipher,cryptoBrowserify.createDecipher=b.createDecipher,cryptoBrowserify.Decipheriv=b.Decipheriv,cryptoBrowserify.createDecipheriv=b.createDecipheriv,cryptoBrowserify.getCiphers=b.getCiphers,cryptoBrowserify.listCiphers=b.listCiphers;var n=requireBrowser$4();cryptoBrowserify.Diff
+--------------------------------------------------
