@@ -1,0 +1,372 @@
+--- БЛОК 1 (позиция 13957) ---
+\x0a\x20\x20\x20\x20gap:\x208px;\x0a}\x0a}\x0a','chainIDs','none','exception','dialog-form-column','all','6oMJCKz','Europe','message.recovery_password_question8','separator-x-15','showError','state','zelcoreClassic','data-v-7cb8283c','nodeService','grid__seed_pharse','screenWidth','processAuthentication','table','name','d2faDialog','settingsContentInfo','keys','status-item\x20status-missing','proxyServer','sent','current-device-info','Icon','onUpdate:modelValue','Monero','onClose','passwordVisible','file','clickeable','contactsEncrypted','input','logolink','changeFullNodePath','stoppingcoin','checkbox','value','ethereum','copyToClipboard','copySeedPhrase','zelcore_device_uuid','txsNotifications','chevron-down','no-devices-text','changeZelCoreClassic','activeExchangeWalletLabel','message.menu','encryptContacts','Word\x20','message.spend_key_public','concat','Enter','readAsDataURL','message.last_seen','Transition','message.disabled','stopDaemon','useBiometrics','vModelCheckbox','pub','14205048VZeeMJ','renderList','sync-alt','isExperimentalFeaturesEnabled','filterable','pin1','sec','economyMode','login-activity','isMnemonicAccount','message.email_verification_required','resolvedOptions','length','An\x20error\x20has\x20occurred','message.confirm_remove_device','error-message','span','message.wallet1','img','key','customDefaultPathButton','message.device_added_successfully','log','message.failed_to_add_device','div','createCommentVNode','string','failed','$localstore','adjustVisibleSection','message.offline_notifications','settingsLoading','getItem','add_device','spendKey','.gif,.jpg,.jpeg,.png','message.enable_login_tracking','end','loginTracking','remove_device','normalizeClass','048870ed','withModifiers','killFullNodeProcess','toggle-slider','activity-details','extras','chevron-icon','message.click_to_copy','__scopeId','saveAccount','message.recovery_password_question13','filter','cze','pkButton','message.delete_all_data_title','No\x20Process\x20found\x20to\x20kill.','message.add_device','mark','privKeyWIF','ElForm','fiatCode','detail-row','toFixed','bottom','requestedLimit','trace','storeSectionVisible','message.select_asset','logout','LoginActivity','openBlock',
+--- БЛОК 2 (позиция 104820) ---
+e3['aH'])(['accounts','activecoin','loggedaccount','coins','coinDaemonIsStopping','safetoquit',_0x4611af(0x292),_0x4611af(0x25d),'activeExchangeWallet','activeRewardWallet',_0x4611af(0x2f3),'uimode','zelcoreClassic','sectionVisible'])),(0x0,_0x2f27e3['L8'])(['coinsArray'])),{},{'availableQuestions':function(){var _0x3d1627=_0x4611af,_0x1a5834=this;return this[_0x3d1627(0x1ed)]['filter'](function(_0x53044e){var _0x22e6f8=_0x3d1627;return!_0x1a5834['recoveryPasswordForm']['questions']_0x22e6f8(0x1f2);});},'animated':function(){var _0x11b0d1=_0x4611af;return this[_0x11b0d1(0x2e1)]<0x320;}}),'beforeUnmount':function(){this'adjustVisibleSection';},'mounted':function(){var _0x3284c4=_0x4611af;this[_0x3284c4(0x2cd)]||this['
+i
+s
+E
+x
+t
+e
+n
+s
+i
+o
+n
+′
+]
+∣
+∣
+w
+i
+n
+d
+o
+w
+[
+′
+a
+d
+d
+E
+v
+e
+n
+t
+L
+i
+s
+t
+e
+n
+e
+r
+′
+]
+(
+′
+r
+e
+s
+i
+z
+e
+′
+,
+t
+h
+i
+s
+[
+′
+o
+n
+R
+e
+s
+i
+z
+e
+′
+]
+)
+,
+t
+h
+i
+s
+[
+′
+s
+c
+r
+e
+e
+n
+W
+i
+d
+t
+h
+′
+]
+>
+=
+0
+x
+320
+?
+t
+h
+i
+s
+[
+′
+a
+d
+j
+u
+s
+t
+V
+i
+s
+i
+b
+l
+e
+S
+e
+c
+t
+i
+o
+n
+′
+]
+(
+′
+e
+x
+t
+r
+a
+s
+′
+)
+:
+t
+h
+i
+s
+[
+0
+x
+3284
+c
+4
+(
+0
+x
+19
+d
+)
+]
+(
+′
+′
+)
+;
+v
+a
+r
+0
+x
+d
+2
+a
+5
+f
+3
+=
+t
+h
+i
+s
+,
+0
+x
+5
+c
+2805
+=
+0
+x
+d
+2
+a
+5
+f
+3
+[
+′
+isExtension 
+′
+ ]∣∣window[ 
+′
+ addEventListener 
+′
+ ]( 
+′
+ resize 
+′
+ ,this[ 
+′
+ onResize 
+′
+ ]),this[ 
+′
+ screenWidth 
+′
+ ]>=0x320?this[ 
+′
+ adjustVisibleSection 
+′
+ ]( 
+′
+ extras 
+′
+ ):this[ 
+0
+​
+ x3284c4(0x19d)]( 
+′′
+ );var 
+0
+​
+ xd2a5f3=this, 
+0
+​
+ x5c2805= 
+0
+​
+ xd2a5f3[ 
+′
+ 
+localstore']'get';this['autoUpdater']=void 0x0===_0x5c2805||_0x5c2805;var _0x5c8317=_0xd2a5f3[_0x3284c4(0x19c)]'get';void 0x0!==_0x5c8317&&(this[_0x3284c4(0x2b5)]=_0x5c8317);var _0x1e3f8a=this['loggedaccount'][0x0][_0x3284c4(0x236)];this['fullNodeEncryption']=void 0x0===_0x1e3f8a||_0x1e3f8a;var _0x8180e3=this[_0x3284c4(0x22a)][0x0][_0x3284c4(0x257)];this['txsNotifications']=void 0x0!==_0x8180e3&&_0x8180e3;var _0x526f00=this[_0x3284c4(0x22a)][0x0]['fullNodePath'];this['fullNodePath']=_0x526f00||this'defaultFullNodePath';var _0x277368=_0xd2a5f3['
+localstore']'get';_0x3a7ff6===_0xd2a5f3['proxySet'][_0x3284c4(0x2a4)]?this['proxyInUse']='No\x20proxy':_0x3a7ff6===_0xd2a5f3['proxySet']['eu']?this['proxyInUse']='Europe':_0x3a7ff6===_0xd2a5f3['proxySet']['na']?this['proxyInUse']='North\x20America':_0x3a7ff6===_0xd2a5f3[_0x3284c4(0x292)]['sa']?this['proxyInUse']='South\x20America':_0x3a7ff6===_0xd2a5f3[_0x3284c4(0x292)]['as']?this['proxyInUse']='Asia':_0x3a7ff6===_0xd2a5f3['proxySet']['oc']?this['proxyInUse']='Oceania':_0x3a7ff6===_0xd2a5f3['pr
+--- БЛОК 3 (позиция 113320) ---
+)]=_0x222f21['next']){case 0x0:if(_0x5a0c8c[_0x360ee5(0x233)]'commit',_0x5a0c8c['
+s
+t
+o
+r
+e
+′
+]
+[
+0
+x
+360
+e
+e
+5
+(
+0
+x
+2
+b
+c
+)
+]
+(
+0
+x
+360
+e
+e
+5
+(
+0
+x
+2
+b
+8
+)
+,
+!
+0
+x
+0
+)
+,
+0
+x
+5
+a
+0
+c
+8
+c
+[
+′
+store 
+′
+ ][ 
+0
+​
+ x360ee5(0x2bc)]( 
+0
+​
+ x360ee5(0x2b8),!0x0), 
+0
+​
+ x5a0c8c[ 
+′
+ 
+localstore']_0x360ee5(0x2a5),(_0x1a84b8=_0x5a0c8c['
+store']'commit',_0x5a0c8c['
+store']'commit',this[_0x227e8f(0x233)]'dispatch',this['resetBackgroundDialogVisible']=!0x1;},'resetAvatar':function(){this['
+s
+t
+o
+r
+e
+′
+]
+[
+′
+c
+o
+m
+m
+i
+t
+′
+]
+(
+′
+r
+e
+s
+e
+t
+A
+v
+a
+t
+a
+r
+′
+)
+,
+t
+h
+i
+s
+[
+′
+store 
+′
+ ][ 
+′
+ commit 
+′
+ ]( 
+′
+ resetAvatar 
+′
+ ),this[ 
+′
+ 
+store']'dispatch',this['resetBackgroundDialogVisible']=!0x1;},'copyToClipboard':function(_0x5c1c9a){_0x5c1c9a&&this['
+store']'commit',this['$store']'dispatch',console_0x56ccfd(0x196);},'autologoutnamefn':function(){var _0x345ee2=_0x4611af;0x5===Number(this[_0x345ee2(0x29b)])?this['autologoutname']='5\x20minutes':0xa===Number(this['autologoutvalue'])?this[_0x345ee2(0x2b1)]='10\x20minutes':0xf===Number(this['autologoutvalue'])?this['autologoutname']='15\x20minutes':0x14===Number(this['autologoutvalue'])?this['autologoutname']='30\x20minutes':0x19===Number(this['autologoutvalue'])?this['autologoutname']='1\x20hour':0x1e===Number(this['autologoutvalue'])?this[_0x345ee2(0x2b1)]='2\x20hours':0x23===Number(this['autologoutvalue'])&&(this['autologoutname']='Never');},'chooseWallet':function(_0x33d1c3){var _0x21642a=_0x4611af,_0x205a3c=this;this[_0x21642a(0x2a
+--- БЛОК 4 (позиция 158959) ---
+de'])(_0x1113dd,{'icon':_0x3ebcd3(0x1ce)}),(0x0,_0xb832a['createElementVNode'])(_0x3ebcd3(0x215),null,[(0x0,_0xb832a[_0x3ebcd3(0x1d8)])('input',{'type':'checkbox','tabindex':'-1','checked':_0xe06eb3['zelcoreClassic'],'onClick':_0x29d19c[0x12]||(_0x29d19c[0x12]=function(){return _0x23b1e5['toggleClassicMode']&&_0x23b1e5['toggleClassicMode']'apply';})},null,0x8,_0x347fbb),_0x29d19c[0x50]||(_0x29d19c[0x50]=(0x0,_0xb832a[_0x3ebcd3(0x1d8)])('span',null,null,-0x1))]),(0x0,_0xb832a['createVNode'])(_0x1113dd,{'icon':'images'})])])]),(0x0,_0xb832a[_0x3ebcd3(0x1d8)])('div',_0x3b046b,[(0x0,_0xb832a[_0x3ebcd3(0x2c0)])(_0x43b271,{'type':'primary','width':'250px','round':'','onclick':_0x3ebcd3(0x1cf)},{'default':(0x0,_0xb832a['withCtx'])(function(){return[(0x0,_0xb832a['createTextVNode'])((0x0,_0xb832a['toDisplayString'])(0xe06eb3'
+t'),0x1)];}),'':0x1})]),(0x0,_0xb832a['createElementVNode'])('div',_0x48d090,[(0x0,_0xb832a[_0x3ebcd3(0x2c0)])(_0x43b271,{'type':'primary','width':'250px','round':'','onClick':_0x29d19c[0x13]||(_0x29d19c[0x13]=function(_0x591657){return _0x4039dd['resetBackgroundDialogVisible']=!0x0;})},{'default':(0x0,_0xb832a['withCtx'])(function(){var _0x11532c=_0x3ebcd3;return[(0x0,_0xb832a['createTextVNode'])((0x0,_0xb832a[_0x11532c(0x2ab)])(0xe06eb3'$t'),0x1)];}),'':0x1})]),(0x0,_0xb832a['createElementVNode'])('input',{'id':'imageUpload','ref':_0x3ebcd3(0x1ce),'class':'hidden','type':_0x3ebcd3(0x2f1),'accept':_0x3ebcd3(0x1a3),'onChange':_0x29d19c[0x14]||(_0x29d19c[0x14]=function(){return _0x23b1e5['chooseAvatar']&&_0x23b1e5['chooseAvatar']'apply';})},null,0x220),(0x0,_0xb832a['createElementVNode'])('input',{'id':'imageUploadBG','ref':'imagebg','class':'hi
+--- ТЕСТ: ПОЧЕМУ v34 БЫЛ БЛИЗОК? ---
+SHA256(seed + '2'): 5d030653f8...
+SHA256(bytes + 2):  af088ce5a9...
+SHA256(seed_str):   92b5df6ddb...
+fromMasterSeed нет в 828
+Я раньше возможно запутался и искал в render.js вместо 828
