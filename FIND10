@@ -1,0 +1,286 @@
+E:\E-MAIL SOFTWARE V1.1.5\zelcore>python zel_gemeni_2.py
+--- Сканирование директории: E:\plugin_src\8.31.1_0\assets ---
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\Account-BsIPcGz7.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+pping","safetoquit","proxySet","activeWallet","activeExchangeWallet","activeRewardWallet","uimode","zelcoreClassic","sectionVisible"]),...Be(["coinsArray"]),availableQuestions(){return this.questions.filter(e=>!this.recoveryPasswordForm.questions.includes(e.id))},animated(){return this.screenWidth<800}},beforeUnmount(){this.adjustVisibleSection("")},mounted(){!this.$isMobile&&!this.$isExtension&&window.addEventListener("resize",this.onResize),this.screenWidth>=800?this.adjustVisibleSection("extras"):this.adjustVisibleSection("");const e=this,t=e.$localstore.get("isAutoUpdaterEnabled");t===void 0?this.autoUpdater=!0:this.autoUpdater=t;const $=e.$localstore.get("isExperimentalFeaturesEnabled");$!==void 0&&(
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\Account-BsIPcGz7.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+mmit("changeZelCoreClassic",!0),this.$store.commit("updateClassicZelCore",!0),this.$localstore.set("zelcoreClassic",!0);const{files:e}=this.$refs.imagebg,h=e[0].path.replace(/\\/g,"/").replace(/ /g,"%20");this.$store.commit("selectBG",h),this.$store.dispatch("saveAccount")},resetBG(){this.$store.commit("resetBG"),this.$store.dispatch("saveAccount"),this.resetBackgroundDialogVisible=!1},resetAvatar(){this.$store.commit("resetAvatar"),this.$store.dispatch("saveAccount"),this.resetBackgroundDialogVisible=!1},copyToClipboard(e){e&&this.$store.dispatch("copyToClipboard",e)},autologoutfn(){const e=document.getElementById("logoutRange").value;console.log(e),this.autologoutvalue=e,this.autologoutnamefn(),this.$st
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\Account-BsIPcGz7.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+store.set("uimode","night"),this.$store.dispatch("saveAccount"))},toggleClassicMode(){const e=!this.zelcoreClassic;this.$store.commit("changeZelCoreClassic",e),this.$store.commit("updateClassicZelCore",e),this.$localstore.set("zelcoreClassic",e),this.$store.dispatch("saveAccount")},updateService(){const e={coinService:this.coinService,apiService:this.apiService,nodeService:this.nodeService,explorerService:this.explorerService,electrumService:this.electrumService,blockbookService:this.blockbookService,kadenaChainID:this.kadenaChainID};this.$store.commit("updateAssetSettings",e),this.$store.dispatch("saveAccount"),this.$message.success(this.$t("message.backend_updated"))},cancelAccRecovery(){this.numberOfQu
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\Account-BsIPcGz7.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+commit("changeZelCoreClassic",e),this.$store.commit("updateClassicZelCore",e),this.$localstore.set("zelcoreClassic",e),this.$store.dispatch("saveAccount")},updateService(){const e={coinService:this.coinService,apiService:this.apiService,nodeService:this.nodeService,explorerService:this.explorerService,electrumService:this.electrumService,blockbookService:this.blockbookService,kadenaChainID:this.kadenaChainID};this.$store.commit("updateAssetSettings",e),this.$store.dispatch("saveAccount"),this.$message.success(this.$t("message.backend_updated"))},cancelAccRecovery(){this.numberOfQuestions=1,this.recoveryPasswordForm={password:"",questions:[],answers:[]},this.accRecoveryVisible=!1;const{recoverPassword:e}=t
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\Account-BsIPcGz7.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+,s("div",Fl,[r(D,{icon:"image"}),s("label",null,[s("input",{type:"checkbox",tabindex:"-1",checked:e.zelcoreClassic,onClick:t[16]||(t[16]=(...o)=>n.toggleClassicMode&&n.toggleClassicMode(...o))},null,8,Ll),t[69]||(t[69]=s("span",null,null,-1))]),r(D,{icon:"images"})])])])])])):m("",!0),e.sectionVisible==="assets"?(a(),c("div",ql,[s("div",Tl,[s("div",null,[s("p",El,i(e.$t("message.wallet_for_exchanges")),1),r(f,{modelValue:l.activeExchangeWalletLabel,"onUpdate:modelValue":t[17]||(t[17]=o=>l.activeExchangeWalletLabel=o),onChange:n.chooseExchangeWallet},{default:d(()=>[(a(!0),c(M,null,H(e.loggedaccount[0].walletLabels,o=>(a(),I(g,{key:o,value:o,label:o},{default:d(()=>[u(i(o),1)]),_:2},1032,["value","label"])
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\b-amchart-Cz-6V3ps.js]
+[ТЕРМИН: oY\s*[:=]]
+------------------------------------------------------------
+e("0sYB"),S=Math.log,M=Math.LOG10E;p({target:"Math",stat:!0},{log10:function(k){return S(k)*M}})},lPoY:function(L,A,e){var p=e("0sYB"),S=e("ojxk").indexOf,M=e("xlUI"),k=e("J+FZ"),I=[].indexOf,T=!!I&&1/[1].indexOf(1,-0)<0,_=M("indexOf"),v=k("indexOf",{ACCESSORS:!0,1:0});p({target:"Array",proto:!0,forced:T||!_||!v},{indexOf:function(w){return T?I.apply(this,arguments)||0:S(this,w,arguments.length>1?arguments[1]:void 0)}})},leaB:function(L,A,e){var p=e("6aQQ"),S=e("KslR"),M=e("lnCe"),k=S("iterator");L.exports=!p(function(){var I=new URL("b?a=1&b=2&c=3","http://a"),T=I.searchParams,_="";return I.pathname="c%20d",T.forEach(function(v,w){T.delete("b"),_+=w+v}),M&&!I.toJSON||!T.sort||I.href!=="http://
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+0,isDarwin:!1,scrollTimeout:null,machineId:null,initCompleted:!1}},computed:{...mapState(["uimode","zelcoreClassic","loggedaccount"])},async beforeMount(){const e=this;this.machineId=this.getFingerprint();let t=this.$localstore.get("uimode");t||(t="night",this.$localstore.set("uimode",t)),this.$store.commit("changeUImode",t);let jn=this.$localstore.get("zelcoreClassic");jn||(jn=!1,this.$localstore.set("zelcoreClassic",jn)),this.$store.commit("changeZelCoreClassic",jn),setInterval(()=>{e.$store.commit("setNavigation",e.$router.currentRoute.value.path)},1e3),setInterval(()=>this.saveState(),1e4),window.chrome?.runtime?.onMessage&&window.chrome.runtime.onMessage.addListener(Yn=>{e.$store.commit("setZelcorePr
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+this.$localstore.set("uimode",t)),this.$store.commit("changeUImode",t);let jn=this.$localstore.get("zelcoreClassic");jn||(jn=!1,this.$localstore.set("zelcoreClassic",jn)),this.$store.commit("changeZelCoreClassic",jn),setInterval(()=>{e.$store.commit("setNavigation",e.$router.currentRoute.value.path)},1e3),setInterval(()=>this.saveState(),1e4),window.chrome?.runtime?.onMessage&&window.chrome.runtime.onMessage.addListener(Yn=>{e.$store.commit("setZelcoreProtocol",Yn),console.log(Yn)})},async mounted(){const e=this,t=document.querySelector("body");t.classList.add(this.uimode);function jn(Yn){!["span","input","label","summary"].includes(Yn.target.localName)&&!Yn.target.classList.value.includes("el-step")&&(Yn
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+it("changeUImode",t);let jn=this.$localstore.get("zelcoreClassic");jn||(jn=!1,this.$localstore.set("zelcoreClassic",jn)),this.$store.commit("changeZelCoreClassic",jn),setInterval(()=>{e.$store.commit("setNavigation",e.$router.currentRoute.value.path)},1e3),setInterval(()=>this.saveState(),1e4),window.chrome?.runtime?.onMessage&&window.chrome.runtime.onMessage.addListener(Yn=>{e.$store.commit("setZelcoreProtocol",Yn),console.log(Yn)})},async mounted(){const e=this,t=document.querySelector("body");t.classList.add(this.uimode);function jn(Yn){!["span","input","label","summary"].includes(Yn.target.localName)&&!Yn.target.classList.value.includes("el-step")&&(Yn.preventDefault(),Yn.stopPropagation())}document.a
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+t("RouterView"),jc=resolveComponent("ZelSpinner");return openBlock(),createElementBlock("div",{id:e.zelcoreClassic===!0?"classicZelcore":"newZelcore",style:normalizeStyle({backgroundImage:e.zelcoreClassic===!0?e.loggedaccount&&e.loggedaccount[0]?"url("+e.$img(e.loggedaccount[0].background)+")":"url("+e.$img("@/assets/background.jpg")+")":""}),class:"zelcore-app__inner"},[createVNode(Vo),createVNode(jc,{overlay:"",active:Po.initLoading,description:"Decrypting State"},null,8,["active"])],12,_hoisted_1$l)}const App=_export_sfc(_sfc_main$y,[["render",_sfc_render$8]]);/*!
+ * vue-router v4.6.4
+ * (c) 2025 Eduardo San Martin Morote
+ * @license MIT
+ */const isBrowser$1=typeof document<"u";function isRouteComponen
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+iv",{id:e.zelcoreClassic===!0?"classicZelcore":"newZelcore",style:normalizeStyle({backgroundImage:e.zelcoreClassic===!0?e.loggedaccount&&e.loggedaccount[0]?"url("+e.$img(e.loggedaccount[0].background)+")":"url("+e.$img("@/assets/background.jpg")+")":""}),class:"zelcore-app__inner"},[createVNode(Vo),createVNode(jc,{overlay:"",active:Po.initLoading,description:"Decrypting State"},null,8,["active"])],12,_hoisted_1$l)}const App=_export_sfc(_sfc_main$y,[["render",_sfc_render$8]]);/*!
+ * vue-router v4.6.4
+ * (c) 2025 Eduardo San Martin Morote
+ * @license MIT
+ */const isBrowser$1=typeof document<"u";function isRouteComponent(e){return typeof e=="object"||"displayName"in e||"props"in e||"__vccOpts"in e}function i
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+.zelcore.io/api/status"],urlsFailed:!1,urlsLoading:!0}},computed:{...mapState(["proxySet","uimode","zelcoreClassic"])},mounted(){const e=this;e.$localstore.get("proxyServer")===void 0&&e.$localstore.set("proxyServer",e.proxySet.noproxy);const jn=e.$localstore.get("proxyServer");jn===e.proxySet.noproxy?this.proxyInUse="No proxy":jn===e.proxySet.eu?this.proxyInUse="Europe":jn===e.proxySet.na?this.proxyInUse="North America":jn===e.proxySet.sa?this.proxyInUse="South America":jn===e.proxySet.as?this.proxyInUse="Asia":jn===e.proxySet.oc?this.proxyInUse="Oceania":jn===e.proxySet.fr?this.proxyInUse="Paris, FR":jn===e.proxySet.cze?this.proxyInUse="Prague, CZE":jn===e.proxySet.fra?this.proxyInUse="Frankfurt, DE":jn
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+("changeUImode","night"),this.$localstore.set("uimode","night"))},toggleClassicMode(){const e=!this.zelcoreClassic;this.$store.commit("changeZelCoreClassic",e),this.$localstore.set("zelcoreClassic",e)}}},_hoisted_1$k=["alt"],_hoisted_2$h={class:"flexcontainer"},_hoisted_3$e={class:"theme-toggle"},_hoisted_4$b=["checked"],_hoisted_5$9={class:"theme-toggle"},_hoisted_6$7=["checked"],_hoisted_7$7=["alt"],_hoisted_8$7={key:0,class:"red"},_hoisted_9$7={key:0},_hoisted_10$7={key:1},_hoisted_11$6={class:"proxyConnection"},_hoisted_12$6={key:0,class:"stackB"},_hoisted_13$6={key:1},_hoisted_14$6={class:"flexcontainer"},_hoisted_15$6={class:"wrapper"},_hoisted_16$6={class:"flexcontainer"},_hoisted_17$6={class:"wrap
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+e(){const e=!this.zelcoreClassic;this.$store.commit("changeZelCoreClassic",e),this.$localstore.set("zelcoreClassic",e)}}},_hoisted_1$k=["alt"],_hoisted_2$h={class:"flexcontainer"},_hoisted_3$e={class:"theme-toggle"},_hoisted_4$b=["checked"],_hoisted_5$9={class:"theme-toggle"},_hoisted_6$7=["checked"],_hoisted_7$7=["alt"],_hoisted_8$7={key:0,class:"red"},_hoisted_9$7={key:0},_hoisted_10$7={key:1},_hoisted_11$6={class:"proxyConnection"},_hoisted_12$6={key:0,class:"stackB"},_hoisted_13$6={key:1},_hoisted_14$6={class:"flexcontainer"},_hoisted_15$6={class:"wrapper"},_hoisted_16$6={class:"flexcontainer"},_hoisted_17$6={class:"wrapper"},_hoisted_18$5={key:0,class:"red"},_hoisted_19$5={key:0},_hoisted_20$4={key:1
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+e"}),createBaseVNode("label",null,[createBaseVNode("input",{type:"checkbox",tabindex:"-1",checked:e.zelcoreClassic,onClick:t[2]||(t[2]=kd=>qo.toggleClassicMode())},null,8,_hoisted_6$7),t[13]||(t[13]=createBaseVNode("span",null,null,-1))]),createVNode(jc,{icon:"images"})])]),createBaseVNode("h4",null,toDisplayString(e.$t("message.language")),1),createVNode(Mc,{onChange:qo.handleLanguageChange},null,8,["onChange"]),createBaseVNode("h4",null,[createTextVNode(toDisplayString(e.$t("message.proxy_settings"))+" ",1),withDirectives(createBaseVNode("img",{src:_imports_0$2,alt:e.$t("message.help"),class:"info"},null,8,_hoisted_7$7),[[vd,{content:e.$t("message.select_proxy"),placement:"bottom",delay:{show:200}}]])])
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+},nodeService:{},apiService:{},electrumService:{},blockbookService:{},fiatSettings:0,uimode:"night",zelcoreClassic:!1,overviewStyle:"a",exchangeLayout:"a",kadenaChainID:"0",transactionNotificationsAfterLogOut:!1,importedERCTokens:[],importedBEP20Tokens:[],importedPOLYGONTokens:[],importedTRCTokens:[],importedBEP2Tokens:[],importedKDATokens:[],importedSOLTokens:[],importedTERRATokens:[],importedOMNITokens:[],importedAVAXCTokens:[],importedERGOTokens:[],importedALGOTokens:[],importedEthLikeTokens:[],importedTonTokens:[],importedCosmosTokens:[],importedTokensWithType:[],recoverPassword:"",questionsRecoverPassword:"",znodesMonitoring:[],fullNodeEncryption:!0,fullNodePath:null,firstLogin:!0,activatedWidgets:!1
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+},nodeService:{},apiService:{},electrumService:{},blockbookService:{},fiatSettings:0,uimode:"night",zelcoreClassic:!1,overviewStyle:"a",exchangeLayout:"a",kadenaChainID:"0",transactionNotificationsAfterLogOut:!1,importedERCTokens:[],importedBEP20Tokens:[],importedPOLYGONTokens:[],importedTRCTokens:[],importedBEP2Tokens:[],importedKDATokens:[],importedSOLTokens:[],importedTERRATokens:[],importedOMNITokens:[],importedAVAXCTokens:[],importedERGOTokens:[],importedALGOTokens:[],importedEthLikeTokens:[],importedTonTokens:[],importedCosmosTokens:[],importedTokensWithType:[],recoverPassword:"",questionsRecoverPassword:"",znodesMonitoring:[],fullNodeEncryption:!0,fullNodePath:null,firstLogin:!1,showZeroBalance:!0,
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+Settings=Bd.fiatSettings!==void 0?Bd.fiatSettings:gd.fiatSettings,gd.uimode=Bd.uimode||gd.uimode,gd.zelcoreClassic=Bd.zelcoreClassic!==void 0?Bd.zelcoreClassic:gd.zelcoreClassic,gd.overviewStyle=Bd.overviewStyle||gd.overviewStyle,gd.exchangeLayout=Bd.exchangeLayout||gd.exchangeLayout,gd.kadenaChainID=Bd.kadenaChainID||gd.kadenaChainID,gd.transactionNotificationsAfterLogOut=Bd.transactionNotificationsAfterLogOut!==void 0?Bd.transactionNotificationsAfterLogOut:gd.transactionNotificationsAfterLogOut,gd.importedERCTokens=Bd.importedERCTokens||gd.importedERCTokens,gd.importedBEP20Tokens=Bd.importedBEP20Tokens||gd.importedBEP20Tokens,gd.importedPOLYGONTokens=Bd.importedPOLYGONTokens||gd.importedPOLYGONTokens,gd
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+ttings!==void 0?Bd.fiatSettings:gd.fiatSettings,gd.uimode=Bd.uimode||gd.uimode,gd.zelcoreClassic=Bd.zelcoreClassic!==void 0?Bd.zelcoreClassic:gd.zelcoreClassic,gd.overviewStyle=Bd.overviewStyle||gd.overviewStyle,gd.exchangeLayout=Bd.exchangeLayout||gd.exchangeLayout,gd.kadenaChainID=Bd.kadenaChainID||gd.kadenaChainID,gd.transactionNotificationsAfterLogOut=Bd.transactionNotificationsAfterLogOut!==void 0?Bd.transactionNotificationsAfterLogOut:gd.transactionNotificationsAfterLogOut,gd.importedERCTokens=Bd.importedERCTokens||gd.importedERCTokens,gd.importedBEP20Tokens=Bd.importedBEP20Tokens||gd.importedBEP20Tokens,gd.importedPOLYGONTokens=Bd.importedPOLYGONTokens||gd.importedPOLYGONTokens,gd.importedTRCTokens
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+ings:gd.fiatSettings,gd.uimode=Bd.uimode||gd.uimode,gd.zelcoreClassic=Bd.zelcoreClassic!==void 0?Bd.zelcoreClassic:gd.zelcoreClassic,gd.overviewStyle=Bd.overviewStyle||gd.overviewStyle,gd.exchangeLayout=Bd.exchangeLayout||gd.exchangeLayout,gd.kadenaChainID=Bd.kadenaChainID||gd.kadenaChainID,gd.transactionNotificationsAfterLogOut=Bd.transactionNotificationsAfterLogOut!==void 0?Bd.transactionNotificationsAfterLogOut:gd.transactionNotificationsAfterLogOut,gd.importedERCTokens=Bd.importedERCTokens||gd.importedERCTokens,gd.importedBEP20Tokens=Bd.importedBEP20Tokens||gd.importedBEP20Tokens,gd.importedPOLYGONTokens=Bd.importedPOLYGONTokens||gd.importedPOLYGONTokens,gd.importedTRCTokens=Bd.importedTRCTokens||gd.i
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+gs,gd.uimode=Bd.uimode||gd.uimode,gd.zelcoreClassic=Bd.zelcoreClassic!==void 0?Bd.zelcoreClassic:gd.zelcoreClassic,gd.overviewStyle=Bd.overviewStyle||gd.overviewStyle,gd.exchangeLayout=Bd.exchangeLayout||gd.exchangeLayout,gd.kadenaChainID=Bd.kadenaChainID||gd.kadenaChainID,gd.transactionNotificationsAfterLogOut=Bd.transactionNotificationsAfterLogOut!==void 0?Bd.transactionNotificationsAfterLogOut:gd.transactionNotificationsAfterLogOut,gd.importedERCTokens=Bd.importedERCTokens||gd.importedERCTokens,gd.importedBEP20Tokens=Bd.importedBEP20Tokens||gd.importedBEP20Tokens,gd.importedPOLYGONTokens=Bd.importedPOLYGONTokens||gd.importedPOLYGONTokens,gd.importedTRCTokens=Bd.importedTRCTokens||gd.importedTRCTokens,g
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+togglePanelVisible(e,t){e.panelVisible=t},changeUImode(e,t){e.uimode=t},changeZelCoreClassic(e,t){e.zelcoreClassic=t},changeNewsOnLogin(e,t){e.newsOnLogin=t},saveNews(e,{category:t,item:jn}){if(t==="general"){const Yn=[];for(const Po of jn)Yn.find(Vo=>Vo.title===Po.title)||Yn.push(Po);e.storedNews.general=Yn,e.storedNews.general.sort((Po,qo)=>parseFloat(new Date(Po.pubDate).getTime())<parseFloat(new Date(qo.pubDate).getTime())?1:parseFloat(new Date(Po.pubDate).getTime())>parseFloat(new Date(qo.pubDate).getTime())?-1:0)}else{const Yn=[];for(const Po of jn)Yn.find(Vo=>Vo.title===Po.title)||Yn.push(Po);e.storedNews.assets[t]=Yn,e.storedNews.assets[t].sort((Po,qo)=>parseFloat(new Date(Po.pubDate).getTime())<p
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+this.i18n.t("message.something_went_wrong_updating"))},updateClassicZelCore(e,t){e.loggedaccount[0].zelcoreClassic=t;const jn=e.accounts.find(Yn=>Yn.username===e.loggedaccount[0].username);jn?jn.zelcoreClassic=t:this.$message.error(this.i18n.t("message.something_went_wrong_updating"))},updateOverviewStyle(e,t){e.loggedaccount[0].overviewStyle=t;const jn=e.accounts.find(Yn=>Yn.username===e.loggedaccount[0].username);jn?jn.overviewStyle=t:this.$message.error(this.i18n.t("message.something_went_wrong_updating"))},updateUserInfo(e,t){e.loggedaccount[0].info=t;const jn=e.accounts.find(Yn=>Yn.username===e.loggedaccount[0].username);jn?jn.info=t:this.$message.error(this.i18n.t("message.something_went_wrong_updat
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+t[0].zelcoreClassic=t;const jn=e.accounts.find(Yn=>Yn.username===e.loggedaccount[0].username);jn?jn.zelcoreClassic=t:this.$message.error(this.i18n.t("message.something_went_wrong_updating"))},updateOverviewStyle(e,t){e.loggedaccount[0].overviewStyle=t;const jn=e.accounts.find(Yn=>Yn.username===e.loggedaccount[0].username);jn?jn.overviewStyle=t:this.$message.error(this.i18n.t("message.something_went_wrong_updating"))},updateUserInfo(e,t){e.loggedaccount[0].info=t;const jn=e.accounts.find(Yn=>Yn.username===e.loggedaccount[0].username);jn?jn.info=t:this.$message.error(this.i18n.t("message.something_went_wrong_updating"))},updateShowZeroBalances(e,t){e.loggedaccount[0].showZeroBalance=t;const jn=e.accounts.fi
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+Settings=jn.fiatSettings,qo.fiatCode=jn.fiatCode,qo.cryptoCode=jn.cryptoCode,qo.uimode=jn.uimode,qo.zelcoreClassic=jn.zelcoreClassic,qo.overviewStyle=jn.overviewStyle,qo.exchangeLayout=jn.exchangeLayout,qo.fullNodeEncryption=jn.fullNodeEncryption,qo.fullNodePath=jn.fullNodePath,qo.transactionNotificationsAfterLogOut=jn.transactionNotificationsAfterLogOut,qo.importedERCTokens=jn.importedERCTokens,qo.importedBEP20Tokens=jn.importedBEP20Tokens,qo.importedPOLYGONTokens=jn.importedPOLYGONTokens,qo.importedTRCTokens=jn.importedTRCTokens,qo.importedBEP2Tokens=jn.importedBEP2Tokens,qo.importedKDATokens=jn.importedKDATokens,qo.importedSOLTokens=jn.importedSOLTokens,qo.importedTERRATokens=jn.importedTERRATokens,qo.
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+ttings,qo.fiatCode=jn.fiatCode,qo.cryptoCode=jn.cryptoCode,qo.uimode=jn.uimode,qo.zelcoreClassic=jn.zelcoreClassic,qo.overviewStyle=jn.overviewStyle,qo.exchangeLayout=jn.exchangeLayout,qo.fullNodeEncryption=jn.fullNodeEncryption,qo.fullNodePath=jn.fullNodePath,qo.transactionNotificationsAfterLogOut=jn.transactionNotificationsAfterLogOut,qo.importedERCTokens=jn.importedERCTokens,qo.importedBEP20Tokens=jn.importedBEP20Tokens,qo.importedPOLYGONTokens=jn.importedPOLYGONTokens,qo.importedTRCTokens=jn.importedTRCTokens,qo.importedBEP2Tokens=jn.importedBEP2Tokens,qo.importedKDATokens=jn.importedKDATokens,qo.importedSOLTokens=jn.importedSOLTokens,qo.importedTERRATokens=jn.importedTERRATokens,qo.importedOMNITokens
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+ews:{general:[],assets:{}},geckoCoins:[],geckoExchanges:[],disabledKadenaAccounts:[],uimode:"night",zelcoreClassic:!1,newsOnLogin:!0,panelVisible:!0,panelActiveItem:1,availableBuyAssets:[],availableSellAssets:[],availablePurchaseSellAssets:[],availablePurchaseBuyAssets:[],availableOfframpSellAssets:[],availableOfframpBuyAssets:[],exchangeSellAsset:"",exchangeBuyAsset:"",exchangeSellAmount:"",previousZelProUser:!1,quickswapHistory:[],purchaseHistory:[],offrampHistory:[],quickswapExchanges:[],purchasesProviders:[],offrampsProviders:[],fluxNodes:[],fluxNodePk:{address:"",privKey:"",privKeyWIF:""},isSaveAccountRunnig:!1,sectionVisible:"",isBackForbiddenFromCoinOverview:!1,fullNodeWalletLabels:{},addresses:[],
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+tTimeout:null,removeRouterGuard:null}},computed:{...mapState(["activecoin","coins","loggedaccount","zelcoreClassic","zelpro","activeWallet","isPaused","panelVisible","appInnerWidth","panelActiveItem"]),nftVisible(){return this.appInnerWidth>610},offrampVisible(){return this.appInnerWidth>450},earnVisible(){return this.appInnerWidth>530},getTotalFiat(){if(this.fiatSettings===2)return this.$t("message.zelcore");const e=this.loggedaccount[0].activatedCoins[this.activeWallet];let t=0,jn="0.00";return e.forEach(Yn=>{this.coins[Yn].type!=="rvnasset"&&(t+=Number(this.getFiat(Yn)))}),jn=t.toFixed(this.decimalPlacesForAmount(t)),jn}},watch:{switcher(e){e>-1&&this.switchTo(e)}},mounted(){this.refresh(),document.rem
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+ut=setTimeout(()=>{console.log("auto logout"),e.logout()},t*60*1e3)},clearIntervals(e){const t=this.zelcoreClassic===!0?"classicZelcore":"newZelcore";clearInterval(global$1.varCloseExchangeDialog),clearInterval(global$1.varCloseSendDialogFull),clearInterval(global$1.varCloseSendDialogZelPro),clearInterval(global$1.varCloseSendDialog),clearInterval(global$1.varLGT),clearInterval(global$1.varDNJT),clearInterval(global$1.varFD),clearInterval(global$1.varQuickSwap),e||(window.document.getElementById(t).classList.contains("transparent-body")&&(window.document.getElementById(t).classList.remove("transparent-body"),document.getElementById("loggedMainWindow").classList.remove("transparent-body"),window.document.g
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: zelcoreClassic]
+------------------------------------------------------------
+ispatch("fetchABEofframps"),this.$store.dispatch("fetchABEhistory")},clearIntervals(e){const t=this.zelcoreClassic===!0?"classicZelcore":"newZelcore";clearInterval(global$1.varCloseExchangeDialog),clearInterval(global$1.varCloseSendDialogFull),clearInterval(global$1.varCloseSendDialogZelPro),clearInterval(global$1.varCloseSendDialog),clearInterval(global$1.varLGT),clearInterval(global$1.varDNJT),clearInterval(global$1.varFD),clearInterval(global$1.varQuickSwap),e||(window.document.getElementById(t).classList.contains("transparent-body")&&(window.document.getElementById(t).classList.remove("transparent-body"),document.getElementById("loggedMainWindow").classList.remove("transparent-body"),window.document.g
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: ShortNonHardened]
+------------------------------------------------------------
+e;(function(e){e[e.Standard=0]="Standard",e[e.AllHardened=1]="AllHardened",e[e.Short=2]="Short",e[e.ShortNonHardened=3]="ShortNonHardened"})(Bip44PathType||(Bip44PathType={}));function getParentPath(e,t,jn="0",Yn="0",Po=Bip44PathType.Standard){if(e==null)throw new Error("getParentPath: purpose is required");if(t==null)throw new Error("getParentPath: coinType is required");switch(Po){case Bip44PathType.AllHardened:return`m/${e}'/${t}'/${jn}'/${Yn}'`;case Bip44PathType.Short:case Bip44PathType.ShortNonHardened:return`m/${e}'/${t}'`;case Bip44PathType.Standard:default:return`m/${e}'/${t}'/${jn}'/${Yn}`}}function isHardenedChild(e){return e===Bip44PathType.AllHardened||e===Bip44PathType.Short}function deriveChi
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: ShortNonHardened]
+------------------------------------------------------------
+andard=0]="Standard",e[e.AllHardened=1]="AllHardened",e[e.Short=2]="Short",e[e.ShortNonHardened=3]="ShortNonHardened"})(Bip44PathType||(Bip44PathType={}));function getParentPath(e,t,jn="0",Yn="0",Po=Bip44PathType.Standard){if(e==null)throw new Error("getParentPath: purpose is required");if(t==null)throw new Error("getParentPath: coinType is required");switch(Po){case Bip44PathType.AllHardened:return`m/${e}'/${t}'/${jn}'/${Yn}'`;case Bip44PathType.Short:case Bip44PathType.ShortNonHardened:return`m/${e}'/${t}'`;case Bip44PathType.Standard:default:return`m/${e}'/${t}'/${jn}'/${Yn}`}}function isHardenedChild(e){return e===Bip44PathType.AllHardened||e===Bip44PathType.Short}function deriveChildFromParent(e,t,jn=B
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: ShortNonHardened]
+------------------------------------------------------------
+athType.AllHardened:return`m/${e}'/${t}'/${jn}'/${Yn}'`;case Bip44PathType.Short:case Bip44PathType.ShortNonHardened:return`m/${e}'/${t}'`;case Bip44PathType.Standard:default:return`m/${e}'/${t}'/${jn}'/${Yn}`}}function isHardenedChild(e){return e===Bip44PathType.AllHardened||e===Bip44PathType.Short}function deriveChildFromParent(e,t,jn=Bip44PathType.Standard){const Yn=isHardenedChild(jn)?t+HARDENED_OFFSET:t,Po=e.deriveChild(Yn);if(!Po.privateKey)throw new Error("Failed to derive private key: parent node may be a neutered key");return Buffer.from(Po.privateKey).toString("hex")}function mnemonicToSeed(e,t=""){try{return mnemonicToSeedSync$1(e,t)}catch(jn){const Yn=jn instanceof Error?jn.message:"Unknown erro
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: createHashHex]
+------------------------------------------------------------
+,jn,!0)}}function createHashRaw(e){return crypto$2.createHash("sha256").update(e).digest()}function createHashHex(e){return crypto$2.createHash("sha256").update(e).digest("hex")}function createHash(e,t){const jn=pluginLibrary.providePlugin(t,e);return createHashHex(jn)}function createHashA(e){return createHash(e,PLUGINS.loginHashA)}function createHashB(e){return createHash(e,PLUGINS.loginHashB)}function createHashC(e){return createHash(e,PLUGINS.loginHashC)}function hashPassword(e){const t=createHashA(e);return createHashB(t)}function decryptPassword(e,t,jn){return decryptData(e,t,PLUGINS.passwordKey).split(pluginLibrary.providePlugin(PLUGINS.passwordDecrypt,jn))[0]}function decryptQuestions(e,t,jn){retu
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: createHashHex]
+------------------------------------------------------------
+).update(e).digest("hex")}function createHash(e,t){const jn=pluginLibrary.providePlugin(t,e);return createHashHex(jn)}function createHashA(e){return createHash(e,PLUGINS.loginHashA)}function createHashB(e){return createHash(e,PLUGINS.loginHashB)}function createHashC(e){return createHash(e,PLUGINS.loginHashC)}function hashPassword(e){const t=createHashA(e);return createHashB(t)}function decryptPassword(e,t,jn){return decryptData(e,t,PLUGINS.passwordKey).split(pluginLibrary.providePlugin(PLUGINS.passwordDecrypt,jn))[0]}function decryptQuestions(e,t,jn){return decryptData(e,t,PLUGINS.questionKey).split(pluginLibrary.providePlugin(PLUGINS.questionDecrypt,jn))[0]}function decryptD2FA(e,t){return decryptData(e
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: createHashHex]
+------------------------------------------------------------
+Bd===!1)return Ad;const Cd=/^[0-9a-fA-F]+$/;return typeof Ad=="string"&&Ad.length===64&&Cd.test(Ad)?createHashHex(`${Ad}:${Bd}`):typeof Ad=="string"?Ad:Ad===void 0?Bd:Ad}catch(Bd){return console.error("Error enhancing biometric key:",Bd),Ad}};return{hasBiometrics:e,getBiometricsAuth:Po,getOrSetBiometric:qo,generateSecureDeviceKey:Vo,getEnhancedBiometricAuth:async(Ad,yd="zelcore",Bd="BiometricSignature")=>{const Cd=await Po(yd,Bd);return jc(Cd,Ad)},getOrSetEnhancedBiometric:async(Ad,yd="zelcore",Bd="BiometricSignature",Cd="zelcore")=>{const vd=await qo(yd,Bd,Cd);return jc(vd,Ad)}}}function validateCssUnitProp(e){return typeof e=="number"||["min-width","max-width","fit-content"].includes(e)?!0:/^\d{1,3}(%|
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: createHashHex]
+------------------------------------------------------------
+.coinsByFamily={},this.groupCoins(t.coins),this.setP()}setP(){const t=this.privateKeysWIF[5];this.p=createHashHex(t)}async generateOrGetFromCache(){try{const t=await this.getFromCache();this.checkRegenerateCondition(t),console.log("[ADDRESSES CACHE]: Attaching addresses"),this.attach(t.coins)}catch(t){console.log(t),console.log("[ADDRESSES CACHE]: Generating addresses"),this.generate(),console.log("[ADDRESSES CACHE]: Storing to cache"),await this.storeToCache()}}checkRegenerateCondition(t){if(t.zelcoreVersion!==global$1.$packageJson.version)throw new Error("[ADDRESSES CACHE]: Version mismatch");const jn=Object.keys(t.coins);if(jn.length!==this.coinIds.length||!jn.every(Yn=>this.coinIds.includes(Yn)))thro
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: createHashHex]
+------------------------------------------------------------
+gedaccount.push(jn);const Vo=e.loggedaccount[0].username,jc=e.loggedaccount[0].password,Mc=Vo+jc,gd=createHashHex(Mc);e.encryptionkey=gd,jn.isMnemonicAccount&&(e.mnemonic=jn.mnemonic,delete jn.mnemonic)},addCoin(e,{coin:t,wallet:jn}){const Yn=jn??e.activeWallet,Po=e.accounts.find(qo=>qo.username===e.loggedaccount[0].username);if(Po){if(Po.activatedCoins[Yn].indexOf(t)===-1){if(Po.activatedCoins[Yn].push(t),this.$message.success(this.i18n.t("message.added_to_portfolio",{coinname:e.coins[t].name})),e.coins[t].coinType==="token"){console.log(t);const qo=getNativeCoin$1(e.coins,e.coins[t].type);console.log(qo),Po.activatedCoins[Yn].indexOf(e.coins[qo].coin)===-1&&Po.activatedCoins[Yn].push(e.coins[qo].coin)}
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: createHashHex]
+------------------------------------------------------------
+rom(Yn,"hex")})},getFluxAIup({state:e}){const t="#<&{S-:}&,",jn=e.loggedaccount[0]?.username;return createHashHex(t+jn+t+createHashHex(t))},getFluxAIgb(){const e="0=#zC/:{).|~Gb",t=global$1.$packageJson.name;return createHashHex(e+e.split("").flatMap(Yn=>t.split("").reverse().flatMap(Po=>[Yn,Po])).join(""))},encryptFluxAI(e,{data:t}){return encryptFluxAI(t)},async decryptFluxAI({dispatch:e},{cipher:t}){const jn=await e("getFluxAIup");return decryptFluxAI(t,jn)},async loadFluxAI({dispatch:e,state:t,commit:jn},{tag:Yn}){try{console.log(`LOADFLUXAI ${Yn}`);const qo=(t.loggedaccount[0]?.username||t.fluxAI.FLUXLOGINLESS.username).replace(/[ <>:"'?*|.\\/]/g,"_"),Vo=`fluxAI_${Yn}_${qo}`,jc=await localForage.get
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: createHashHex]
+------------------------------------------------------------
+luxAIup({state:e}){const t="#<&{S-:}&,",jn=e.loggedaccount[0]?.username;return createHashHex(t+jn+t+createHashHex(t))},getFluxAIgb(){const e="0=#zC/:{).|~Gb",t=global$1.$packageJson.name;return createHashHex(e+e.split("").flatMap(Yn=>t.split("").reverse().flatMap(Po=>[Yn,Po])).join(""))},encryptFluxAI(e,{data:t}){return encryptFluxAI(t)},async decryptFluxAI({dispatch:e},{cipher:t}){const jn=await e("getFluxAIup");return decryptFluxAI(t,jn)},async loadFluxAI({dispatch:e,state:t,commit:jn},{tag:Yn}){try{console.log(`LOADFLUXAI ${Yn}`);const qo=(t.loggedaccount[0]?.username||t.fluxAI.FLUXLOGINLESS.username).replace(/[ <>:"'?*|.\\/]/g,"_"),Vo=`fluxAI_${Yn}_${qo}`,jc=await localForage.getItem(Vo);if(jc){const
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: createHashHex]
+------------------------------------------------------------
++jn+t+createHashHex(t))},getFluxAIgb(){const e="0=#zC/:{).|~Gb",t=global$1.$packageJson.name;return createHashHex(e+e.split("").flatMap(Yn=>t.split("").reverse().flatMap(Po=>[Yn,Po])).join(""))},encryptFluxAI(e,{data:t}){return encryptFluxAI(t)},async decryptFluxAI({dispatch:e},{cipher:t}){const jn=await e("getFluxAIup");return decryptFluxAI(t,jn)},async loadFluxAI({dispatch:e,state:t,commit:jn},{tag:Yn}){try{console.log(`LOADFLUXAI ${Yn}`);const qo=(t.loggedaccount[0]?.username||t.fluxAI.FLUXLOGINLESS.username).replace(/[ <>:"'?*|.\\/]/g,"_"),Vo=`fluxAI_${Yn}_${qo}`,jc=await localForage.getItem(Vo);if(jc){const Mc=await e("decryptFluxAI",{cipher:jc}),gd=JSON.parse(Mc);jn("setFluxAI",{tag:Yn,value:gd})}e
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: createHashHex]
+------------------------------------------------------------
+nemonicAccount===!1){const{username:gd}=this.loggedaccount[0],yd=`legacyLoginDeprecationLastShown_${createHashHex(gd).substring(0,10)}`,Bd=this.$localstore.get(yd),Cd=7*24*60*60*1e3,vd=Date.now();(!Bd||vd-Bd>=Cd)&&(this.openDialog("legacyDeprecation"),this.$localstore.set(yd,vd))}e.$router.currentRoute.value.path==="/welcome"&&(e.$message.success(e.$t("message.retrieving")),e.$router.push({name:"Portfolio"}));const Mc=e.d2fa.message.split("&d2fa=");Mc[1]!==void 0?Number(Mc[1])===2||Number(Mc[1])===3?[e.mypin]=Mc:e.mypin="":e.d2fa.message===""?e.mypin="":(e.$message.error(e.$t("message.error_d2fa_cert")),this.$log.error("Error in your d2FA certificate on welcome while undefined")),setTimeout(()=>{this.zel
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\index-817yN7Xf.js]
+[ТЕРМИН: createHashHex]
+------------------------------------------------------------
+s a$,createHashRaw as a0,ABE_API_URL as a1,getSymbolFromCurrency as a2,axios as a3,KdaSending as a4,createHashHex as a5,PasswordStrengthInput as a6,useRoute as a7,createHashA as a8,createHashB as a9,registerStakingAdapter as aA,ZELCORE_TOS_URL as aB,getStrengthStatusKey as aC,decryptPassword as aD,decryptQuestions as aE,getRegisteredChains as aF,getImage as aG,ReOwnConsts as aH,ReOwn as aI,isOnline as aJ,REOWN_CHAINS as aK,signEth as aL,signSol as aM,signKda as aN,signSui as aO,signCosmos as aP,signCardano as aQ,_sfc_main$u as aR,fetchAndBuildTokenData$1 as aS,generateImportedTokenData$2 as aT,AvalancheWallet as aU,getAvaxBalanceP as aV,getAvaxBalanceX as aW,mapObj as aX,objects as aY,SolanaSending as aZ
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\StocksApp--7-7-ARA.js]
+[ТЕРМИН: oY\s*[:=]]
+------------------------------------------------------------
+,p=f(et,h,u),_=m(Z,c,d),x=m(Z+et,h,u);i=(g-_)/2,n=(p-x)/2,o=-(g+_)/2,a=-(p+x)/2}return{ratioX:i,ratioY:n,offsetX:o,offsetY:a}}class $r extends Dn{static id="doughnut";static defaults={datasetElementType:!1,dataElementType:"arc",animation:{animateRotate:!0,animateScale:!1},animations:{numbers:{type:"number",properties:["circumference","endAngle","innerRadius","outerRadius","startAngle","x","y","offset","borderWidth","spacing"]}},cutout:"50%",rotation:0,circumference:360,radius:"100%",spacing:0,indexAxis:"r"};static descriptors={_scriptable:t=>t!=="spacing",_indexable:t=>t!=="spacing"&&!t.startsWith("borderDash")&&!t.startsWith("hoverBorderDash")};static overrides={aspectRatio:1,plugins:{legend:{
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\StocksApp--7-7-ARA.js]
+[ТЕРМИН: oY\s*[:=]]
+------------------------------------------------------------
+is._getRingWeight(this.index),{circumference:h,rotation:d}=this._getRotationExtents(),{ratioX:u,ratioY:f,offsetX:m,offsetY:g}=Fr(d,h,l),p=(i.width-a)/u,_=(i.height-a)/f,x=Math.max(Math.min(p,_)/2,0),w=ln(this.options.radius,x),y=Math.max(w*l,0),k=(w-y)/this._getVisibleDatasetWeightTotal();this.offsetX=m*w,this.offsetY=g*w,n.total=this.calculateTotal(),this.outerRadius=w-k*this._getRingWeightOffset(this.index),this.innerRadius=Math.max(this.outerRadius-k*c,0),this.updateElements(o,0,o.length,t)}_circumference(t,e){const i=this.options,n=this._cachedMeta,o=this._getCircumference();return e&&i.animation.animateRotate||!this.chart.getDataVisibility(t)||n._parsed[t]===null||n.data[t].hidden?0:this.c
+------------------------------------------------------------
+
+[ФАЙЛ: E:\plugin_src\8.31.1_0\assets\vendor-@emurgo-BaQ-wKtG.js]
+[ТЕРМИН: oY\s*[:=]]
+------------------------------------------------------------
+h_to_bytes,eY=s.anchordatahash_to_bech32,rY=s.anchordatahash_from_bech32,nY=s.anchordatahash_to_hex,oY=s.anchordatahash_from_hex,aY=s.transactionhash_from_bytes,sY=s.transactionhash_from_bech32,iY=s.transactionhash_from_hex,cY=s.genesisdelegatehash_from_bytes,dY=s.genesisdelegatehash_from_bech32,pY=s.genesisdelegatehash_from_hex,wY=s.genesishash_from_bytes,bY=s.genesishash_from_bech32,gY=s.genesishash_from_hex,lY=s.auxiliarydatahash_from_bytes,uY=s.auxiliarydatahash_from_bech32,fY=s.auxiliarydatahash_from_hex,hY=s.poolmetadatahash_from_bytes,yY=s.poolmetadatahash_from_bech32,vY=s.poolmetadatahash_from_hex,mY=s.vrfkeyhash_from_bytes,kY=s.vrfkeyhash_from_bech32,jY=s.vrfkeyhash_from_hex,xY=s.block
+------------------------------------------------------------
