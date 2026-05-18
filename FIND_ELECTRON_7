@@ -1,0 +1,205 @@
+Сканирую renderer.js...
+Traceback (most recent call last):
+  File "C:\Users\Mastr\AppData\Local\Programs\zelcore\resources\app_unpacked\dist\electron\11.py", line 50, in <module>
+    deep_scan()
+  File "C:\Users\Mastr\AppData\Local\Programs\zelcore\resources\app_unpacked\dist\electron\11.py", line 33, in deep_scan
+    for match in re.finditer(p_regex, content, re.IGNORECASE):
+KeyboardInterrupt
+^C
+C:\Users\Mastr\AppData\Local\Programs\zelcore\resources\app_unpacked\dist\electron>python 11.py
+
+>>> Анализ файла: renderer.js (11167 KB)
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 1171220)
+------------------------------
+','drama','time','hide','edit','Type:','parsed','paymentProtocolScheme','middle','tel','chronic','mybeldex_core_js','serializeTx','ShortNonHardened','zelcoreClassic','blockbook.btg.zelcore.io','pig','workchain','d2fa_welcome_1','decryptioncomplete','Akroma','uint8','ALPHA','kadenaCoin','hexToBuffer','ALTME','operationid','SKT','getCryptoRate','BRIT','raptoreum','Import\x20Solana\x20Token','https://solanabeach.io/transaction/$hash?cluster=testnet','message.failed_to_add_device','[Veil\x20Balance]\x20WASM\x20module\x20not\x20pre-loaded','Nimiq','
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5156177)
+------------------------------
+ineProperty'](_0x3b1273,_0x10aae4,Object['getOwnPropertyDescriptor'](_0x3289a1,_0x10aae4));});}return _0x3b1273;}({},(0x0,_0x1d6cae['aH'])(['uimode','zelcoreClassic','loggedaccount'])),'beforeMount':function(){var _0x4cdfb6=_0x2366fd;'darwin'===_0x227ea8()['platform']()&&(this['isDarwin']=!0x0),this['$localstore'][_0x4cdfb6(0x8af)]('v6updated')||(this['$localstore']['set'](_0x4cdfb6(0x160),!0x0),this['$localstore']['set'](_0x4cdfb6(0xdbf),_0x4cdfb6(0x93b)),this[_0x4cdfb6(0x124d)]['set']('zelcoreClassic',!0x1));var _0x16e30b=this[_0x4cdfb6(0x124
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5156520)
+------------------------------
+d')||(this['$localstore']['set'](_0x4cdfb6(0x160),!0x0),this['$localstore']['set'](_0x4cdfb6(0xdbf),_0x4cdfb6(0x93b)),this[_0x4cdfb6(0x124d)]['set']('zelcoreClassic',!0x1));var _0x16e30b=this[_0x4cdfb6(0x124d)]['get']('uimode');_0x16e30b||(_0x16e30b='night',this['$localstore']['set'](_0x4cdfb6(0xdbf),_0x16e30b)),this['$store']['commit'](_0x4cdfb6(0xa64),_0x16e30b);var _0x2ecd2a=this[_0x4cdfb6(0x124d)]['get']('zelcoreClassic');_0x2ecd2a||(_0x2ecd2a=!0x1,this['$localstore']['set']('zelcoreClassic',_0x2ecd2a)),this['$store']['commit']('changeZelCo
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5156783)
+------------------------------
+'$localstore']['set'](_0x4cdfb6(0xdbf),_0x16e30b)),this['$store']['commit'](_0x4cdfb6(0xa64),_0x16e30b);var _0x2ecd2a=this[_0x4cdfb6(0x124d)]['get']('zelcoreClassic');_0x2ecd2a||(_0x2ecd2a=!0x1,this['$localstore']['set']('zelcoreClassic',_0x2ecd2a)),this['$store']['commit']('changeZelCoreClassic',_0x2ecd2a),this['$router']['push']('/');},'mounted':function(){var _0x13d171=this;return _0x1b4a5c()(_0x26a2d0()['mark'](function _0x123452(){var _0x104876,_0x48adc6,_0x53bcde,_0x531ca0;return _0x26a2d0()['wrap'](function(_0x5c5810){var _0x24ec3a=a0_0x
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5156855)
+------------------------------
+t'](_0x4cdfb6(0xa64),_0x16e30b);var _0x2ecd2a=this[_0x4cdfb6(0x124d)]['get']('zelcoreClassic');_0x2ecd2a||(_0x2ecd2a=!0x1,this['$localstore']['set']('zelcoreClassic',_0x2ecd2a)),this['$store']['commit']('changeZelCoreClassic',_0x2ecd2a),this['$router']['push']('/');},'mounted':function(){var _0x13d171=this;return _0x1b4a5c()(_0x26a2d0()['mark'](function _0x123452(){var _0x104876,_0x48adc6,_0x53bcde,_0x531ca0;return _0x26a2d0()['wrap'](function(_0x5c5810){var _0x24ec3a=a0_0x585d;for(;;)switch(_0x5c5810['prev']=_0x5c5810[_0x24ec3a(0x391)]){case 0
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5164114)
+------------------------------
+esolveComponent'])('ZelSpinner');return(0x0,_0x47ebf7['openBlock'])(),(0x0,_0x47ebf7['createElementBlock'])(_0x224d2a(0x1330),{'id':!0x0===_0x55d770['zelcoreClassic']?'classicZelcore':_0x224d2a(0xdc8),'style':(0x0,_0x47ebf7[_0x224d2a(0x1208)])({'backgroundImage':!0x0===_0x55d770['zelcoreClassic']?_0x55d770['loggedaccount']&&_0x55d770['loggedaccount'][0x0]?'url('+_0x55d770['$img'](_0x55d770['loggedaccount'][0x0]['background'])+')':'url('+_0x55d770['$img'](_0x224d2a(0xbf1))+')':''}),'class':(0x0,_0x47ebf7['normalizeClass'])([{'windows':_0x5e02d8[
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5164245)
+------------------------------
+:!0x0===_0x55d770['zelcoreClassic']?'classicZelcore':_0x224d2a(0xdc8),'style':(0x0,_0x47ebf7[_0x224d2a(0x1208)])({'backgroundImage':!0x0===_0x55d770['zelcoreClassic']?_0x55d770['loggedaccount']&&_0x55d770['loggedaccount'][0x0]?'url('+_0x55d770['$img'](_0x55d770['loggedaccount'][0x0]['background'])+')':'url('+_0x55d770['$img'](_0x224d2a(0xbf1))+')':''}),'class':(0x0,_0x47ebf7['normalizeClass'])([{'windows':_0x5e02d8['isDarwin']},'zelcore-app__inner']),'onDblclick':_0x4f2c9d[0x0]||(_0x4f2c9d[0x0]=function(){return _0x5852c0['maximizeToggle']&&_0x
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5168322)
+------------------------------
+e4)](_0x13995b,_0xdc2da7));});}return _0x56ae3f;}({},(0x0,_0x1d6cae['aH'])(['safetoquit',_0x2366fd(0x785),'obtainedChangesStore','proxySet','uimode','zelcoreClassic'])),'beforeUnmount':function(){var _0x555807=_0x2366fd;this['IPC_message']['removeAllListeners'](_0x555807(0x573)),this['IPC_updateReady']['removeAllListeners'](_0x555807(0x8f3));},'mounted':function(){var _0x5e4e91=_0x2366fd,_0x4779be=this,_0x2b1f88=this;void 0x0===_0x2b1f88['$localstore']['get']('proxyServer')&&_0x2b1f88['$localstore']['set']('proxyServer',_0x2b1f88['proxySet']['n
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5175667)
+------------------------------
+on(){var _0x43f62c=_0x2366fd,_0x3b62da=!this[_0x43f62c(0x916)];this['$store']['commit']('changeZelCoreClassic',_0x3b62da),this['$localstore']['set']('zelcoreClassic',_0x3b62da);}}};_0x5b2892(0x92899);const _0x44ec88=(0x0,_0x167a2e['A'])(_0x213a38,[[_0x2366fd(0x198),function(_0x4eb196,_0x3ddbf0,_0x24e8c5,_0x1962c7,_0x18920f,_0x553735){var _0x3696f6=_0x2366fd,_0x59d16a=(0x0,_0x47ebf7['resolveComponent'])('ZelButton'),_0x345cde=(0x0,_0x47ebf7['resolveComponent'])('Icon'),_0x487324=(0x0,_0x47ebf7[_0x3696f6(0xcab)])('LanguageSelector'),_0x38b543=(0x
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5179340)
+------------------------------
+0x0,_0x47ebf7[_0x5bdd79(0x1350)])('label',null,[(0x0,_0x47ebf7['createElementVNode'])('input',{'type':'checkbox','tabindex':'-1','checked':_0x4eb196['zelcoreClassic'],'onClick':_0x3ddbf0[0x2]||(_0x3ddbf0[0x2]=function(_0x40bc64){return _0x553735['toggleClassicMode']();})},null,0x8,_0x474fc5),_0x3ddbf0[0x10]||(_0x3ddbf0[0x10]=(0x0,_0x47ebf7['createElementVNode'])('span',null,null,-0x1))]),(0x0,_0x47ebf7['createVNode'])(_0x345cde,{'icon':'images'})])]),(0x0,_0x47ebf7[_0x5bdd79(0x1350)])('h4',null,(0x0,_0x47ebf7['toDisplayString'])(_0x4eb196['$t']
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5218107)
+------------------------------
+ts':[],'explorerService':{},'nodeService':{},'apiService':{},'electrumService':{},'blockbookService':{},'fiatSettings':0x0,'uimode':_0x13e07c(0x93b),'zelcoreClassic':!0x1,'overviewStyle':'a','exchangeLayout':'a','kadenaChainID':'0','transactionNotificationsAfterLogOut':!0x1,'importedERCTokens':[],'importedBEP20Tokens':[],'importedPOLYGONTokens':[],'importedTRCTokens':[],'importedBEP2Tokens':[],'importedKDATokens':[],'importedSOLTokens':[],'importedTERRATokens':[],'importedOMNITokens':[],'importedAVAXCTokens':[],'importedERGOTokens':[],'imported
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5259707)
+------------------------------
+rtedWallets':[],'explorerService':{},'nodeService':{},'apiService':{},'electrumService':{},'blockbookService':{},'fiatSettings':0x0,'uimode':'night','zelcoreClassic':!0x1,'overviewStyle':'a','exchangeLayout':'a','kadenaChainID':'0','transactionNotificationsAfterLogOut':!0x1,'importedERCTokens':[],'importedBEP20Tokens':[],'importedPOLYGONTokens':[],'importedTRCTokens':[],'importedBEP2Tokens':[],'importedKDATokens':[],'importedSOLTokens':[],'importedTERRATokens':[],'importedOMNITokens':[],'importedAVAXCTokens':[],'importedERGOTokens':[],'imported
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5265948)
+------------------------------
+_0x21386e['fiatSettings']?_0x21386e['fiatSettings']:_0x30e2b5['fiatSettings'],_0x30e2b5['uimode']=_0x21386e['uimode']||_0x30e2b5['uimode'],_0x30e2b5['zelcoreClassic']=void 0x0!==_0x21386e['zelcoreClassic']?_0x21386e['zelcoreClassic']:_0x30e2b5['zelcoreClassic'],_0x30e2b5[_0x8b942c(0xc89)]=_0x21386e['overviewStyle']||_0x30e2b5[_0x8b942c(0xc89)],_0x30e2b5['exchangeLayout']=_0x21386e['exchangeLayout']||_0x30e2b5['exchangeLayout'],_0x30e2b5['kadenaChainID']=_0x21386e['kadenaChainID']||_0x30e2b5['kadenaChainID'],_0x30e2b5[_0x8b942c(0x2c5)]=void 0x0!
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5265987)
+------------------------------
+atSettings']:_0x30e2b5['fiatSettings'],_0x30e2b5['uimode']=_0x21386e['uimode']||_0x30e2b5['uimode'],_0x30e2b5['zelcoreClassic']=void 0x0!==_0x21386e['zelcoreClassic']?_0x21386e['zelcoreClassic']:_0x30e2b5['zelcoreClassic'],_0x30e2b5[_0x8b942c(0xc89)]=_0x21386e['overviewStyle']||_0x30e2b5[_0x8b942c(0xc89)],_0x30e2b5['exchangeLayout']=_0x21386e['exchangeLayout']||_0x30e2b5['exchangeLayout'],_0x30e2b5['kadenaChainID']=_0x21386e['kadenaChainID']||_0x30e2b5['kadenaChainID'],_0x30e2b5[_0x8b942c(0x2c5)]=void 0x0!==_0x21386e['transactionNotificationsAf
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5266015)
+------------------------------
+Settings'],_0x30e2b5['uimode']=_0x21386e['uimode']||_0x30e2b5['uimode'],_0x30e2b5['zelcoreClassic']=void 0x0!==_0x21386e['zelcoreClassic']?_0x21386e['zelcoreClassic']:_0x30e2b5['zelcoreClassic'],_0x30e2b5[_0x8b942c(0xc89)]=_0x21386e['overviewStyle']||_0x30e2b5[_0x8b942c(0xc89)],_0x30e2b5['exchangeLayout']=_0x21386e['exchangeLayout']||_0x30e2b5['exchangeLayout'],_0x30e2b5['kadenaChainID']=_0x21386e['kadenaChainID']||_0x30e2b5['kadenaChainID'],_0x30e2b5[_0x8b942c(0x2c5)]=void 0x0!==_0x21386e['transactionNotificationsAfterLogOut']?_0x21386e[_0x8b9
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 5266043)
+------------------------------
+']=_0x21386e['uimode']||_0x30e2b5['uimode'],_0x30e2b5['zelcoreClassic']=void 0x0!==_0x21386e['zelcoreClassic']?_0x21386e['zelcoreClassic']:_0x30e2b5['zelcoreClassic'],_0x30e2b5[_0x8b942c(0xc89)]=_0x21386e['overviewStyle']||_0x30e2b5[_0x8b942c(0xc89)],_0x30e2b5['exchangeLayout']=_0x21386e['exchangeLayout']||_0x30e2b5['exchangeLayout'],_0x30e2b5['kadenaChainID']=_0x21386e['kadenaChainID']||_0x30e2b5['kadenaChainID'],_0x30e2b5[_0x8b942c(0x2c5)]=void 0x0!==_0x21386e['transactionNotificationsAfterLogOut']?_0x21386e[_0x8b942c(0x2c5)]:_0x30e2b5['trans
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 7314286)
+------------------------------
+(_0x1e2313,_0x1edf19){var _0x8de7cc=_0x4e98bb;_0x1e2313[_0x8de7cc(0xdbf)]=_0x1edf19;},'changeZelCoreClassic':function(_0x1629d5,_0x2c0df0){_0x1629d5['zelcoreClassic']=_0x2c0df0;},'changeNewsOnLogin':function(_0x346dd2,_0x2899dd){_0x346dd2['newsOnLogin']=_0x2899dd;},'saveNews':function(_0x4d3cd1,_0x3eb913){var _0x1c7792=_0x3eb913['category'],_0x44ba55=_0x3eb913['item'];if('general'===_0x1c7792){var _0x30490c,_0x372e14=[],_0x18e13d=_0x5b37fc(_0x44ba55);try{var _0x11bf90=function(){var _0x54523d=a0_0x585d,_0x43f6ba=_0x30490c[_0x54523d(0x123a)];_0x
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 7325342)
+------------------------------
+=_0x15350c['accounts']['find'](function(_0x3a02c4){return _0x3a02c4['username']===_0x15350c['loggedaccount'][0x0]['username'];});_0x5b440c?_0x5b440c['zelcoreClassic']=_0x4b890a:this['$message']['error'](this['i18n']['t'](_0x412f65(0x555)));},'updateOverviewStyle':function(_0x280c2c,_0x49adb2){var _0x5b7c89=_0x4e98bb;_0x280c2c['loggedaccount'][0x0]['overviewStyle']=_0x49adb2;var _0x41f443=_0x280c2c['accounts']['find'](function(_0x2349a7){var _0x1f1215=a0_0x585d;return _0x2349a7[_0x1f1215(0x11a6)]===_0x280c2c[_0x1f1215(0xf90)][0x0][_0x1f1215(0x11
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 7342920)
+------------------------------
+5(0x799)]=_0xc60b47[_0x4d16b5(0x799)],_0x4e5927['cryptoCode']=_0xc60b47[_0x4d16b5(0x10a8)],_0x4e5927[_0x4d16b5(0xdbf)]=_0xc60b47['uimode'],_0x4e5927['zelcoreClassic']=_0xc60b47['zelcoreClassic'],_0x4e5927['overviewStyle']=_0xc60b47[_0x4d16b5(0xc89)],_0x4e5927['exchangeLayout']=_0xc60b47['exchangeLayout'],_0x4e5927['fullNodeEncryption']=_0xc60b47[_0x4d16b5(0xc08)],_0x4e5927['fullNodePath']=_0xc60b47['fullNodePath'],_0x4e5927['transactionNotificationsAfterLogOut']=_0xc60b47['transactionNotificationsAfterLogOut'],_0x4e5927['importedERCTokens']=_0x
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 7342948)
+------------------------------
+5(0x799)],_0x4e5927['cryptoCode']=_0xc60b47[_0x4d16b5(0x10a8)],_0x4e5927[_0x4d16b5(0xdbf)]=_0xc60b47['uimode'],_0x4e5927['zelcoreClassic']=_0xc60b47['zelcoreClassic'],_0x4e5927['overviewStyle']=_0xc60b47[_0x4d16b5(0xc89)],_0x4e5927['exchangeLayout']=_0xc60b47['exchangeLayout'],_0x4e5927['fullNodeEncryption']=_0xc60b47[_0x4d16b5(0xc08)],_0x4e5927['fullNodePath']=_0xc60b47['fullNodePath'],_0x4e5927['transactionNotificationsAfterLogOut']=_0xc60b47['transactionNotificationsAfterLogOut'],_0x4e5927['importedERCTokens']=_0xc60b47['importedERCTokens'],
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в renderer.js (позиция 8286114)
+------------------------------
+!0x1,'encryptionAddress':'','storedNews':{'general':[],'assets':{}},'geckoCoins':[],'geckoExchanges':[],'disabledKadenaAccounts':[],'uimode':'night','zelcoreClassic':!0x1,'newsOnLogin':!0x0,'panelVisible':!0x0,'availableBuyAssets':[],'availableSellAssets':[],'availablePurchaseSellAssets':[],'availablePurchaseBuyAssets':[],'availableOfframpSellAssets':[],'availableOfframpBuyAssets':[],'exchangeSellAsset':'','exchangeBuyAsset':'','exchangeSellAmount':'','previousZelProUser':!0x1,'quickswapHistory':[],'purchaseHistory':[],'offrampHistory':[],'quic
+------------------------------
+
+[!] НАЙДЕНО 'encryptionkey' в renderer.js (позиция 7310252)
+------------------------------
+ctiveRavenAsset':'Ravencoin','activeKadenaAccount':0x0,'activeEosAccount':0x0,'activeWallet':0x0,'activeExchangeWallet':0x0,'activeRewardWallet':0x0,'encryptionkey':'','mnemonic':'','zelid':{'bitcoin':'','privkey':'','privKeyWIF':'','zelcash':''},'groupedDestinationAddresses':[],'coins':{},'newsSources':{},'coinInfo':{},'storageDataLoaded':!0x1,'lightSentTxid':'','exchangeTxid':'','exchangeExplorer':'','txexplorer':'','coinrequesturl':'','d2fa':{'address':'','privKey':'','privKeyWIF':'','message':''},'encryptionAddress':'','availableSellAssets'
+------------------------------
+
+[!] НАЙДЕНО 'encryptionkey' в renderer.js (позиция 7345068)
+------------------------------
+x57ebc8=_0x2151b7['loggedaccount'][0x0]['username']+_0x2151b7['loggedaccount'][0x0]['password'],_0x691bf5=(0x0,_0x3ece41['oY'])(_0x57ebc8);_0x2151b7['encryptionkey']=_0x691bf5,_0xc60b47['isMnemonicAccount']&&(_0x2151b7['mnemonic']=_0xc60b47['mnemonic'],delete _0xc60b47['mnemonic']);},'addCoin':function(_0x4aeb13,_0x12255d){var _0x48c704=_0x4e98bb,_0x1a114e=_0x12255d['coin'],_0x278f72=_0x12255d[_0x48c704(0x277)],_0x43d05f=null!=_0x278f72?_0x278f72:_0x4aeb13['activeWallet'],_0xfbdf76=_0x4aeb13['accounts']['find'](function(_0x1ff018){var _0x3b499c
+------------------------------
+
+[!] НАЙДЕНО 'encryptionkey' в renderer.js (позиция 7400325)
+------------------------------
+<>:"'?*|.\\/]/g,'_'),_0xcf88a=_0x3ab37d['join'](_0x3f5a1e,_0xa1b69+_0x1f270e)),console[_0x190366(0xcbd)]('3'),_0x2a6fc2=_0x263923[_0x190366(0x1265)]['encryptionkey'],!_0x51eaab()['existsSync'](_0x3776b9)){_0x48626f['next']=0x8;break;}return console['log']('encrypting'),console['log']('4'),_0x48626f['next']=0x1,_0x4da752['promises']['readFile'](_0x3776b9,{'encoding':'binary'});case 0x1:return _0x1f97bc=_0x48626f['sent'],_0x4609f0=(0x0,_0x3ece41['g1'])(_0x1f97bc,_0x2a6fc2,_0x190366(0x4bb),'hex'),_0x48626f[_0x190366(0x391)]=0x2,_0x4da752['promises
+------------------------------
+
+[!] НАЙДЕНО 'encryptionkey' в renderer.js (позиция 7405149)
+------------------------------
+73a874['next']=0x1;break;}return _0x73a874['next']=0x1,_0x4da752['promises']['rename'](_0x3c3f08,_0x26b447);case 0x1:if(_0x4c4c06=_0x4dc99a['state']['encryptionkey'],!_0x51eaab()['existsSync'](_0x26b447)||_0x51eaab()['existsSync'](_0x388b7f)){_0x73a874['next']=0x5;break;}return _0x4dc99a['$message']['success'](_0x4dc99a['i18n']['t']('message.decrypting_wallet')),console['log']('decrypting\x20wallets'),_0x73a874['next']=0x2,_0x4da752['promises']['readFile'](_0x26b447,{'encoding':'hex'});case 0x2:return _0x2459df=_0x73a874['sent'],_0x4fe79b=(0x0,
+------------------------------
+
+[!] НАЙДЕНО 'encryptionkey' в renderer.js (позиция 7473287)
+------------------------------
+/]/g,'_'),_0x2fdf9e=_0x3ab37d['join'](_0x5c20f7()['homedir'](),'ZelCore',_0x5f4a57(0x7bd)[_0x5f4a57(0x1c6)](_0x21870d)),_0x359c2c=_0xc10322['state']['encryptionkey'],!_0x51eaab()['existsSync'](_0x27fb14)){_0x599773['next']=0x6;break;}return console['log']('encrypting\x20labels'),_0x599773['next']=0x1,_0x4da752['promises']['readFile'](_0x27fb14,{'encoding':'utf8'});case 0x1:return _0x6e8aa6=_0x599773['sent'],_0xe0bb22=(0x0,_0x3ece41['g1'])(_0x6e8aa6,_0x359c2c),_0x599773[_0x5f4a57(0x391)]=0x2,_0x4da752[_0x5f4a57(0xe6e)]['writeFile'](_0x2fdf9e,_0x
+------------------------------
+
+[!] НАЙДЕНО 'encryptionkey' в renderer.js (позиция 7475478)
+------------------------------
+)),_0x124b03=_0x3ab37d[_0x53fbb2(0xe74)](_0x5c20f7()['homedir'](),'ZelCore','fullnodelabels.json'['concat'](_0x23a28f)),_0x3b5cab=_0xad99d1['state']['encryptionkey'],_0x410e49===_0x23a28f){_0xce7390['next']=0x2;break;}if(!_0x51eaab()['existsSync'](_0x5c2776)){_0xce7390['next']=0x2;break;}return _0xce7390['next']=0x2,_0x4da752['promises']['rename'](_0x5c2776,_0x124b03);case 0x2:if(!_0x51eaab()['existsSync'](_0x124b03)){_0xce7390['next']=0x7;break;}return console['log']('decrypting\x20fullnodelabels'),_0xce7390['next']=0x3,_0x4da752['promises']['
+------------------------------
+
+[!] НАЙДЕНО 'encryptionkey' в renderer.js (позиция 7524753)
+------------------------------
+/[ <>:"'?*|.\\/]/g,'_'),_0x72bac6=_0x32e2ce['join'](_0x2d31bf,'ZelCore','contacts.json'['concat'](_0x55d38a)),_0x314d81=_0x5612fc[_0x47adbb(0x1265)]['encryptionkey'],_0x5ce630['next']=0x2,_0x4da752['promises']['access'](_0x33e865);case 0x2:return console[_0x47adbb(0xcbd)](_0x47adbb(0x152)),_0x5ce630['next']=0x3,_0x4da752['promises']['readFile'](_0x33e865,{'encoding':_0x47adbb(0x60e)});case 0x3:return _0x464007=_0x5ce630['sent'],_0x47b650=(0x0,_0x3ece41['g1'])(_0x464007,_0x314d81),_0x5ce630[_0x47adbb(0x391)]=0x4,_0x4da752['promises']['writeFile'
+------------------------------
+
+[!] НАЙДЕНО 'encryptionkey' в renderer.js (позиция 7528273)
+------------------------------
+fba(0x1c6)](_0x7e0d58)),_0x3483c6=_0x32e2ce[_0x35dfba(0xe74)](_0x2d31bf,'ZelCore','contacts.json'['concat'](_0x4da99e)),_0x2530f3=_0x35b6f3['state']['encryptionkey'],_0x7e0d58===_0x4da99e){_0x14192c['next']=0x2;break;}if(!_0x51eaab()['existsSync'](_0x2e3592)){_0x14192c[_0x35dfba(0x391)]=0x2;break;}return _0x14192c['next']=0x2,_0x4da752['promises']['rename'](_0x2e3592,_0x3483c6);case 0x2:return _0x14192c['next']=0x3,_0x4da752['promises'][_0x35dfba(0x246)](_0x3483c6);case 0x3:return console['log']('decrypting\x20contacts'),_0x14192c['next']=0x4,_
+------------------------------
+
+[!] НАЙДЕНО 'encryptionkey' в renderer.js (позиция 8280775)
+------------------------------
+['bip44HPathType']||0x0));}catch(_0x26b586){_0x55ba3c['e'](_0x26b586);}finally{_0x55ba3c['f']();}}_0x199728['clear']();}else{for(_0x234d6e=_0x28d36b['encryptionkey'][_0x3a2e38(0xd09)]('hex'),_0x3c4c42=Buffer['from'](_0x234d6e,_0x3a2e38(0xa1f)),_0x33fb9d=_0x532cfa['c']['fromMasterSeed'](_0x3c4c42),_0x178450=[],_0x451d1f=0x0;_0x451d1f<0xa;_0x451d1f+=0x1)_0x178450['push'](_0x33fb9d['deriveChild'](_0x451d1f));_0x371747=_0x178450[_0x3a2e38(0x99e)](function(_0x25e85){var _0x2072b7=_0x3a2e38,_0x37b59e=Buffer[_0x2072b7(0x1d5)](_0x25e85[_0x2072b7(0xa8b)
+------------------------------
+
+[!] НАЙДЕНО 'encryptionkey' в renderer.js (позиция 8285517)
+------------------------------
+veKadenaAccount':0x0,'activeEosAccount':0x0,'activeWallet':0x0,'activeExchangeWallet':0x0,'activeRewardWallet':0x0,'isPortfolioOverviewEnabled':!0x0,'encryptionkey':'','mnemonic':'','zelid':{'bitcoin':'','privkey':'','privKeyWIF':'','zelcash':''},'groupedDestinationAddresses':[],'coins':{},'newsSources':{},'coinInfo':{},'rvnassets':[],'storageDataLoaded':!0x1,'storageCoins':[],'lightSentTxid':'','exchangeTxid':'','exchangeExplorer':'','txexplorer':'','coinrequesturl':'','d2fa':{'address':'','privKey':'','privKeyWIF':'','message':''},'hardWorkin
+------------------------------
+
+[!] НАЙДЕНО 'ShortNonHardened' в renderer.js (позиция 1171201)
+------------------------------
+'BOBA','JPYS','anon','drama','time','hide','edit','Type:','parsed','paymentProtocolScheme','middle','tel','chronic','mybeldex_core_js','serializeTx','ShortNonHardened','zelcoreClassic','blockbook.btg.zelcore.io','pig','workchain','d2fa_welcome_1','decryptioncomplete','Akroma','uint8','ALPHA','kadenaCoin','hexToBuffer','ALTME','operationid','SKT','getCryptoRate','BRIT','raptoreum','Import\x20Solana\x20Token','https://solanabeach.io/transaction/$hash?cluster=testnet','message.failed_to_add_device','[Veil\x20Balance]\x20WASM\x20module\x20not\x20pr
+------------------------------
+
+[!] НАЙДЕНО 'ShortNonHardened' в renderer.js (позиция 7260103)
+------------------------------
+ase _0x58919a['AllHardened']:return'm/'+_0x54df26+'\x27/'+_0x76415+'\x27/'+_0x2cd979+'\x27/'+_0x20db96+'\x27';case _0x58919a['Short']:case _0x58919a['ShortNonHardened']:return'm/'+_0x54df26+'\x27/'+_0x76415+'\x27';case _0x58919a['Standard']:default:return'm/'+_0x54df26+'\x27/'+_0x76415+'\x27/'+_0x2cd979+'\x27/'+_0x20db96;}}(_0x2a40de,_0x51e66b,_0x2f4730,_0x290467,_0x315d08);_0x487ea9['set'](_0x5e847a,_0x13557d['derive'](_0x432d7b));}return _0x487ea9['get'](_0x5e847a);},'derive'(_0x2ed5dc,_0x33eafc,_0x402577,_0x10c737=_0x58919a['Standard'],_0x96
+------------------------------
+
+[!] НАЙДЕНО 'ShortNonHardened' в renderer.js (позиция 7263140)
+------------------------------
+aa75['Standard']=0x0]='Standard',_0x30aa75[_0x30aa75['AllHardened']=0x1]='AllHardened',_0x30aa75[_0x30aa75['Short']=0x2]='Short',_0x30aa75[_0x30aa75['ShortNonHardened']=0x3]=_0x36de92(0x915);}(_0x58919a||(_0x58919a={}));var _0x2d37ca={},_0x15773a=function(_0x306bce){var _0x188c68=_0x4e98bb;if(_0x2d37ca[_0x306bce])return _0x2d37ca[_0x306bce];var _0x525032=Object['values'](_0x48b8a5[_0x188c68(0x1265)]['coins'])['find'](function(_0x2b995b){return'native'===_0x2b995b['coinType']&&_0x2b995b['type']===_0x306bce;});return _0x2d37ca[_0x306bce]=_0x52503
+------------------------------
+
+>>> Анализ файла: 828.js (296 KB)
+
+[!] НАЙДЕНО 'zelcoreClassic' в 828.js (позиция 13957)
+------------------------------
+hainIDs','none','exception','dialog-form-column','all','6oMJCKz','Europe','message.recovery_password_question8','separator-x-15','showError','state','zelcoreClassic','data-v-7cb8283c','nodeService','grid__seed_pharse','screenWidth','processAuthentication','table','name','d2faDialog','settingsContentInfo','keys','status-item\x20status-missing','proxyServer','sent','current-device-info','Icon','onUpdate:modelValue','Monero','onClose','passwordVisible','file','clickeable','contactsEncrypted','input','logolink','changeFullNodePath','stoppingcoin','
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в 828.js (позиция 104820)
+------------------------------
+,'coins','coinDaemonIsStopping','safetoquit',_0x4611af(0x292),_0x4611af(0x25d),'activeExchangeWallet','activeRewardWallet',_0x4611af(0x2f3),'uimode','zelcoreClassic','sectionVisible'])),(0x0,_0x2f27e3['L8'])(['coinsArray'])),{},{'availableQuestions':function(){var _0x3d1627=_0x4611af,_0x1a5834=this;return this[_0x3d1627(0x1ed)]['filter'](function(_0x53044e){var _0x22e6f8=_0x3d1627;return!_0x1a5834['recoveryPasswordForm']['questions'][_0x22e6f8(0x1f2)](_0x53044e['id']);});},'animated':function(){var _0x11b0d1=_0x4611af;return this[_0x11b0d1(0x2e
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в 828.js (позиция 113320)
+------------------------------
+ee5(0x233)]['commit'](_0x360ee5(0x170),!0x0),_0x5a0c8c['$store'][_0x360ee5(0x2bc)](_0x360ee5(0x2b8),!0x0),_0x5a0c8c['$localstore'][_0x360ee5(0x2a5)]('zelcoreClassic',!0x0),(_0x1a84b8=_0x5a0c8c['$refs']['imagebg'][_0x360ee5(0x222)])&&_0x1a84b8[0x0]){_0x222f21['next']=0x1;break;}return _0x222f21['abrupt']('return');case 0x1:return _0x222f21['next']=0x2,_0x5a0c8c[_0x360ee5(0x1d4)](_0x1a84b8[0x0]);case 0x2:if(_0x574184=_0x222f21['sent']){_0x222f21['next']=0x3;break;}return _0x222f21[_0x360ee5(0x1de)]('return');case 0x3:_0x5a0c8c['$store']['commit']
+------------------------------
+
+[!] НАЙДЕНО 'zelcoreClassic' в 828.js (позиция 158959)
+------------------------------
+xb832a['createElementVNode'])(_0x3ebcd3(0x215),null,[(0x0,_0xb832a[_0x3ebcd3(0x1d8)])('input',{'type':'checkbox','tabindex':'-1','checked':_0xe06eb3['zelcoreClassic'],'onClick':_0x29d19c[0x12]||(_0x29d19c[0x12]=function(){return _0x23b1e5['toggleClassicMode']&&_0x23b1e5['toggleClassicMode']['apply'](_0x23b1e5,arguments);})},null,0x8,_0x347fbb),_0x29d19c[0x50]||(_0x29d19c[0x50]=(0x0,_0xb832a[_0x3ebcd3(0x1d8)])('span',null,null,-0x1))]),(0x0,_0xb832a['createVNode'])(_0x1113dd,{'icon':'images'})])])]),(0x0,_0xb832a[_0x3ebcd3(0x1d8)])('div',_0x3b04
+------------------------------
+
+>>> Анализ файла: main.js (7378 KB)
