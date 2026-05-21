@@ -1,0 +1,79 @@
+import asyncio
+import random
+import os
+from playwright.async_api import async_playwright
+
+async def check_hashmart_account():
+    print("=== Hashmart Account Checker (Hidden Mode) ===")
+    user_email = input("Введите Email: ").strip()
+    user_password = input("Введите Пароль: ").strip()
+
+    async with async_playwright() as p:
+        # Путь к Chrome
+        chrome_path = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+        if not os.path.exists(chrome_path):
+            chrome_path = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+
+        user_data_dir = os.path.join(os.getcwd(), "hashmart_bot_profile")
+
+        # headless=True делает окно невидимым
+        context = await p.chromium.launch_persistent_context(
+            user_data_dir,
+            executable_path=chrome_path,
+            headless=False, 
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox",
+                "--disable-infobars"
+            ]
+        )
+
+        page = context.pages[0]
+        # Маскировка под реальный браузер (важно для скрытого режима)
+        await page.add_init_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+
+        print(f"[*] Проверка в скрытом режиме: {user_email}...")
+        
+        try:
+            # Заходим на страницу
+            await page.goto("https://hashmart.io/signin?redirect=%2Fcabinet", wait_until="domcontentloaded", timeout=60000)
+            
+            email_selector = 'input[name="email"]'
+            await page.wait_for_selector(email_selector, state="visible", timeout=30000)
+            
+            # Ввод данных
+            await page.type(email_selector, user_email, delay=random.randint(50, 100))
+            await page.type('input[name="password"]', user_password, delay=random.randint(50, 100))
+            
+            await asyncio.sleep(1.5)
+
+            # Ожидаем ответ от API
+            async with page.expect_response("**/api/v1/token", timeout=30000) as response_info:
+                await page.keyboard.press("Enter")
+                
+                response = await response_info.value
+                status = response.status
+                
+                # ОБНОВЛЕННАЯ ЛОГИКА СТАТУСОВ
+                if status == 200:
+                    print(f"\n[+++] РЕЗУЛЬТАТ: GOOD | {user_email}:{user_password}")
+                elif status == 400 or status == 401:
+                    # Теперь 400 тоже считается как BAD (неверный логин/пароль)
+                    print(f"\n[---] РЕЗУЛЬТАТ: BAD (Неверные данные) | {user_email}")
+                elif status == 403:
+                    print(f"\n[!] РЕЗУЛЬТАТ: BLOCK (Капча заблокировала скрытый режим) | {user_email}")
+                else:
+                    print(f"\n[?] РЕЗУЛЬТАТ: UNKNOWN (Код {status})")
+
+        except Exception as e:
+            # Если в скрытом режиме вылетел таймаут, скорее всего Cloudflare выдал проверку
+            print(f"\n[!] Ошибка: Возможно, Cloudflare заблокировал скрытый запрос.")
+            # Делаем скриншот (в скрытом режиме он всё равно работает), чтобы ты мог проверить
+            await page.screenshot(path="hidden_mode_error.png")
+            print("[*] Скриншот того, что видел бот, сохранен в hidden_mode_error.png")
+
+        finally:
+            await context.close()
+
+if __name__ == "__main__":
+    asyncio.run(check_hashmart_account())
