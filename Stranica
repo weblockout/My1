@@ -1,0 +1,12 @@
+
+<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#061b30"><meta name="google-site-verification" content="DgTLWUxhF8BMCjqTEWytuUZuSMyceeWl3z6PQHgBbTM"/><meta name="description" content=""/><title>Hashmart</title><link rel="icon" href="/favicon.ico"><script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js',
+        });
+        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', /(staging\.|dev\.|localhost)/i.test(location.hostname) ? 'GTM-5FSSXGB' : 'GTM-M9N8W6B');</script><script defer="defer" src="/client/assets/js/chunk-vendors.eec2746e.js"></script><script defer="defer" src="/client/assets/js/app.7d6bce09.js"></script><link href="/client/assets/css/app.7e6c1ef8.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but application doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div></body></html>
