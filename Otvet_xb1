@@ -4,3 +4,5 @@
 [] Отправка POST запроса...
 [---] ОШИБКА (400).
 Ответ сервера: {"error":{"message":"Bad Request","code":0,"details":[{"field":"device_fingerprint","issue":"Invalid device fingerprint"}]}}
+
+Говорит что надйден, но надо бы проверить что он там нашел, может?
