@@ -1,0 +1,9 @@
+E:\E-MAIL SOFTWARE V1.1.5\xbtfx.com>python xb_g.py
+=== XBTFX Hybrid Live v24.6 ===
+[*] Шаг 1: Получение UUID и живого отпечатка...
+[!] Живой отпечаток не найден в памяти. Пробую из файла...
+[*] Отправка POST запроса с живыми данными...
+[---] ОШИБКА (400).
+Ответ сервера: {"error":{"message":"Bad Request","code":0,"details":[{"field":"device_fingerprint","issue":"Invalid device fingerprint"}]}}
+
+E:\E-MAIL SOFTWARE V1.1.5\xbtfx.com>
