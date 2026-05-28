@@ -1,0 +1,129 @@
+from DrissionPage import ChromiumPage, ChromiumOptions
+from DrissionPage.common import Keys
+import ddddocr
+import time
+import re
+
+# === ДАННЫЕ ===
+USER_LOGIN = "buginot@hotmail.com"
+USER_PASS = "ScvDbn70@"
+
+# Инициализация OCR
+ocr = ddddocr.DdddOcr(show_ad=False)
+
+def clean_browser_data(page):
+    print("[*] Очистка данных...")
+    try:
+        page.set.cookies.clear() 
+        page.run_js('window.localStorage.clear();')
+    except: pass
+    print("[+] Очищено.")
+
+def is_cloudflare_present(page):
+    """Проверка наличия Cloudflare"""
+    if "Выполнение проверки безопасности" in page.html or "Verify you are human" in page.html:
+        return True
+    if page.ele('tag:iframe@src*=/cdn-cgi/challenge-platform/') or \
+       page.ele('tag:iframe@title*=Cloudflare'):
+        return True
+    return False
+
+def run_bot():
+    co = ChromiumOptions()
+    co.set_argument('--disable-blink-features=AutomationControlled')
+    co.set_argument('--window-size=1100,950')
+    co.set_argument('--window-position=0,0')
+    
+    page = ChromiumPage(co)
+    
+    try:
+        clean_browser_data(page)
+        print("[*] Загрузка nanogames.io...")
+        page.get('https://nanogames.io/login')
+        
+        # ГЛАВНЫЙ ЦИКЛ (30 попыток)
+        for attempt in range(30):
+            time.sleep(2)
+            print(f"[*] Анализ страницы (попытка {attempt+1})...")
+
+            # 1. ПРОВЕРКА ГУДА (Успех)
+            wallet_btn = page.ele('text=Wallet') or page.ele('text=Deposit')
+            if (wallet_btn and wallet_btn.states.is_displayed) or "login" not in page.url:
+                print(f"[+++] ГУД (Успех): {USER_LOGIN}")
+                break
+
+            # 2. ПРОВЕРКА БЭДА (Неверный пароль)
+            bad_triggers = ["Неверно указан", "4001", "адрес электронной почты или пароль"]
+            if any(t in page.html for t in bad_triggers):
+                print(f"[-] БЭД (Неверные данные): {USER_LOGIN}")
+                break
+
+            # 3. ПРОВЕРКА CLOUDFLARE
+            if is_cloudflare_present(page):
+                print("[!] Cloudflare! Жму 1 Tab + Space...")
+                page.actions.click((150, 150))
+                time.sleep(1)
+                page.actions.key_down(Keys.TAB).key_up(Keys.TAB)
+                time.sleep(0.5)
+                page.actions.key_down(Keys.SPACE).key_up(Keys.SPACE)
+                print("[*] Кнопки нажаты, жду прохода...")
+                time.sleep(6)
+                continue
+
+            # 4. ПРОВЕРКА КАПЧИ
+            captcha_input = page.ele('@placeholder=Verification Code')
+            if captcha_input and captcha_input.states.is_displayed:
+                print("[*] Обнаружена капча! Разгадываю...")
+                captcha_img = page.ele('tag:img@@src*=/captcha') or \
+                              page.ele('tag:img@@src*=/api/user/captcha/') or \
+                              captcha_input.parent().ele('tag:img')
+                
+                if captcha_img and captcha_img.states.is_displayed:
+                    img_bytes = captcha_img.get_screenshot()
+                    raw_res = ocr.classification(img_bytes)
+                    res = "".join(re.findall(r'[A-Za-z0-9]', raw_res))
+                    print(f"[*] OCR: {raw_res} -> Код: {res}")
+
+                    if len(res) == 4:
+                        captcha_input.input(res, clear=True)
+                        time.sleep(0.5)
+                        login_btn = page.ele('xpath://*[@id="login"]/div[2]/button[1]')
+                        if login_btn:
+                            print("[*] Нажимаю Sign in (после капчи)...")
+                            login_btn.click()
+                    else:
+                        print("[-] Код не 4 символа, обновляю капчу...")
+                        captcha_img.click()
+                        time.sleep(2)
+                continue
+
+            # 5. ВВОД ДАННЫХ И КЛИК
+            email_input = page.ele('@type=text')
+            if email_input and email_input.states.is_displayed:
+                if not email_input.value:
+                    print("[*] Ввод логина и пароля...")
+                    email_input.input(USER_LOGIN)
+                    page.ele('@type=password').input(USER_PASS)
+                    time.sleep(0.5)
+                
+                # Если капчи нет, просто жмем вход
+                if not captcha_input or not captcha_input.states.is_displayed:
+                    login_btn = page.ele('xpath://*[@id="login"]/div[2]/button[1]')
+                    if login_btn:
+                        print("[*] Нажимаю Sign in...")
+                        login_btn.click()
+            else:
+                # Если полей нет и Клауда нет - пробуем ESC (баннер)
+                print("[*] Полей не видно, пробую ESC...")
+                page.actions.key_down(Keys.ESCAPE).key_up(Keys.ESCAPE)
+
+        print("[-] Цикл завершен.")
+
+    except Exception as e:
+        print(f"[-] Ошибка: {e}")
+    finally:
+        print("[*] Закрываю браузер.")
+        page.quit()
+
+if __name__ == "__main__":
+    run_bot()
