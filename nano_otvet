@@ -1,0 +1,4 @@
+Первый тест
+C:\nano>python test3.py
+DEBUG: Пробую запустить Chrome БЕЗ настроек...
+   [-] ОШИБКА: [Errno 13] Permission denied: 'C:\\Users\\Mastr\\AppData\\Local\\Temp\\DrissionPage\\userData\\9222\\Default\\Preferences'
